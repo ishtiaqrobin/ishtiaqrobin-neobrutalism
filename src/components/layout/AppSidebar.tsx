@@ -62,7 +62,7 @@ export function AppSidebar({
   return (
     <Sidebar className="h-screen flex flex-col border-r-3 border-black dark:border-zinc-700 bg-white dark:bg-zinc-950" {...props}>
       {/* Header */}
-      <SidebarHeader className="border-b-2 border-black shrink-0 p-4">
+      <SidebarHeader className="border-b-2 border-black shrink-0 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="inline-block">
           <motion.div
