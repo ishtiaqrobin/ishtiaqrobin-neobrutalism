@@ -174,61 +174,61 @@ export function ExperienceDialog({
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
         <form ref={formRef} onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>
-              {isEdit ? "Edit Experience" : "Add Experience"}
+          <DialogHeader className="border-b-2 border-black pb-3">
+            <DialogTitle className="font-clash font-black uppercase text-xl text-black dark:text-white">
+              {isEdit ? "EDIT EXPERIENCE ★" : "ADD EXPERIENCE ★"}
             </DialogTitle>
-            <DialogDescription>
+            <DialogDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-0.5">
               {isEdit
-                ? "Update details for this work experience."
+                ? "Update details for this work experience record."
                 : "Add a new work experience record to your portfolio."}
             </DialogDescription>
           </DialogHeader>
 
           <div className="py-4 space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5 sm:col-span-2">
+              <div className="space-y-1 sm:col-span-2">
                 <FieldLabel htmlFor="position">
-                  Position <span className="text-red-500">*</span>
+                  POSITION <span className="text-red-500">*</span>
                 </FieldLabel>
                 <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="position"
                     name="position"
                     defaultValue={experience?.position || ""}
                     placeholder="e.g. Senior Backend Developer"
                     required
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5 sm:col-span-2">
+              <div className="space-y-1 sm:col-span-2">
                 <FieldLabel htmlFor="companyName">
-                  Company Name <span className="text-red-500">*</span>
+                  COMPANY NAME <span className="text-red-500">*</span>
                 </FieldLabel>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="companyName"
                     name="companyName"
                     defaultValue={experience?.companyName || ""}
                     placeholder="e.g. Creative Agency Ltd."
                     required
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="startDate">
-                  Start Date <span className="text-red-500">*</span>
+                  START DATE <span className="text-red-500">*</span>
                 </FieldLabel>
                 <div className="relative">
-                  <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="startDate"
                     type="date"
@@ -241,15 +241,15 @@ export function ExperienceDialog({
                         : ""
                     }
                     required
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-xs bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5">
-                <FieldLabel htmlFor="endDate">End Date</FieldLabel>
+              <div className="space-y-1">
+                <FieldLabel htmlFor="endDate">END DATE</FieldLabel>
                 <div className="relative">
-                  <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="endDate"
                     type="date"
@@ -261,20 +261,20 @@ export function ExperienceDialog({
                             .split("T")[0]
                         : ""
                     }
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-xs bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-[10px] font-bold text-zinc-500 mt-0.5">
                   Leave empty if currently working here
                 </p>
               </div>
 
-              <div className="space-y-1.5 sm:col-span-2">
+              <div className="space-y-1 sm:col-span-2">
                 <FieldLabel htmlFor="responsibilities">
-                  Responsibilities <span className="text-red-500">*</span>
+                  RESPONSIBILITIES <span className="text-red-500">*</span>
                 </FieldLabel>
                 <div className="relative">
-                  <ListChecks className="absolute left-3 top-3 h-3.5 w-3.5 text-muted-foreground" />
+                  <ListChecks className="absolute left-3 top-3 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Textarea
                     id="responsibilities"
                     name="responsibilities"
@@ -283,32 +283,32 @@ export function ExperienceDialog({
                     }
                     placeholder="Enter each responsibility on a new line&#10;e.g. Led the frontend architecture development&#10;Optimized application performance"
                     required
-                    className="rounded-xl resize-none pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 resize-none pl-8"
                     rows={5}
                   />
                 </div>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-[10px] font-bold text-zinc-500 mt-0.5">
                   One responsibility per line
                 </p>
               </div>
 
-              <div className="space-y-1.5 sm:col-span-2">
-                <FieldLabel htmlFor="companyUrl">Company URL</FieldLabel>
+              <div className="space-y-1 sm:col-span-2">
+                <FieldLabel htmlFor="companyUrl">COMPANY URL</FieldLabel>
                 <div className="relative">
-                  <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <Globe className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="companyUrl"
                     type="url"
                     name="companyUrl"
                     defaultValue={experience?.companyUrl || ""}
                     placeholder="https://company.com"
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
               </div>
 
-              <div className="space-y-1.5 sm:col-span-2">
-                <FieldLabel htmlFor="companyLogo">Company Logo</FieldLabel>
+              <div className="space-y-1 sm:col-span-2">
+                <FieldLabel htmlFor="companyLogo">COMPANY LOGO</FieldLabel>
                 <Input
                   id="companyLogo"
                   type="file"
@@ -317,17 +317,16 @@ export function ExperienceDialog({
                   ref={logoInputRef}
                   onChange={handleLogoChange}
                   disabled={isCompressing}
-                  className="rounded-xl h-10 cursor-pointer"
+                  className="rounded-lg border-2 border-black font-bold cursor-pointer"
                 />
                 {isCompressing ? (
-                  <p className="text-[11px] text-primary flex items-center gap-1">
+                  <p className="text-xs font-bold text-black flex items-center gap-1">
                     <Loader2 className="h-3 w-3 animate-spin" />
                     Compressing…
                   </p>
                 ) : (
-                  <p className="text-[11px] text-muted-foreground">
-                    Max 5MB · Auto-compressed to WebP · Image will be stored in
-                    Cloudinary
+                  <p className="text-[11px] font-bold text-zinc-500">
+                    Max 5MB · Auto-compressed to WebP · Cloudinary storage
                   </p>
                 )}
                 {logoPreview && (
@@ -337,9 +336,9 @@ export function ExperienceDialog({
                       alt="Logo preview"
                       width={40}
                       height={40}
-                      className="rounded-lg object-cover h-10 w-10"
+                      className="rounded-md border border-black object-cover h-10 w-10 shadow-[1px_1px_0px_0px_#000]"
                     />
-                    <span className="text-[10px] text-muted-foreground truncate max-w-48">
+                    <span className="text-[10px] font-mono font-bold text-zinc-500 truncate max-w-48">
                       {logoFile?.name}
                     </span>
                   </div>
@@ -351,37 +350,37 @@ export function ExperienceDialog({
                       alt={experience.companyName}
                       width={40}
                       height={40}
-                      className="rounded-lg object-cover h-10 w-10"
+                      className="rounded-md border border-black object-cover h-10 w-10 shadow-[1px_1px_0px_0px_#000]"
                     />
-                    <span className="text-[10px] text-muted-foreground truncate max-w-48">
+                    <span className="text-[10px] font-mono font-bold text-zinc-500 truncate max-w-48">
                       Current logo
                     </span>
                   </div>
                 )}
               </div>
 
-              <div className="space-y-1.5">
-                <FieldLabel htmlFor="sortOrder">Sort Order</FieldLabel>
+              <div className="space-y-1">
+                <FieldLabel htmlFor="sortOrder">SORT ORDER</FieldLabel>
                 <div className="relative">
-                  <ArrowUpDown className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                  <ArrowUpDown className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                   <Input
                     id="sortOrder"
                     type="number"
                     name="sortOrder"
                     min={0}
                     defaultValue={experience?.sortOrder ?? 0}
-                    className="rounded-xl h-10 pl-8"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10 pl-8"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-xl bg-muted/30 sm:col-span-2">
+              <div className="flex items-center justify-between p-3 rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 shadow-[2px_2px_0px_0px_#000] sm:col-span-2">
                 <Label
                   htmlFor="isPublished"
-                  className="flex items-center gap-2 cursor-pointer text-sm"
+                  className="flex items-center gap-2 cursor-pointer text-xs font-black uppercase text-black dark:text-white"
                 >
-                  <Check className="h-4 w-4 text-green-500" />
-                  Published
+                  <Check className="h-4 w-4 text-green-500 stroke-[2.5]" />
+                  PUBLISHED STATUS
                 </Label>
                 <Switch
                   id="isPublished"
@@ -392,18 +391,18 @@ export function ExperienceDialog({
             </div>
           </div>
 
-          <DialogFooter className="gap-2">
+          <DialogFooter className="gap-2 pt-4 border-t-2 border-black">
             <Button
               type="button"
-              variant="outline"
               onClick={handleClose}
               disabled={saving}
+              className="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              Cancel
+              CANCEL
             </Button>
-            <Button type="submit" disabled={saving || isCompressing}>
+            <Button type="submit" disabled={saving || isCompressing} className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer">
               {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {isEdit ? "Save Changes" : "Create"}
+              {isEdit ? "SAVE CHANGES ★" : "CREATE EXPERIENCE ★"}
             </Button>
           </DialogFooter>
         </form>

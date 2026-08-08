@@ -116,59 +116,59 @@ export default function CategoryDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>
-            {isEdit ? "Edit Category" : "Add New Category"}
+      <DialogContent className="sm:max-w-md border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
+        <DialogHeader className="border-b-2 border-black pb-3">
+          <DialogTitle className="font-clash font-black uppercase text-xl text-black dark:text-white">
+            {isEdit ? "EDIT CATEGORY ★" : "ADD NEW CATEGORY ★"}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-0.5">
             {isEdit
-              ? "Update the category details."
-              : "Create a new category."}
+              ? "Update category details and sorting."
+              : "Create a new portfolio category or tag."}
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-1.5">
+        <form onSubmit={handleSubmit} className="space-y-4 pt-2">
+          <div className="space-y-1">
             <Label
               htmlFor="name"
-              className="text-[11px] font-bold tracking-wider text-muted-foreground uppercase"
+              className="text-xs font-black uppercase text-black dark:text-white"
             >
-              Name <span className="text-red-500">*</span>
+              NAME <span className="text-red-500">*</span>
             </Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="rounded-xl h-10 bg-white"
+              className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
               placeholder="Enter category name"
             />
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <Label
               htmlFor="sortOrder"
-              className="text-[11px] font-bold tracking-wider text-muted-foreground uppercase"
+              className="text-xs font-black uppercase text-black dark:text-white"
             >
-              Sort Order
+              SORT ORDER
             </Label>
             <Input
               id="sortOrder"
               type="number"
               value={sortOrder}
               onChange={(e) => setSortOrder(Number(e.target.value))}
-              className="rounded-xl h-10 bg-white"
+              className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
               placeholder="0"
             />
           </div>
 
-          <div className="flex items-center justify-between p-3 rounded-xl bg-muted/30">
+          <div className="flex items-center justify-between p-3 rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 shadow-[2px_2px_0px_0px_#000]">
             <Label
               htmlFor="isPublished"
-              className="flex items-center gap-2 cursor-pointer text-sm"
+              className="flex items-center gap-2 cursor-pointer text-xs font-black uppercase text-black dark:text-white"
             >
-              <Check className="h-4 w-4 text-green-500" />
-              Published
+              <Check className="h-4 w-4 text-green-500 stroke-[2.5]" />
+              PUBLISHED STATUS
             </Label>
             <Switch
               id="isPublished"
@@ -177,18 +177,18 @@ export default function CategoryDialog({
             />
           </div>
 
-          <DialogFooter>
+          <DialogFooter className="gap-2 pt-2 border-t-2 border-black">
             <Button
               type="button"
-              variant="outline"
               onClick={handleClose}
               disabled={saving}
+              className="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              Cancel
+              CANCEL
             </Button>
-            <Button type="submit" disabled={saving}>
+            <Button type="submit" disabled={saving} className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer">
               {saving && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {isEdit ? "Save Changes" : "Create"}
+              {isEdit ? "SAVE CHANGES ★" : "CREATE CATEGORY ★"}
             </Button>
           </DialogFooter>
         </form>

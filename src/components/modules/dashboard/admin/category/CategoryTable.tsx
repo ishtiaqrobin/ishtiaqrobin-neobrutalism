@@ -104,28 +104,31 @@ export default function CategoryTable({
 
   return (
     <>
-      <div className="bg-gray-100 border rounded-md">
+      <div className="bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden">
         <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Sort Order</TableHead>
-              <TableHead className="text-right">Action</TableHead>
+          <TableHeader className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black">
+            <TableRow className="border-b-2 border-black">
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">NAME</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">STATUS</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">SORT ORDER</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white text-right">ACTION</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="divide-y-2 divide-black/10 dark:divide-zinc-800">
             {loading ? (
               [...Array(6)].map((_, idx) => (
                 <TableRow key={`skeleton-${idx}`} className="align-middle">
                   <TableCell>
-                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="h-4 w-32 border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-20 rounded-full" />
+                    <Skeleton className="h-4 w-20 rounded-full border border-black" />
+                  </TableCell>
+                  <TableCell>
+                    <Skeleton className="h-4 w-12 border border-black" />
                   </TableCell>
                   <TableCell className="text-right">
-                    <Skeleton className="h-8 w-9 rounded-md ml-auto" />
+                    <Skeleton className="h-8 w-9 rounded-md ml-auto border border-black" />
                   </TableCell>
                 </TableRow>
               ))
@@ -133,39 +136,37 @@ export default function CategoryTable({
               <TableRow>
                 <TableCell
                   colSpan={4}
-                  className="text-center py-8 text-gray-600"
+                  className="text-center py-8 font-bold text-xs text-zinc-500"
                 >
                   {searchQuery
-                    ? "No categories found matching your search"
-                    : "No categories found"}
+                    ? "NO CATEGORIES MATCHING YOUR SEARCH"
+                    : "NO CATEGORIES FOUND"}
                 </TableCell>
               </TableRow>
             ) : (
               categories.map((category) => (
-                <TableRow key={category.id} className="align-middle">
-                  <TableCell className="font-medium">
+                <TableRow key={category.id} className="align-middle hover:bg-[#00f0ff]/10 transition-colors">
+                  <TableCell className="font-black text-xs uppercase text-black dark:text-white">
                     <span className="truncate max-w-52 block">
                       {category.name}
                     </span>
                   </TableCell>
 
                   <TableCell>
-                    <Badge
-                      variant={category.isPublished ? "default" : "secondary"}
-                      className="inline-flex items-center gap-1 text-[10px]"
-                    >
-                      {category.isPublished ? (
-                        <Check className="h-3 w-3" />
-                      ) : (
-                        <X className="h-3 w-3" />
-                      )}
-                      {category.isPublished ? "Published" : "Draft"}
-                    </Badge>
+                    {category.isPublished ? (
+                      <Badge className="bg-[#b5ff6d] text-black border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000] inline-flex items-center gap-1">
+                        <Check className="h-3 w-3 stroke-[2.5]" /> PUBLISHED ★
+                      </Badge>
+                    ) : (
+                      <Badge className="bg-zinc-200 dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000] inline-flex items-center gap-1">
+                        <X className="h-3 w-3 stroke-[2.5]" /> DRAFT
+                      </Badge>
+                    )}
                   </TableCell>
 
                   <TableCell>
-                    <span className="text-sm text-muted-foreground">
-                      {category.sortOrder}
+                    <span className="text-xs font-mono font-bold text-black dark:text-white">
+                      #{category.sortOrder}
                     </span>
                   </TableCell>
 
@@ -175,23 +176,23 @@ export default function CategoryTable({
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="cursor-pointer"
+                          className="h-8 w-8 border-2 border-black rounded-lg shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                         >
-                          <MoreHorizontal className="h-4 w-4" />
+                          <MoreHorizontal className="h-4 w-4 stroke-[2.5]" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => onEdit(category)}>
-                          <Pencil className="mr-2 h-4 w-4" />
-                          Edit
+                      <DropdownMenuContent align="end" className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
+                        <DropdownMenuItem onClick={() => onEdit(category)} className="font-black uppercase text-xs cursor-pointer">
+                          <Pencil className="mr-2 h-4 w-4 stroke-[2.5]" />
+                          EDIT
                         </DropdownMenuItem>
-                        <DropdownMenuSeparator />
+                        <DropdownMenuSeparator className="bg-black/20" />
                         <DropdownMenuItem
                           onClick={() => confirmDelete(category)}
-                          className="text-red-600 focus:text-red-600"
+                          className="font-black uppercase text-xs text-red-600 focus:text-red-600 cursor-pointer"
                         >
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete
+                          <Trash2 className="mr-2 h-4 w-4 stroke-[2.5]" />
+                          DELETE
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>

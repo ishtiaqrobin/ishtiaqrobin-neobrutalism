@@ -351,41 +351,38 @@ export function ContactManager({
     <TooltipProvider>
       <div className="space-y-5">
         {/* ── Stat Cards ─────────────────────────────────── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {(["UNREAD", "READ", "REPLIED", "ARCHIVED"] as ContactStatus[]).map(
             (s) => {
               const count = stats.find((x) => x.status === s)?.total ?? 0;
               const Icon = STAT_ICONS[s];
               const isActive = statusFilter === s;
+              const cardBg = s === "UNREAD" ? "bg-[#ff597b]" : s === "READ" ? "bg-[#00f0ff]" : s === "REPLIED" ? "bg-[#b5ff6d]" : "bg-[#facc15]";
               return (
                 <button
                   key={s}
                   type="button"
                   onClick={() => setStatusFilter(isActive ? "ALL" : s)}
                   className={`
-                  group relative rounded-xl border p-4 text-left transition-all duration-200
-                  hover:shadow-md hover:-translate-y-0.5
+                  group relative rounded-2xl border-3 border-black p-4 text-left transition-all duration-150 cursor-pointer
+                  hover:translate-x-[2px] hover:translate-y-[2px]
                   ${
                     isActive
-                      ? `${STAT_COLORS[s]} shadow-sm`
-                      : "bg-card border-border hover:border-primary/30"
+                      ? `${cardBg} text-black shadow-[2px_2px_0px_0px_#000]`
+                      : "bg-white dark:bg-zinc-900 border-black dark:border-zinc-300 shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]"
                   }
                 `}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <div
-                      className={`w-8 h-8 rounded-lg flex items-center justify-center ${isActive ? "bg-current/10" : "bg-muted"}`}
-                    >
-                      <Icon
-                        className={`h-4 w-4 ${isActive ? "" : "text-muted-foreground"}`}
-                      />
+                    <div className="w-8 h-8 rounded-lg border-2 border-black bg-white text-black flex items-center justify-center shadow-[1px_1px_0px_0px_#000]">
+                      <Icon className="h-4 w-4 stroke-[2.5]" />
                     </div>
-                    {isActive && <X className="h-3 w-3 opacity-60" />}
+                    {isActive && <X className="h-4 w-4 stroke-[2.5]" />}
                   </div>
-                  <p className="text-2xl font-bold leading-none tabular-nums">
+                  <p className="text-2xl font-clash font-black leading-none tabular-nums text-black dark:text-white">
                     {count}
                   </p>
-                  <p className="text-xs text-muted-foreground mt-1 font-medium">
+                  <p className="text-[10px] font-black uppercase tracking-wider text-black dark:text-white mt-1">
                     {STATUS_CONFIG[s].label}
                   </p>
                 </button>
@@ -398,40 +395,40 @@ export function ContactManager({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           {/* Search */}
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-black dark:text-white stroke-[2.5] pointer-events-none" />
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name, email, subject…"
-              className="pl-9 pr-9 h-9"
+              className="pl-9 pr-9 h-10 border-2 border-black rounded-lg font-bold text-xs bg-zinc-50 dark:bg-zinc-950 shadow-[2px_2px_0px_0px_#000]"
             />
             {search && (
               <button
                 type="button"
                 onClick={() => setSearch("")}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-black dark:text-white"
               >
-                <X className="h-3.5 w-3.5" />
+                <X className="h-4 w-4 stroke-[2.5]" />
               </button>
             )}
           </div>
 
           {/* Status filter dropdown */}
           <div className="flex items-center gap-2">
-            <SlidersHorizontal className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+            <SlidersHorizontal className="h-4 w-4 text-black dark:text-white stroke-[2.5] flex-shrink-0" />
             <Select
               value={statusFilter}
               onValueChange={(v) => setStatusFilter(v as ContactStatus | "ALL")}
             >
-              <SelectTrigger className="h-9 w-36">
+              <SelectTrigger className="h-10 w-36 border-2 border-black rounded-lg font-black uppercase text-xs bg-zinc-50 dark:bg-zinc-950 shadow-[2px_2px_0px_0px_#000]">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent position="popper">
-                <SelectItem value="ALL">All ({total})</SelectItem>
+              <SelectContent position="popper" className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
+                <SelectItem value="ALL" className="font-bold text-xs uppercase cursor-pointer">ALL ({total})</SelectItem>
                 {(
                   ["UNREAD", "READ", "REPLIED", "ARCHIVED"] as ContactStatus[]
                 ).map((s) => (
-                  <SelectItem key={s} value={s}>
+                  <SelectItem key={s} value={s} className="font-bold text-xs uppercase cursor-pointer">
                     {STATUS_CONFIG[s].label} (
                     {stats.find((x) => x.status === s)?.total ?? 0})
                   </SelectItem>
@@ -443,82 +440,65 @@ export function ContactManager({
           {/* Bulk delete */}
           {selectedIds.size > 0 && (
             <Button
-              variant="destructive"
-              size="sm"
-              className="h-9 gap-2 flex-shrink-0"
+              className="h-10 gap-2 flex-shrink-0 bg-red-500 text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
               disabled={bulkDeleting}
               onClick={() => setBulkDeleteConfirm(true)}
             >
               {bulkDeleting ? (
                 <Loader2 className="h-3.5 w-3.5 animate-spin" />
-              ) : (
-                // <Trash2 className="h-3.5 w-3.5" />
-                <></>
-              )}
-              Delete ({selectedIds.size})
+              ) : null}
+              DELETE ({selectedIds.size})
             </Button>
           )}
 
           {/* Refresh */}
           <Button
-            variant="outline"
-            size="sm"
             onClick={fetchAll}
             disabled={isLoading}
-            className="h-9 flex-shrink-0"
+            className="h-10 flex-shrink-0 bg-[#00f0ff] text-black border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
           >
             <RefreshCcw
-              className={`mr-2 h-3.5 w-3.5 ${isLoading ? "animate-spin" : ""}`}
+              className={`mr-2 h-3.5 w-3.5 stroke-[2.5] ${isLoading ? "animate-spin" : ""}`}
             />
-            Refresh
+            REFRESH ★
           </Button>
         </div>
 
         {/* ── Result count ───────────────────────────────── */}
-        <div className="flex items-center justify-between text-xs text-muted-foreground">
+        <div className="flex items-center justify-between text-xs font-black uppercase text-zinc-600 dark:text-zinc-400">
           <span>
-            Showing{" "}
-            <span className="font-semibold text-foreground">
-              {filtered.length}
-            </span>{" "}
-            of{" "}
-            <span className="font-semibold text-foreground">
-              {contacts.length}
-            </span>{" "}
-            contacts
+            SHOWING <span className="text-black dark:text-white font-mono">{filtered.length}</span> OF <span className="text-black dark:text-white font-mono">{contacts.length}</span> CONTACTS
           </span>
           {selectedIds.size > 0 && (
-            <span className="text-primary font-semibold">
-              {selectedIds.size} selected
+            <span className="text-black dark:text-white font-mono">
+              {selectedIds.size} SELECTED
             </span>
           )}
         </div>
 
         {/* ── Table ──────────────────────────────────────── */}
         {filtered.length === 0 ? (
-          <Card>
-            <CardContent className="py-20 flex flex-col items-center gap-3 text-muted-foreground">
-              <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center">
-                <Mail className="h-5 w-5 opacity-40" />
+          <Card className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[6px_6px_0px_0px_#000]">
+            <CardContent className="py-20 flex flex-col items-center gap-3 text-zinc-500 font-bold text-xs">
+              <div className="w-12 h-12 rounded-full border-2 border-black bg-[#00f0ff] text-black flex items-center justify-center shadow-[2px_2px_0px_0px_#000]">
+                <Mail className="h-5 w-5 stroke-[2.5]" />
               </div>
-              <p className="text-sm">No contacts found</p>
+              <p>NO CONTACT MESSAGES FOUND</p>
               {(search || statusFilter !== "ALL") && (
                 <Button
-                  variant="ghost"
-                  size="sm"
                   onClick={() => {
                     setSearch("");
                     setStatusFilter("ALL");
                   }}
-                  className="text-xs"
+                  className="text-xs font-black uppercase bg-zinc-200 text-black border-2 border-black shadow-[2px_2px_0px_0px_#000] cursor-pointer mt-2"
                 >
-                  Clear filters
+                  CLEAR FILTERS
                 </Button>
               )}
             </CardContent>
           </Card>
         ) : (
-          <div className="rounded-xl border bg-card overflow-hidden">
+          <div className="rounded-2xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>

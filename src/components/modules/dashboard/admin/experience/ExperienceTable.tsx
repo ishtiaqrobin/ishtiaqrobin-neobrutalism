@@ -110,43 +110,43 @@ export function ExperienceTable({
 
   return (
     <>
-      <div className="bg-gray-100 border rounded-md">
+      <div className="bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden">
         <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-10">Logo</TableHead>
-              <TableHead>Position</TableHead>
-              <TableHead>Company</TableHead>
-              <TableHead>Duration</TableHead>
-              <TableHead>Sort</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+          <TableHeader className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black">
+            <TableRow className="border-b-2 border-black">
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white w-10">LOGO</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">POSITION</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">COMPANY</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">DURATION</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">SORT</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">STATUS</TableHead>
+              <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white text-right">ACTIONS</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="divide-y-2 divide-black/10 dark:divide-zinc-800">
             {loading ? (
               [...Array(6)].map((_, idx) => (
                 <TableRow key={`skeleton-${idx}`} className="align-middle">
                   <TableCell>
-                    <Skeleton className="h-9 w-9 rounded-lg" />
+                    <Skeleton className="h-9 w-9 rounded-full border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-32" />
+                    <Skeleton className="h-4 w-32 border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-28" />
+                    <Skeleton className="h-4 w-28 border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-20" />
+                    <Skeleton className="h-4 w-20 border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-8" />
+                    <Skeleton className="h-4 w-8 border border-black" />
                   </TableCell>
                   <TableCell>
-                    <Skeleton className="h-4 w-20 rounded-full" />
+                    <Skeleton className="h-4 w-20 rounded-full border border-black" />
                   </TableCell>
                   <TableCell className="text-right">
-                    <Skeleton className="h-8 w-9 rounded-md ml-auto" />
+                    <Skeleton className="h-8 w-9 rounded-md ml-auto border border-black" />
                   </TableCell>
                 </TableRow>
               ))
@@ -154,18 +154,18 @@ export function ExperienceTable({
               <TableRow>
                 <TableCell
                   colSpan={7}
-                  className="text-center py-12 text-gray-600"
+                  className="text-center py-12 font-bold text-xs text-zinc-500"
                 >
                   {searchQuery
-                    ? "No experiences found matching your search"
-                    : "No experience records yet. Add your first work experience."}
+                    ? "NO EXPERIENCES FOUND MATCHING YOUR SEARCH"
+                    : "NO EXPERIENCE RECORDS YET. ADD YOUR FIRST WORK EXPERIENCE."}
                 </TableCell>
               </TableRow>
             ) : (
               experiences.map((item) => (
-                <TableRow key={item.id} className="align-middle">
+                <TableRow key={item.id} className="align-middle hover:bg-[#00f0ff]/10 transition-colors">
                   <TableCell>
-                    <div className="h-9 w-9 rounded-full border-2 bg-primary/10 flex items-center justify-center shrink-0 overflow-hidden">
+                    <div className="h-9 w-9 rounded-full border-2 border-black bg-[#00f0ff] flex items-center justify-center shrink-0 overflow-hidden shadow-[1px_1px_0px_0px_#000]">
                       {item.companyLogo ? (
                         <Image
                           src={item.companyLogo}
@@ -175,27 +175,27 @@ export function ExperienceTable({
                           className="h-full w-full object-cover"
                         />
                       ) : (
-                        <ImageIcon className="h-4 w-4 text-primary" />
+                        <Briefcase className="h-4 w-4 text-black stroke-[2.5]" />
                       )}
                     </div>
                   </TableCell>
 
-                  <TableCell className="font-medium max-w-[180px]">
+                  <TableCell className="font-black text-xs uppercase text-black dark:text-white max-w-[180px]">
                     <p className="truncate">{item.position}</p>
                   </TableCell>
 
-                  <TableCell className="text-sm">
-                    <div className="flex items-center gap-1.5 text-muted-foreground">
-                      <Building2 className="h-3.5 w-3.5 shrink-0" />
+                  <TableCell className="text-xs">
+                    <div className="flex items-center gap-1.5 font-bold text-zinc-700 dark:text-zinc-300">
+                      <Building2 className="h-3.5 w-3.5 shrink-0 stroke-[2.5]" />
                       {item.companyUrl ? (
                         <a
                           href={item.companyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:text-primary inline-flex items-center gap-1 truncate max-w-[140px]"
+                          className="hover:text-black dark:hover:text-white underline decoration-2 underline-offset-2 inline-flex items-center gap-1 truncate max-w-[140px]"
                         >
                           {item.companyName}
-                          <ExternalLink className="h-3 w-3 shrink-0" />
+                          <ExternalLink className="h-3 w-3 shrink-0 stroke-[2.5]" />
                         </a>
                       ) : (
                         <span className="truncate max-w-[140px]">
@@ -205,33 +205,32 @@ export function ExperienceTable({
                     </div>
                   </TableCell>
 
-                  <TableCell className="text-sm">
-                    <div className="flex items-center gap-1.5 text-muted-foreground">
-                      <CalendarDays className="h-3.5 w-3.5 shrink-0" />
+                  <TableCell className="text-xs">
+                    <div className="flex items-center gap-1.5 font-mono font-bold text-zinc-600 dark:text-zinc-400">
+                      <CalendarDays className="h-3.5 w-3.5 shrink-0 stroke-[2.5]" />
                       <span>
                         {formatDate(item.startDate)} –{" "}
-                        {item.endDate ? formatDate(item.endDate) : "Present"}
+                        {item.endDate ? formatDate(item.endDate) : "PRESENT"}
                       </span>
                     </div>
                   </TableCell>
 
                   <TableCell>
-                    <Badge
-                      variant="secondary"
-                      className="text-[10px] font-semibold"
-                    >
-                      <ArrowUpDown className="h-2.5 w-2.5 mr-1" />
-                      {item.sortOrder ?? 0}
-                    </Badge>
+                    <span className="text-xs font-mono font-bold text-black dark:text-white">
+                      #{item.sortOrder ?? 0}
+                    </span>
                   </TableCell>
 
                   <TableCell>
-                    <Badge
-                      variant={item.isPublished ? "default" : "secondary"}
-                      className="inline-flex items-center gap-1 text-[10px]"
-                    >
-                      {item.isPublished ? "Published" : "Draft"}
-                    </Badge>
+                    {item.isPublished ? (
+                      <Badge className="bg-[#b5ff6d] text-black border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000]">
+                        PUBLISHED ★
+                      </Badge>
+                    ) : (
+                      <Badge className="bg-zinc-200 dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000]">
+                        DRAFT
+                      </Badge>
+                    )}
                   </TableCell>
 
                   <TableCell className="text-right">
@@ -240,23 +239,23 @@ export function ExperienceTable({
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="cursor-pointer"
+                          className="h-8 w-8 border-2 border-black rounded-lg shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                         >
-                          <MoreHorizontal className="h-4 w-4" />
+                          <MoreHorizontal className="h-4 w-4 stroke-[2.5]" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => onEdit(item)}>
-                          <Pencil className="mr-2 h-4 w-4" />
-                          Edit
+                      <DropdownMenuContent align="end" className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
+                        <DropdownMenuItem onClick={() => onEdit(item)} className="font-black uppercase text-xs cursor-pointer">
+                          <Pencil className="mr-2 h-4 w-4 stroke-[2.5]" />
+                          EDIT
                         </DropdownMenuItem>
-                        <DropdownMenuSeparator />
+                        <DropdownMenuSeparator className="bg-black/20" />
                         <DropdownMenuItem
                           onClick={() => confirmDelete(item)}
-                          className="text-red-600 focus:text-red-600"
+                          className="font-black uppercase text-xs text-red-600 focus:text-red-600 cursor-pointer"
                         >
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete
+                          <Trash2 className="mr-2 h-4 w-4 stroke-[2.5]" />
+                          DELETE
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
