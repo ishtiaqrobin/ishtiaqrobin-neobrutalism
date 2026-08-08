@@ -56,19 +56,19 @@ export function HeroCards({
       {kpis.map(({ title, value, description, icon: Icon, iconColor, iconBg }) => (
         <Card
           key={title}
-          className="overflow-hidden transition-all shadow hover:shadow-md border-primary/10 p-4"
+          className="overflow-hidden transition-all bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d] p-4 hover:translate-x-[-2px] hover:translate-y-[-2px]"
         >
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{title}</CardTitle>
+            <CardTitle className="text-xs font-black uppercase tracking-wider text-black dark:text-white">{title}</CardTitle>
             <div
-              className={cn("flex p-2 items-center justify-center rounded-lg", iconBg)}
+              className={cn("flex p-2 items-center justify-center rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000]", iconBg)}
             >
-              <Icon className={cn("h-4 w-4", iconColor)} />
+              <Icon className={cn("h-4 w-4 stroke-[2.5]", iconColor)} />
             </div>
           </CardHeader>
-          <CardContent className="pt-4">
-            <div className="text-2xl font-bold">{numberFmt.format(value)}</div>
-            <p className="text-xs text-muted-foreground mt-1">{description}</p>
+          <CardContent className="pt-3">
+            <div className="text-3xl font-clash font-black text-black dark:text-white">{numberFmt.format(value)}</div>
+            <p className="text-[11px] font-bold text-zinc-500 dark:text-zinc-400 mt-1">{description}</p>
           </CardContent>
         </Card>
       ))}

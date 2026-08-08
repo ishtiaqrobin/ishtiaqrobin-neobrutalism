@@ -91,11 +91,16 @@ export function ProjectsClient({
   return (
     <div className="mx-auto w-full space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Project Management</h1>
-          <p className="text-muted-foreground mt-2">
-            Showcase your best work and manage project details
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2">
+            ★ PORTFOLIO PROJECTS
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+            PROJECT MANAGEMENT
+          </h1>
+          <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+            Showcase your best work and manage project case studies
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-3">
@@ -106,11 +111,10 @@ export function ProjectsClient({
               setPage(1);
             }}
             placeholder="Search projects..."
-            className="bg-white w-full md:w-72"
+            className="w-full md:w-64 border-2 border-black font-bold text-xs bg-zinc-50 dark:bg-zinc-950 rounded-lg"
           />
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              {/* <Filter className="h-4 w-4 text-muted-foreground shrink-0" /> */}
               <Select
                 value={statusFilter}
                 onValueChange={(v) => {
@@ -118,25 +122,24 @@ export function ProjectsClient({
                   setPage(1);
                 }}
               >
-                <SelectTrigger className="w-36 rounded-lg border-primary/10 h-10">
+                <SelectTrigger className="w-36 rounded-lg border-2 border-black font-bold text-xs bg-zinc-50 dark:bg-zinc-950 h-10 shadow-[2px_2px_0px_0px_#000]">
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
-                <SelectContent className="rounded-lg" position="popper">
-                  <SelectItem value="ALL">All Status</SelectItem>
-                  <SelectItem value="PUBLISHED">Published</SelectItem>
-                  <SelectItem value="DRAFT">Draft</SelectItem>
+                <SelectContent className="rounded-xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[4px_4px_0px_0px_#000]" position="popper">
+                  <SelectItem value="ALL" className="font-bold text-xs uppercase cursor-pointer">ALL STATUS</SelectItem>
+                  <SelectItem value="PUBLISHED" className="font-bold text-xs uppercase cursor-pointer">PUBLISHED</SelectItem>
+                  <SelectItem value="DRAFT" className="font-bold text-xs uppercase cursor-pointer">DRAFT</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <Button
-              variant="outline"
-              className="hover:cursor-pointer"
               onClick={handleReset}
+              className="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              <RefreshCw size={16} className="mr-2" /> Reset
+              <RefreshCw size={16} className="mr-1.5 stroke-[2.5]" /> RESET
             </Button>
-            <Button className="hover:cursor-pointer" onClick={handleAdd}>
-              <Plus size={16} className="mr-2" /> Add Project
+            <Button onClick={handleAdd} className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer">
+              <Plus size={16} className="mr-1.5 stroke-[2.5]" /> ADD PROJECT ★
             </Button>
           </div>
         </div>

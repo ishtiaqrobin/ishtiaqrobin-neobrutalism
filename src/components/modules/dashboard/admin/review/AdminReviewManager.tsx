@@ -172,40 +172,44 @@ export function AdminReviewManager({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
           {
-            label: "Total",
+            label: "Total Reviews",
             value: total,
-            color: "text-foreground",
-            icon: <Eye className="h-4 w-4 text-foreground" />,
+            color: "text-black dark:text-white",
+            icon: <Eye className="h-4 w-4 stroke-[2.5]" />,
+            bg: "bg-[#00f0ff]",
           },
           {
             label: "Approved",
             value: approved,
-            color: "text-green-500",
-            icon: <Check className="h-4 w-4 text-green-500" />,
+            color: "text-black dark:text-white",
+            icon: <Check className="h-4 w-4 stroke-[2.5]" />,
+            bg: "bg-[#b5ff6d]",
           },
           {
             label: "Pinned",
             value: pinned,
-            color: "text-blue-500",
-            icon: <Pin className="h-4 w-4 text-blue-500" />,
+            color: "text-black dark:text-white",
+            icon: <Pin className="h-4 w-4 stroke-[2.5]" />,
+            bg: "bg-[#facc15]",
           },
           {
             label: "Companies",
             value: companies,
-            color: "text-violet-500",
-            icon: <Building2 className="h-4 w-4 text-violet-500" />,
+            color: "text-black dark:text-white",
+            icon: <Building2 className="h-4 w-4 stroke-[2.5]" />,
+            bg: "bg-[#ff597b]",
           },
         ].map((stat) => (
-          <Card key={stat.label} className="rounded-2xl">
+          <Card key={stat.label} className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className="h-9 w-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+              <div className={`h-9 w-9 rounded-lg border-2 border-black ${stat.bg} text-black flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_#000]`}>
                 {stat.icon}
               </div>
               <div>
-                <p className={`text-xl font-bold leading-none ${stat.color}`}>
+                <p className={`text-2xl font-clash font-black leading-none ${stat.color}`}>
                   {stat.value}
                 </p>
-                <p className="text-xs text-muted-foreground mt-0.5">
+                <p className="text-[10px] font-black uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mt-1">
                   {stat.label}
                 </p>
               </div>
@@ -215,26 +219,31 @@ export function AdminReviewManager({
       </div>
 
       {/* ── Table card ────────────────────────────────────────────── */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Reviews & Testimonials</CardTitle>
-          <p className="text-sm text-muted-foreground">
-            {total} total · {approved} approved · {pinned} pinned
+      <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
+        <CardHeader className="border-b-2 border-black dark:border-zinc-800 bg-[#FFFDF5] dark:bg-zinc-950 p-6">
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2 w-fit">
+            ★ CLIENT FEEDBACK
+          </div>
+          <CardTitle className="font-clash font-black uppercase text-xl text-black dark:text-white">
+            REVIEWS & TESTIMONIALS ★
+          </CardTitle>
+          <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+            {total} TOTAL · {approved} APPROVED · {pinned} PINNED
           </p>
         </CardHeader>
 
-        <CardContent>
+        <CardContent className="p-0">
           <div className="overflow-x-auto">
             <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>User</TableHead>
-                  <TableHead>Role</TableHead>
-                  <TableHead>Comment</TableHead>
-                  <TableHead className="text-center">Approved</TableHead>
-                  <TableHead className="text-center">Pinned</TableHead>
-                  <TableHead>Submitted</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
+              <TableHeader className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black">
+                <TableRow className="border-b-2 border-black">
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">USER</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">ROLE</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">COMMENT</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white text-center">APPROVED</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white text-center">PINNED</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">SUBMITTED</TableHead>
+                  <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white text-right">ACTIONS</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>

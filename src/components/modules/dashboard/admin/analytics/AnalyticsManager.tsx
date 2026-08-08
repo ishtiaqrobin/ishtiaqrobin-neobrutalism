@@ -60,35 +60,35 @@ export function AnalyticsManager({
       />
 
       <Tabs defaultValue="pages" className="space-y-4">
-        <TabsList>
-          <TabsTrigger value="pages" className="gap-2">
-            <BarChart3 className="h-4 w-4" />
-            By Page
+        <TabsList className="bg-white dark:bg-zinc-900 border-2 border-black p-1.5 rounded-xl shadow-[3px_3px_0px_0px_#000] h-auto flex-wrap gap-1">
+          <TabsTrigger value="pages" className="gap-2 font-black uppercase text-xs rounded-lg data-[state=active]:bg-[#b5ff6d] data-[state=active]:text-black data-[state=active]:border-2 data-[state=active]:border-black cursor-pointer">
+            <BarChart3 className="h-4 w-4 stroke-[2.5]" />
+            BY PAGE
           </TabsTrigger>
-          <TabsTrigger value="views" className="gap-2">
-            <Activity className="h-4 w-4" />
-            Page Views ({numberFmt.format(pageViews.length)})
+          <TabsTrigger value="views" className="gap-2 font-black uppercase text-xs rounded-lg data-[state=active]:bg-[#b5ff6d] data-[state=active]:text-black data-[state=active]:border-2 data-[state=active]:border-black cursor-pointer">
+            <Activity className="h-4 w-4 stroke-[2.5]" />
+            PAGE VIEWS ({numberFmt.format(pageViews.length)})
           </TabsTrigger>
-          <TabsTrigger value="downloads" className="gap-2">
-            <Download className="h-4 w-4" />
-            Resume Downloads ({numberFmt.format(resumeDownloadLogs.length)})
+          <TabsTrigger value="downloads" className="gap-2 font-black uppercase text-xs rounded-lg data-[state=active]:bg-[#b5ff6d] data-[state=active]:text-black data-[state=active]:border-2 data-[state=active]:border-black cursor-pointer">
+            <Download className="h-4 w-4 stroke-[2.5]" />
+            RESUME DOWNLOADS ({numberFmt.format(resumeDownloadLogs.length)})
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="pages">
-          <Card>
+          <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
             <CardContent className="p-6">
-              <div className="mb-4 flex items-center justify-between">
+              <div className="mb-4 flex items-center justify-between border-b-2 border-black dark:border-zinc-800 pb-3">
                 <div>
-                  <h3 className="text-lg font-semibold">
-                    Views grouped by page
+                  <h3 className="text-base font-clash font-black uppercase text-black dark:text-white">
+                    VIEWS GROUPED BY PAGE ★
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-0.5">
                     Most visited pages ranked by total views
                   </p>
                 </div>
-                <Badge variant="outline" className="tabular-nums">
-                  {numberFmt.format(pageViewStats.length)} pages
+                <Badge className="bg-[#00f0ff] text-black border-2 border-black font-black text-xs shadow-[2px_2px_0px_0px_#000]">
+                  {numberFmt.format(pageViewStats.length)} PAGES
                 </Badge>
               </div>
               <PageViewStatsList stats={pageViewStats} />
@@ -97,7 +97,7 @@ export function AnalyticsManager({
         </TabsContent>
 
         <TabsContent value="views">
-          <Card>
+          <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
             <CardContent className="p-6">
               <PageViewsTable rows={pageViews} />
             </CardContent>
@@ -105,7 +105,7 @@ export function AnalyticsManager({
         </TabsContent>
 
         <TabsContent value="downloads">
-          <Card>
+          <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
             <CardContent className="p-6">
               <ResumeDownloadsTable rows={resumeDownloadLogs} />
             </CardContent>

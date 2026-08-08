@@ -68,70 +68,71 @@ export function AboutManager({ about, token, onRefresh }: AboutManagerProps) {
   return (
     <div className="space-y-8">
       <div className="grid gap-6 xl:grid-cols-[1.45fr_0.85fr]">
-        <Card className="border-none shadow-sm">
-          <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
+          <CardHeader className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b-2 border-black dark:border-zinc-800 bg-[#FFFDF5] dark:bg-zinc-950 p-5">
             <div>
-              <CardTitle className="text-xl">About Section Settings</CardTitle>
-              <CardDescription>
-                Configure the homepage about section text, image, and resume
-                URL.
+              <CardTitle className="font-clash font-black uppercase text-lg text-black dark:text-white">
+                ABOUT SECTION SETTINGS ★
+              </CardTitle>
+              <CardDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+                Configure the homepage about section text, image, and resume URL.
               </CardDescription>
             </div>
-            <Badge className="" variant={isEditing ? "default" : "secondary"}>
-              {isEditing ? "Singleton record exists" : "Create about record"}
+            <Badge className="border-2 border-black font-mono font-black text-xs uppercase bg-[#00f0ff] text-black shadow-[2px_2px_0px_0px_#000]">
+              {isEditing ? "RECORD EXISTS" : "CREATE RECORD"}
             </Badge>
           </CardHeader>
 
-          <CardContent className="space-y-6">
+          <CardContent className="p-6 space-y-6">
             <form onSubmit={handleSaveGeneral} className="space-y-6">
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Title</Label>
+                <div className="space-y-1">
+                  <Label className="text-xs font-black uppercase text-black dark:text-white">TITLE</Label>
                   <Input
                     name="title"
                     defaultValue={about?.title ?? ""}
                     placeholder="Homepage about headline"
-                    className="rounded-lg"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label>Subtitle</Label>
+                <div className="space-y-1">
+                  <Label className="text-xs font-black uppercase text-black dark:text-white">SUBTITLE</Label>
                   <Input
                     name="subtitle"
                     defaultValue={about?.subtitle ?? ""}
                     placeholder="Short subheading"
-                    className="rounded-lg"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950"
                   />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label>Description</Label>
+              <div className="space-y-1">
+                <Label className="text-xs font-black uppercase text-black dark:text-white">DESCRIPTION</Label>
                 <Textarea
                   name="description"
                   defaultValue={about?.description ?? ""}
                   rows={6}
                   placeholder="Write the story you want visitors to read."
-                  className="rounded-lg"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950"
                 />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Resume URL (Google Drive link)</Label>
+                <div className="space-y-1">
+                  <Label className="text-xs font-black uppercase text-black dark:text-white">RESUME URL</Label>
                   <Input
                     name="resumeUrl"
                     defaultValue={about?.resumeUrl ?? ""}
                     placeholder="https://drive.google.com/..."
-                    className="rounded-lg"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label>About Image</Label>
+                <div className="space-y-1">
+                  <Label className="text-xs font-black uppercase text-black dark:text-white">ABOUT IMAGE</Label>
                   <div className="space-y-2">
                     {aboutMePreview && (
-                      <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                      <div className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-black shadow-[2px_2px_0px_0px_#000]">
                         <Image
                           src={aboutMePreview}
                           alt="Preview"
@@ -146,20 +147,20 @@ export function AboutManager({ about, token, onRefresh }: AboutManagerProps) {
                       ref={aboutMeImgRef}
                       onChange={handleAboutMeFileChange}
                       disabled={aboutMeCompressing}
-                      className="rounded-lg cursor-pointer file:cursor-pointer file:text-primary file:font-medium"
+                      className="rounded-lg border-2 border-black font-bold cursor-pointer"
                     />
                     {aboutMeCompressing ? (
-                      <p className="text-[11px] text-primary flex items-center gap-1">
+                      <p className="text-xs font-bold text-black flex items-center gap-1">
                         <Loader2 className="h-3 w-3 animate-spin" />
                         Compressing image…
                       </p>
                     ) : about?.aboutMeImg && !aboutMeFile ? (
-                      <p className="text-[11px] text-muted-foreground flex items-center gap-1">
-                        <ImageUp className="h-3 w-3" />
+                      <p className="text-[11px] font-bold text-zinc-500 flex items-center gap-1">
+                        <ImageUp className="h-3 w-3 stroke-[2.5]" />
                         Current image uploaded — select a new one to replace
                       </p>
                     ) : (
-                      <p className="text-[11px] text-muted-foreground">
+                      <p className="text-[11px] font-bold text-zinc-500">
                         Max 5MB · Auto-compressed to WebP
                       </p>
                     )}
@@ -167,66 +168,65 @@ export function AboutManager({ about, token, onRefresh }: AboutManagerProps) {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
                 <Button
                   type="submit"
-                  // size="md"
                   disabled={generalLoading}
-                  className="w-full cursor-pointer"
+                  className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000] cursor-pointer"
                 >
                   {generalLoading ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   ) : (
-                    <Save className="mr-2 h-4 w-4" />
+                    <Save className="mr-2 h-4 w-4 stroke-[2.5]" />
                   )}
-                  Save About Settings
+                  SAVE ABOUT SETTINGS ★
                 </Button>
               </div>
             </form>
           </CardContent>
         </Card>
 
-        <Card className="border-none shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-xl">Live Preview</CardTitle>
-            <CardDescription>
+        <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
+          <CardHeader className="border-b-2 border-black dark:border-zinc-800 bg-[#FFFDF5] dark:bg-zinc-950 p-5">
+            <CardTitle className="font-clash font-black uppercase text-lg text-black dark:text-white">LIVE PREVIEW ★</CardTitle>
+            <CardDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
               A quick summary of the current About section configuration.
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-5">
+          <CardContent className="p-6 space-y-5">
             <div className="grid gap-4">
-              <div className="rounded-xl border border-border bg-background/80 p-5">
+              <div className="rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 p-4 shadow-[2px_2px_0px_0px_#000]">
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-sm text-muted-foreground">Headline</p>
-                    <p className="text-base font-semibold">
-                      {about?.title ?? "Not configured"}
+                    <p className="text-[11px] font-black uppercase text-zinc-500">HEADLINE</p>
+                    <p className="text-sm font-black font-clash uppercase text-black dark:text-white">
+                      {about?.title ?? "NOT CONFIGURED"}
                     </p>
                   </div>
-                  <Badge variant="outline">
-                    {about?.subtitle ? "Configured" : "Missing subtitle"}
+                  <Badge className="bg-[#00f0ff] text-black border border-black font-black text-[10px] uppercase">
+                    {about?.subtitle ? "CONFIGURED" : "MISSING"}
                   </Badge>
                 </div>
               </div>
-              <div className="rounded-xl border border-border bg-background/80 p-5">
-                <p className="text-sm text-muted-foreground">Description</p>
-                <p className="mt-2 text-sm leading-6 text-foreground">
+              <div className="rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 p-4 shadow-[2px_2px_0px_0px_#000]">
+                <p className="text-[11px] font-black uppercase text-zinc-500">DESCRIPTION</p>
+                <p className="mt-1 text-xs font-bold text-black dark:text-zinc-300">
                   {about?.description ??
                     "Add a description to make the about section more compelling."}
                 </p>
               </div>
-              <div className="rounded-xl border border-border bg-background/80 p-5">
+              <div className="rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 p-4 shadow-[2px_2px_0px_0px_#000]">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">Assets</p>
-                    <p className="mt-1 text-sm">
+                    <p className="text-[11px] font-black uppercase text-zinc-500">ASSETS</p>
+                    <p className="mt-0.5 text-xs font-bold text-black dark:text-white">
                       About image:{" "}
-                      {about?.aboutMeImg ? "Uploaded" : "Not uploaded"}
+                      {about?.aboutMeImg ? "UPLOADED ★" : "NOT UPLOADED"}
                     </p>
                   </div>
-                  <div className="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-                    {about ? "Live" : "Needs setup"}
-                  </div>
+                  <span className="rounded-full bg-[#b5ff6d] text-black border border-black px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider shadow-[1px_1px_0px_0px_#000]">
+                    {about ? "LIVE ★" : "NEEDS SETUP"}
+                  </span>
                 </div>
               </div>
             </div>

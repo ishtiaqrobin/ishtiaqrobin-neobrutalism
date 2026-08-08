@@ -124,23 +124,23 @@ function StatCard({ title, value, icon: Icon, description, tone }: HeroCard) {
   return (
     <Card
       className={cn(
-        "overflow-hidden transition-all shadow hover:shadow-md border-primary/10",
+        "overflow-hidden transition-all bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d] hover:translate-x-[-2px] hover:translate-y-[-2px]",
       )}
     >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
+        <CardTitle className="text-xs font-black uppercase tracking-wider text-black dark:text-white">{title}</CardTitle>
         <div
           className={cn(
-            "flex p-2 items-center justify-center rounded-lg",
+            "flex p-2 items-center justify-center rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000]",
             p.iconBg,
           )}
         >
-          <Icon className={cn("h-4 w-4", p.iconColor)} />
+          <Icon className={cn("h-4 w-4 stroke-[2.5]", p.iconColor)} />
         </div>
       </CardHeader>
-      <CardContent className="pt-4">
-        <div className="text-2xl font-bold">{formatNumber(value)}</div>
-        <p className="text-xs text-muted-foreground mt-1">{description}</p>
+      <CardContent className="pt-3">
+        <div className="text-3xl font-clash font-black text-black dark:text-white">{formatNumber(value)}</div>
+        <p className="text-[11px] font-bold text-zinc-500 dark:text-zinc-400 mt-1">{description}</p>
       </CardContent>
     </Card>
   );
@@ -151,23 +151,23 @@ function MiniStatCard({ title, value, icon: Icon, tone }: SubCard) {
   return (
     <Card
       className={cn(
-        "overflow-hidden transition-all shadow hover:shadow-md border-primary/10 p-3",
+        "overflow-hidden transition-all bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 rounded-xl shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#b5ff6d] p-3 hover:translate-x-[-1px] hover:translate-y-[-1px]",
       )}
     >
       <div className="flex items-center gap-3">
         <div
           className={cn(
-            "flex p-2 items-center justify-center rounded-lg shrink-0",
+            "flex p-2 items-center justify-center rounded-lg border border-black shrink-0 shadow-[1px_1px_0px_0px_#000]",
             p.iconBg,
           )}
         >
-          <Icon className={cn("h-4 w-4", p.iconColor)} />
+          <Icon className={cn("h-4 w-4 stroke-[2.5]", p.iconColor)} />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-medium text-muted-foreground">
+          <p className="truncate text-[10px] font-black uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
             {title}
           </p>
-          <p className="text-lg font-bold tabular-nums leading-tight">
+          <p className="text-lg font-clash font-black tabular-nums leading-tight text-black dark:text-white">
             {formatNumber(value)}
           </p>
         </div>

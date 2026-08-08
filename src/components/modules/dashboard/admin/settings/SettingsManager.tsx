@@ -119,7 +119,7 @@ export function SettingsManager({
 
   if (isLoading) {
     return (
-      <Card className="rounded-2xl">
+      <Card className="rounded-2xl border-3 border-black p-6">
         <CardHeader>
           <Skeleton className="h-6 w-40" />
         </CardHeader>
@@ -127,7 +127,7 @@ export function SettingsManager({
           {Array.from({ length: 3 }).map((_, i) => (
             <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {Array.from({ length: 4 }).map((_, j) => (
-                <Skeleton key={j} className="h-12 rounded-lg" />
+                <Skeleton key={j} className="h-12 rounded-lg border-2 border-black" />
               ))}
             </div>
           ))}
@@ -137,22 +137,27 @@ export function SettingsManager({
   }
 
   return (
-    <Card className="rounded-2xl">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Settings2 className="h-5 w-5 text-primary" />
-          Global Settings
+    <Card className="overflow-hidden bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
+      <CardHeader className="border-b-2 border-black dark:border-zinc-800 bg-[#FFFDF5] dark:bg-zinc-950 p-6">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2 w-fit">
+          ★ SYSTEM CONFIGURATION
+        </div>
+        <CardTitle className="flex items-center gap-2 font-clash font-black uppercase text-xl text-black dark:text-white">
+          <Settings2 className="h-5 w-5 stroke-[2.5]" />
+          GLOBAL SETTINGS ★
         </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Configure your site identity, social links, contact info, and SEO
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+          Configure your site identity, social links, contact info, and SEO details
         </p>
       </CardHeader>
 
-      <CardContent>
+      <CardContent className="p-6">
         <form onSubmit={handleSave} className="space-y-8">
           {/* ── Social Links ──────────────────────────────────────── */}
           <div>
-            <SectionHeading>Social Links</SectionHeading>
+            <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+              ★ SOCIAL LINKS
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
                 {
@@ -192,7 +197,7 @@ export function SettingsManager({
                   placeholder: "https://youtube.com/@username",
                 },
               ].map(({ id, icon, label, placeholder }) => (
-                <div key={id} className="space-y-1.5">
+                <div key={id} className="space-y-1">
                   <FieldLabel htmlFor={id} icon={icon}>
                     {label}
                   </FieldLabel>
@@ -202,20 +207,22 @@ export function SettingsManager({
                     type="url"
                     defaultValue={(settings as any)?.[id] || ""}
                     placeholder={placeholder}
-                    className="rounded-lg h-10"
+                    className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                   />
                 </div>
               ))}
             </div>
           </div>
 
-          <Separator />
+          <Separator className="bg-black/20" />
 
           {/* ── Contact & Professional ────────────────────────────── */}
           <div>
-            <SectionHeading>Contact & Professional</SectionHeading>
+            <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+              ★ CONTACT & PROFESSIONAL
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="contactEmail" icon={Mail}>
                   Contact Email
                 </FieldLabel>
@@ -225,11 +232,11 @@ export function SettingsManager({
                   type="email"
                   defaultValue={settings?.contactEmail || ""}
                   placeholder="hello@example.com"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="experience" icon={Briefcase}>
                   Experience (text)
                 </FieldLabel>
@@ -238,10 +245,10 @@ export function SettingsManager({
                   name="experience"
                   defaultValue={settings?.experience || ""}
                   placeholder="3+ Years of professional experience"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="contactPhone" icon={Phone}>
                   Contact Phone
                 </FieldLabel>
@@ -251,10 +258,10 @@ export function SettingsManager({
                   type="tel"
                   defaultValue={settings?.contactPhone || ""}
                   placeholder="+880 1XXX XXXXXX"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="whatsappNumber" icon={MessageSquare}>
                   WhatsApp Number
                 </FieldLabel>
@@ -264,10 +271,10 @@ export function SettingsManager({
                   type="tel"
                   defaultValue={settings?.whatsappNumber || ""}
                   placeholder="+880 1XXX XXXXXX"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="address" icon={MapPin}>
                   Address / Location
                 </FieldLabel>
@@ -276,10 +283,10 @@ export function SettingsManager({
                   name="address"
                   defaultValue={settings?.address || ""}
                   placeholder="Dhaka, Bangladesh"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="availability" icon={Calendar}>
                   Availability
                 </FieldLabel>
@@ -288,19 +295,21 @@ export function SettingsManager({
                   name="availability"
                   defaultValue={settings?.availability || ""}
                   placeholder="Full-time / Freelance"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
             </div>
           </div>
 
-          <Separator />
+          <Separator className="bg-black/20" />
 
           {/* ── SEO ──────────────────────────────────────────────── */}
           <div>
-            <SectionHeading>SEO</SectionHeading>
+            <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+              ★ SEARCH ENGINE OPTIMIZATION (SEO)
+            </div>
             <div className="grid grid-cols-1 gap-4">
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="metaDescription" icon={Search}>
                   Meta Description
                 </FieldLabel>
@@ -309,10 +318,10 @@ export function SettingsManager({
                   name="metaDescription"
                   defaultValue={settings?.metaDescription || ""}
                   placeholder="A short description for search engines (150–160 chars)"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <FieldLabel htmlFor="metaKeywords" icon={Search}>
                   Meta Keywords
                 </FieldLabel>
@@ -321,27 +330,27 @@ export function SettingsManager({
                   name="metaKeywords"
                   defaultValue={settings?.metaKeywords || ""}
                   placeholder="portfolio, developer, react, nextjs"
-                  className="rounded-lg h-10"
+                  className="rounded-lg border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 h-10"
                 />
               </div>
             </div>
           </div>
 
-          <div className="flex justify-end pt-2 border-t">
+          <div className="flex justify-end pt-4 border-t-2 border-black">
             <Button
               type="submit"
               disabled={loading}
-              className="cursor-pointer min-w-40"
+              className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000] cursor-pointer min-w-44"
             >
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Saving...
+                  SAVING...
                 </>
               ) : (
                 <>
-                  <Save className="mr-2 h-4 w-4" />
-                  Save All Settings
+                  <Save className="mr-2 h-4 w-4 stroke-[2.5]" />
+                  SAVE ALL SETTINGS ★
                 </>
               )}
             </Button>
