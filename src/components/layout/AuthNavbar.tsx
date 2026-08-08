@@ -23,7 +23,7 @@ export function AuthNavbar() {
   return (
     <>
       <motion.header
-        className="fixed top-3 left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-3 left-0 right-0 z-50 transition-all duration-300 px-4"
         transition={{ duration: 0.5 }}
       >
         <nav
