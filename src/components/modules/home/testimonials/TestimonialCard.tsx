@@ -53,7 +53,8 @@ function CircularProgress({
         strokeLinecap="round"
         strokeDasharray={circumference}
         strokeDashoffset={circumference}
-        className="text-primary testimonial-ring-progress"
+        className="text-[#00f0ff] testimonial-ring-progress"
+        // #b5ff6d, #00f0ff, #ff597b
         style={{ "--ring-circumference": circumference } as React.CSSProperties}
       />
     </svg>
