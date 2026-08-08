@@ -11,6 +11,7 @@ import { useAuth } from "@/hooks/useAuth";
 import TestimonialModal from "./TestimonialModal";
 import LoginModal from "./LoginModal";
 import TestimonialCard from "./TestimonialCard";
+import { Button } from "@/components/ui/button";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -237,40 +238,38 @@ export default function Testimonials() {
   // ─── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <section className="container-custom pt-16 sm:pt-24 pb-8 sm:pb-12 overflow-hidden">
-      {/* items-start → left side top-aligned, never shifts when right side expands */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+    <section className="container-custom pt-16 sm:pt-24 pb-12 sm:pb-16 overflow-hidden border-b-3 border-black dark:border-zinc-700">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* ── Left side ── */}
-        <div className="lg:col-span-4 flex flex-col items-start">
-          <ShimmerText className="mb-3.5">Testimonials</ShimmerText>
+        <div className="lg:col-span-5 flex flex-col items-start">
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+            ★ CLIENT FEEDBACK
+          </div>
 
-          <h2 className="text-4xl sm:text-5xl font-clash font-medium tracking-tight text-secondary leading-12 mb-6">
-            What others <br /> say
+          <h2 className="text-4xl sm:text-6xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-none mb-6">
+            WHAT OTHERS <br /> SAY ABOUT ME
           </h2>
 
-          <p className="text-text-primary font-normal leading-snug text-base">
-            I&apos;ve worked with some amazing people over the years, here is
-            what they have to say about me.
+          <p className="text-zinc-800 dark:text-zinc-200 font-bold leading-relaxed text-base border-l-4 border-black dark:border-zinc-400 pl-3">
+            I've collaborated with incredible founders, engineers, and product leads. Here is what they have to say about our work.
           </p>
         </div>
 
         {/* ── Right side ── */}
-        <div className="lg:col-span-8 w-full flex flex-col gap-6">
-          {/* Slider window — overflow-hidden clips off-screen cards */}
+        <div className="lg:col-span-7 w-full flex flex-col gap-6">
+          {/* Slider window */}
           {isLoading ? (
-            /* Skeleton placeholder — keeps layout stable while loading */
-            <div className="w-full bg-white dark:bg-[#111116] border border-zinc-200 dark:border-zinc-800/60 rounded-3xl p-6 sm:p-10 flex flex-col gap-5 animate-pulse">
+            <div className="w-full bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-6 sm:p-10 flex flex-col gap-5 animate-pulse shadow-[6px_6px_0px_0px_#000]">
               <div className="flex items-center gap-4">
-                <div className="w-20 h-20 rounded-full bg-zinc-200 dark:bg-zinc-700 shrink-0" />
+                <div className="w-20 h-20 rounded-full bg-zinc-300 dark:bg-zinc-700 shrink-0" />
                 <div className="flex flex-col gap-2 flex-1">
-                  <div className="h-4 bg-zinc-200 dark:bg-zinc-700 rounded w-32" />
-                  <div className="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-48" />
+                  <div className="h-4 bg-zinc-300 dark:bg-zinc-700 rounded w-32" />
+                  <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded w-48" />
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-full" />
-                <div className="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-5/6" />
-                <div className="h-3 bg-zinc-200 dark:bg-zinc-700 rounded w-4/6" />
+                <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded w-full" />
+                <div className="h-3 bg-zinc-300 dark:bg-zinc-700 rounded w-5/6" />
               </div>
             </div>
           ) : (
@@ -280,7 +279,6 @@ export default function Testimonials() {
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              {/* mode="sync" → both cards live in DOM during transition */}
               <AnimatePresence
                 initial={false}
                 custom={direction}
@@ -294,7 +292,6 @@ export default function Testimonials() {
                   animate="center"
                   exit="exit"
                   transition={slideTransition}
-                  // gap-8 px
                   className="relative w-full px-1"
                 >
                   {currentTestimonial && (
@@ -314,32 +311,26 @@ export default function Testimonials() {
 
           {/* ── Control bar ── */}
           <div className="w-full flex items-center justify-between pt-2 px-1">
-            {/* <Link
-              href={currentTestimonial.linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-normal leading-5 tracking-wide text-secondary hover:text-primary flex items-center gap-2 hover:underline transition-colors duration-200"
+            <Button
+              onClick={handleFeedbackClick}
+              size="lg"
+              className="bg-[#b5ff6d] text-black font-black hover:bg-[#a2f059] shadow-[3px_3px_0px_0px_#000]"
             >
-              Give feedback <FiArrowUpRight />
-            </Link> */}
-
-            {/* Everyone (non-user, user, admin) can see the button. Authenticated → modal, non-authenticated → /login */}
-            <HoverButton onClick={handleFeedbackClick}>
-              {myReview ? "Update Feedback" : "Give Feedback"}
-            </HoverButton>
+              {myReview ? "UPDATE FEEDBACK ★" : "GIVE FEEDBACK ★"}
+            </Button>
 
             {/* Navigation */}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex items-center gap-3 ml-auto">
               <button
                 onClick={onPrev}
                 disabled={isSliding || total === 0}
-                className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800/60 text-secondary transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 text-black dark:text-white shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#b5ff6d] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed font-bold"
                 aria-label="Previous testimonial"
               >
-                <FiArrowLeft className="w-4 h-4" />
+                <FiArrowLeft className="w-5 h-5 stroke-[2.5]" />
               </button>
 
-              <span className="text-sm font-normal leading-3.5 tracking-widest text-text-primary w-[58px] text-center">
+              <span className="text-xs font-mono font-black text-black dark:text-white bg-[#00f0ff] px-3 py-1.5 border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000]">
                 {total > 0 ? String(currentIndex + 1).padStart(2, "0") : "00"} /{" "}
                 {String(total).padStart(2, "0")}
               </span>
@@ -347,10 +338,10 @@ export default function Testimonials() {
               <button
                 onClick={onNext}
                 disabled={isSliding || total === 0}
-                className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800/60 text-secondary transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 text-black dark:text-white shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#b5ff6d] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed font-bold"
                 aria-label="Next testimonial"
               >
-                <FiArrowRight className="w-4 h-4" />
+                <FiArrowRight className="w-5 h-5 stroke-[2.5]" />
               </button>
             </div>
           </div>

@@ -83,16 +83,15 @@ export default function TestimonialCard({
     : item.comment;
 
   return (
-    <div className="w-full bg-white dark:bg-[#111116] border border-zinc-200 dark:border-zinc-800/60 rounded-3xl p-6 sm:p-10 flex flex-col gap-5 shadow-2xs">
+    <div className="w-full bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-6 sm:p-8 flex flex-col gap-5 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-4">
           {/* Avatar + Ring */}
           <div className="relative w-20 h-20 shrink-0">
-            <CircularProgress animKey={ringKey} size={80} strokeWidth={2.5} />
-            <div className="absolute inset-[5px] rounded-full overflow-hidden bg-white dark:bg-zinc-900">
+            <CircularProgress animKey={ringKey} size={80} strokeWidth={3} />
+            <div className="absolute inset-[5px] rounded-full overflow-hidden bg-white dark:bg-zinc-900 border-2 border-black">
               <Image
-                // src={item?.user?.image || PERSONAL_INFO?.profileImage}
                 src={item.user?.image || ""}
                 alt={item.user?.name || "Reviewer"}
                 width={70}
@@ -103,11 +102,11 @@ export default function TestimonialCard({
           </div>
 
           {/* Name & Role */}
-          <div className="flex flex-col gap-0.5">
-            <h3 className="text-md font-medium text-secondary tracking-tight">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-lg font-black font-clash uppercase tracking-tight text-black dark:text-white">
               {item.user?.name}
             </h3>
-            <span className="text-sm text-text-primary font-normal">
+            <span className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase px-2.5 py-0.5 rounded border border-black shadow-[1px_1px_0px_0px_#000] w-fit">
               {item.position}
               {item.companyName && item.companyName !== "Personal"
                 ? ` @${item.companyName}`
@@ -116,16 +115,15 @@ export default function TestimonialCard({
           </div>
         </div>
 
-        {/* Featured Review */}
-        {/* When Admin Pinned a review, then show the pin icon on the review card*/}
+        {/* Featured Review Pin */}
         {item.isPinned && (
-          <div>
-            <Pin className="w-5 h-5 text-primary" />
+          <div className="bg-[#ff597b] p-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+            <Pin className="w-5 h-5 text-black fill-black" />
           </div>
         )}
       </div>
 
-      {/* Review text — smooth height expand/collapse via CSS max-height */}
+      {/* Review text */}
       <div
         className="testimonial-text-wrapper"
         style={
@@ -134,16 +132,16 @@ export default function TestimonialCard({
           } as React.CSSProperties
         }
       >
-        <p className="text-base leading-relaxed text-text-primary font-normal">
+        <p className="text-sm sm:text-base leading-relaxed text-zinc-900 dark:text-zinc-100 font-bold border-l-3 border-black dark:border-zinc-400 pl-3">
           {isExpanded ? item.comment : previewText}
           {needsTruncation && !isExpanded && (
             <>
               {"... "}
               <button
                 onClick={onExpand}
-                className="text-secondary font-medium hover:underline focus:outline-none transition-colors duration-200 cursor-pointer"
+                className="text-black dark:text-white font-black underline uppercase hover:bg-[#b5ff6d] hover:text-black px-1 rounded transition-colors"
               >
-                see more
+                SEE MORE
               </button>
             </>
           )}
@@ -152,9 +150,9 @@ export default function TestimonialCard({
               {" "}
               <button
                 onClick={onCollapse}
-                className="text-secondary font-medium hover:underline focus:outline-none transition-colors duration-200 cursor-pointer"
+                className="text-black dark:text-white font-black underline uppercase hover:bg-[#ff597b] hover:text-black px-1 rounded transition-colors"
               >
-                show less
+                SHOW LESS
               </button>
             </>
           )}

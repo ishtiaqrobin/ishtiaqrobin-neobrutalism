@@ -46,38 +46,37 @@ const EXPERTISE_DATA: ExpertiseItem[] = [
 ];
 
 export default function ExpertiseSection() {
-  const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [expandedId, setExpandedId] = useState<number | null>(1);
 
-  //   Default state is the first object (Development)
   const [currentImage, setCurrentImage] = useState<string>(
     EXPERTISE_DATA[0].image,
   );
 
   const handleRowClick = (item: ExpertiseItem) => {
     if (expandedId === item.id) {
-      //   If the same item is clicked again, the text will be closed, but the image will not change
       setExpandedId(null);
     } else {
-      //   New item will be expanded and its image will be dynamically changed
       setExpandedId(item.id);
       setCurrentImage(item.image);
     }
   };
 
   return (
-    <section className="container-custom py-16 sm:py-24 ">
+    <section className="container-custom py-16 sm:py-24 border-b-3 border-black dark:border-zinc-700">
       {/* ─── Top Layer ─── */}
-      <div className="mb-8">
-        <ShimmerText className="mb-3.5">Speciality</ShimmerText>
-        <h2 className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-tight">
-          Areas of Expertise
+      <div className="mb-10">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+          ★ SPECIALITY & CORE SKILLS
+        </div>
+        <h2 className="text-4xl lg:text-6xl text-black dark:text-white font-clash font-black uppercase tracking-tight">
+          AREAS OF EXPERTISE
         </h2>
       </div>
 
       {/* ─── 2nd Column ─── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* ─── Left Side ─── */}
-        <div className="lg:col-span-6 flex flex-col w-full gap-4 order-first lg:order-first">
+        <div className="lg:col-span-6 flex flex-col w-full gap-5 order-first">
           {EXPERTISE_DATA.map((item) => {
             const isOpen = expandedId === item.id;
 
@@ -85,26 +84,30 @@ export default function ExpertiseSection() {
               <div
                 key={item.id}
                 onClick={() => handleRowClick(item)}
-                className="w-full bg-white dark:bg-[#111116] border border-zinc-200 dark:border-zinc-800/60 rounded-2xl p-4 cursor-pointer transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700 shadow-3xs"
+                className={`w-full bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-xl p-5 cursor-pointer transition-all ${
+                  isOpen
+                    ? "shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] -translate-x-0.5 -translate-y-0.5"
+                    : "shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#fff] hover:-translate-x-0.5 hover:-translate-y-0.5"
+                }`}
               >
                 {/* Item, Title, Icon */}
                 <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 text-secondary">
-                    <span className="text-text-primary shrink-0">
+                  <div className="flex items-center gap-3">
+                    <span className="p-2 bg-[#b5ff6d] text-black border border-black rounded-lg shadow-[1px_1px_0px_0px_#000] shrink-0 font-bold">
                       {item.icon}
                     </span>
-                    <h3 className="text-base leading-6 font-medium tracking-tight">
+                    <h3 className="text-lg font-black font-clash uppercase tracking-tight text-black dark:text-white">
                       {item.title}
                     </h3>
                   </div>
 
                   {/* Chevron Icon */}
                   <span
-                    className="text-text-primary shrink-0"
+                    className="p-1.5 bg-[#00f0ff] text-black border border-black rounded-md shadow-[1px_1px_0px_0px_#000] shrink-0 font-bold"
                     style={{
                       display: "inline-block",
                       transition:
-                        "transform 350ms cubic-bezier(0.25, 1, 0.5, 1)",
+                        "transform 300ms cubic-bezier(0.25, 1, 0.5, 1)",
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                     }}
                     aria-hidden="true"
@@ -116,7 +119,7 @@ export default function ExpertiseSection() {
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
@@ -132,10 +135,10 @@ export default function ExpertiseSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+                      transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
                       className="overflow-hidden"
                     >
-                      <p className="pt-4 text-base leading-6 text-text-primary font-normal">
+                      <p className="pt-4 text-sm sm:text-base leading-relaxed text-zinc-900 dark:text-zinc-100 font-bold border-t-2 border-black/10 dark:border-white/10 mt-3">
                         {item.description}
                       </p>
                     </motion.div>
@@ -147,8 +150,8 @@ export default function ExpertiseSection() {
         </div>
 
         {/* ─── Right Side ─── */}
-        <div className="lg:col-span-6 w-full order-last lg:order-last">
-          <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-zinc-200/40 dark:border-zinc-800/40 shadow-xs bg-zinc-100 dark:bg-zinc-900">
+        <div className="lg:col-span-6 w-full order-last">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border-3 border-black dark:border-zinc-300 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d] bg-white dark:bg-zinc-900">
             <AnimatePresence mode="sync">
               <motion.div
                 key={currentImage}
@@ -163,7 +166,7 @@ export default function ExpertiseSection() {
                   alt="Expertise showcase"
                   fill
                   sizes="(max-w-7xl) 50vw, 100vw"
-                  className="object-cover hover:scale-[102%] transition-transform duration-700"
+                  className="object-cover"
                   priority
                 />
               </motion.div>

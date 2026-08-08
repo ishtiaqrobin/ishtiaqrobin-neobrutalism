@@ -1,38 +1,40 @@
 "use client";
 
 import React from "react";
-import HoverButton from "./HoverButton";
 import Link from "next/link";
 import SocialIcons from "./SocialIcons";
+import { Button } from "@/components/ui/button";
 
 export default function CtaSection() {
   return (
-    <div className="container-custom pt-16 sm:pt-22 ">
-      <div className="bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/50 rounded-3xl py-16 sm:py-14 flex flex-col items-center justify-center text-center shadow-xs">
+    <div className="container-custom pt-16 sm:pt-24 pb-12">
+      <div className="bg-[#FFFDF5] dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl py-14 sm:py-16 px-6 flex flex-col items-center justify-center text-center shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
         {/* ─── AVAILABLE FOR WORK BADGE ─── */}
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-[7.5px] bg-[#F7FFF0] dark:bg-[#21291F] border border-emerald-100/50 dark:border-emerald-900/20 rounded-full mb-3.5">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#b5ff6d] text-black border-2 border-black rounded-md shadow-[2px_2px_0px_0px_#000] mb-6 -rotate-2">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black"></span>
           </span>
 
-          {/* Badge Text */}
-          <span className="text-xs leading-4 font-normal text-text-primary tracking-wide">
-            Available for work
+          <span className="text-xs font-black uppercase tracking-wider">
+            AVAILABLE FOR FREELANCE & FULL TIME
           </span>
         </div>
 
         {/* ─── MAIN HEADING ─── */}
-        <h2 className="text-5xl text-secondary font-clash font-medium leading-tight tracking-wide mb-6">
-          Let&apos;s create <br className="inline sm:hidden" /> your{" "}
-          <br className="hidden sm:inline" /> next{" "}
-          <br className="inline sm:hidden" /> big idea.
+        <h2 className="text-4xl sm:text-6xl font-clash font-black uppercase text-black dark:text-white leading-tight tracking-tight mb-8 max-w-3xl">
+          LET'S CREATE YOUR <br />
+          <span className="inline-block bg-[#00f0ff] text-black px-3 py-0.5 border-3 border-black shadow-[4px_4px_0px_0px_#000] -rotate-1 mt-2">
+            NEXT BIG IDEA.
+          </span>
         </h2>
 
         {/* ─── CONTACT ME BUTTON ─── */}
         <div>
-          <Link href={"/contact"}>
-            <HoverButton onClick={() => ""}>Contact Me</HoverButton>
+          <Link href="/contact">
+            <Button size="lg" className="bg-[#ff597b] text-black hover:bg-[#e04565]">
+              GET IN TOUCH NOW ★
+            </Button>
           </Link>
         </div>
 
