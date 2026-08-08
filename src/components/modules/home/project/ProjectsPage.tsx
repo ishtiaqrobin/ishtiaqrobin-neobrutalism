@@ -86,22 +86,24 @@ export default function ProjectsPage({
   });
 
   return (
-    <section className="container-custom pt-28 sm:pt-40 pb-12 sm:pb-16 transition-colors duration-300  min-h-screen">
-      <div className="mb-8 max-w-2xl">
-        <ShimmerText className="mb-3.5">My Work</ShimmerText>
-        <h2 className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-tight">
-          Creating next level digital products
-        </h2>
+    <section className="container-custom pt-28 sm:pt-40 pb-16 min-h-screen">
+      <div className="mb-10 max-w-2xl">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+          ★ MY PROJECT PORTFOLIO
+        </div>
+        <h1 className="text-4xl lg:text-6xl text-black dark:text-white font-clash font-black uppercase tracking-tight leading-none">
+          CREATING NEXT LEVEL DIGITAL PRODUCTS
+        </h1>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12">
         <div
           onClick={() => setIsSearchOpen(true)}
-          className="relative group cursor-pointer"
+          className="relative group cursor-pointer w-full md:w-72"
         >
-          <FiSearch className="absolute left-4.5 top-1/2 -translate-y-1/2 text-secondary w-4 h-4" />
-          <div className="w-full pl-10 px-6 py-2 text-base leading-6 font-normal bg-zinc-100/70 hover:bg-[#E5E7EB] dark:bg-zinc-900 border border-zinc-300/80 dark:border-zinc-700 rounded-full text-text-primary flex items-center transition-colors duration-300">
-            {searchQuery || "Search"}
+          <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-black dark:text-white w-4 h-4 stroke-[3]" />
+          <div className="w-full pl-11 pr-4 py-2.5 text-xs font-black uppercase tracking-wider bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 rounded-xl text-black dark:text-white shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#b5ff6d] flex items-center">
+            {searchQuery || "SEARCH PROJECTS..."}
           </div>
         </div>
 
@@ -116,17 +118,17 @@ export default function ProjectsPage({
           )}
         </AnimatePresence>
 
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
           {categoryNames.map((category) => {
             const isSelected = activeCategory === category;
             return (
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`px-6 py-2 text-base leading-6 font-normal rounded-full transition-all duration-300 ${
+                className={`px-4 py-2 text-xs font-black uppercase tracking-wider rounded-xl transition-all border-2 border-black cursor-pointer ${
                   isSelected
-                    ? "bg-[#E5E7EB] dark:bg-[#27272A]"
-                    : "text-text-primary"
+                    ? "bg-[#b5ff6d] text-black shadow-[3px_3px_0px_0px_#000] -translate-x-0.5 -translate-y-0.5"
+                    : "bg-white dark:bg-zinc-900 text-black dark:text-white shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]"
                 }`}
               >
                 {category}

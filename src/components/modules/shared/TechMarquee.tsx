@@ -257,9 +257,8 @@ export default function TechMarquee() {
   const doubledLogos = [...techLogos, ...techLogos];
 
   return (
-    <div className="w-full py-8 overflow-hidden ">
-      {/* Parent container with vignette masking. It masks the left and right side of the logos so they don't go out of the screen and fade them out */}
-      <div className="marquee-container relative w-full flex overflow-hidden mask-[linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
+    <div className="w-full py-8 overflow-hidden">
+      <div className="marquee-container relative w-full flex overflow-hidden">
         <div className="animate-marquee flex flex-row items-center gap-4 whitespace-nowrap pr-12 will-change-transform">
           {doubledLogos.map((logo, index) => (
             <Link
@@ -267,17 +266,16 @@ export default function TechMarquee() {
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              //   title={`Visit ${logo.title} official site`}
-              className="flex items-center gap-3 px-4 py-2 rounded-full bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-zinc-200 dark:hover:border-zinc-700 transition-all duration-300 group"
+              className="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#b5ff6d] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all group"
             >
               <div
-                className={`${logo.color} transition-colors duration-300 text-xl`}
+                className={`${logo.color} transition-transform duration-200 group-hover:scale-110 text-xl`}
               >
                 {logo.node}
               </div>
 
               {/* Brand Title */}
-              <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300">
+              <span className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
                 {logo.title}
               </span>
             </Link>

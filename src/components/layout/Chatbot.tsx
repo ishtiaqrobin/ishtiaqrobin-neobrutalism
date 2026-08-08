@@ -143,18 +143,6 @@ export function Chatbot() {
   const handleReset = () => {
     setMessages([WELCOME_MESSAGE]);
     sessionStorage.removeItem("chatbot_session_id");
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
-
-  const handleReset = () => {
-    setMessages([WELCOME_MESSAGE]);
-    sessionStorage.removeItem("chatbot_session_id");
-    // window.location.reload(); // new session id
   };
 
   return (
@@ -290,6 +278,18 @@ export function Chatbot() {
                   disabled={!input.trim() || isPending}
                 >
                   {isPending ? (
+                    <MdCheckBoxOutlineBlank className="h-4 w-4" />
+                  ) : (
+                    <IoArrowUpOutline className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── FAB Toggle Button ── */}
       <TooltipProvider delayDuration={300}>
         <Tooltip open={isOpen ? false : undefined}>
           <TooltipTrigger asChild>

@@ -8,6 +8,7 @@ import Image from "next/image";
 import { aboutService } from "@/services/about.service";
 import CircularButton from "../shared/CircularButton";
 import HoverButton from "../shared/HoverButton";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function AboutSection() {
@@ -34,30 +35,26 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="py-16 sm:py-28 relative bg-[#F7F8FA] dark:bg-transparent overflow-hidden "
+      className="py-16 sm:py-28 relative bg-white dark:bg-zinc-900 border-b-3 border-black dark:border-zinc-700 overflow-hidden"
     >
-      {/* Decorative Background Color */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[10%] left-[-5%] w-[40%] h-[40%] rounded-full bg-primary/20 dark:bg-primary/15 blur-[120px]" />
-        <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] rounded-full bg-primary/20 dark:bg-primary/15 blur-[120px]" />
-      </div>
-
       <div className="container-custom relative z-10">
-        <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-16 items-center">
-          {/* Left - Image */}
+        <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-16 items-center">
+          {/* Left - Image with Brutalist Frame */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
           >
-            {/* Relative position is given by making the width of the parent container equal to the image (w-[390px]) */}
-            <div className="relative w-auto md:w-[390px] mx-auto">
-              <div className="absolute inset-0" />
+            <div className="relative w-[300px] sm:w-[360px] mx-auto">
+              {/* Sticker Tag Overlay */}
+              <div className="absolute -top-4 -left-4 z-20 bg-[#b5ff6d] text-black font-black text-xs uppercase tracking-wider px-3 py-1 border-2 border-black shadow-[2px_2px_0px_0px_#000] -rotate-3">
+                ★ 5+ YEARS EXP
+              </div>
 
-              {/* My Image */}
-              <div className="relative rounded-b-full overflow-hidden border border-gray-200 dark:border-white/10 shadow-lg dark:shadow-none ">
+              {/* Image Frame */}
+              <div className="relative rounded-2xl overflow-hidden border-3 border-black dark:border-zinc-300 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
                 <Image
                   src={aboutMeImg || PERSONAL_INFO.profileImage}
                   alt={PERSONAL_INFO.name}
@@ -66,11 +63,10 @@ export function AboutSection() {
                   priority
                   className="w-full h-full aspect-3/4 object-cover"
                 />
-                <div className="absolute inset-0 bg-linear-to-t from-gray-900/15 dark:from-[#0a0a0a]/30 to-transparent" />
               </div>
 
-              {/* ─── Circular Button Badge ─── */}
-              <div className="absolute bottom-0 -right-1 z-20">
+              {/* Circular Button Badge */}
+              <div className="absolute -bottom-5 -right-5 z-20">
                 <CircularButton />
               </div>
             </div>
@@ -81,25 +77,27 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex-1 max-w-xl"
           >
-            <div className="space-y-5 mb-6">
-              <h1 className="text-secondary font-clash text-5xl sm:text-7xl font-medium leading-none">
-                A <span className="text-primary">creative developer</span> &
-                digital designer
-              </h1>
-              <p className="text-text-primary font-normal text-base leading-5.5">
-                I collaborate with brands globally to design impactful, mission-
-                <br className="hidden sm:block" />
-                focused websites that <br className="sm:hidden block" /> drive
-                results and achieve business goals.
+            <div className="space-y-6 mb-8">
+              <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                WHO I AM
+              </div>
+              <h2 className="text-black dark:text-white font-clash text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
+                A <span className="inline-block bg-[#b5ff6d] text-black px-2 py-0.5 border-2 border-black shadow-[3px_3px_0px_0px_#000] -rotate-1">CREATIVE DEVELOPER</span> & DIGITAL ARCHITECT
+              </h2>
+              <p className="text-zinc-800 dark:text-zinc-200 font-bold text-base sm:text-lg leading-relaxed border-l-4 border-black dark:border-zinc-400 pl-4">
+                I collaborate with forward-thinking clients globally to design and engineer high-impact, mission-driven web applications that drive real growth and exceed expectations.
               </p>
             </div>
 
             {/* Resume Button */}
             <div>
               <Link href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                <HoverButton>My Resume</HoverButton>
+                <Button size="lg" className="bg-[#ff597b] text-black hover:bg-[#e04565]">
+                  DOWNLOAD RESUME ★
+                </Button>
               </Link>
             </div>
           </motion.div>

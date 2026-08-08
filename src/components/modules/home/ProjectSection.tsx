@@ -83,15 +83,15 @@ export function ProjectSection() {
 
         {/* Filter Tabs */}
         {!isLoading && categories.length > 1 && (
-          <div className="flex flex-wrap justify-center gap-2 mt-12 mb-16">
+          <div className="flex flex-wrap justify-center gap-3 mt-12 mb-16">
             {categories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-6 py-2.5 border rounded-xl text-sm font-semibold transition-all duration-300 ${
+                className={`px-5 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all border-2 border-black cursor-pointer ${
                   activeCategory === cat.id
-                    ? "bg-linear-to-r from-primary-500 to-violet-500 text-white shadow-lg shadow-primary/20"
-                    : "bg-muted/50 text-muted-foreground hover:bg-muted hover:border-primary"
+                    ? "bg-[#b5ff6d] text-black shadow-[3px_3px_0px_0px_#000] -translate-x-0.5 -translate-y-0.5"
+                    : "bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]"
                 }`}
               >
                 {cat.name}

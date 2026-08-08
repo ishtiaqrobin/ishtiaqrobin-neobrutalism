@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 import ShimmerText from "../../shared/ShimmerText";
 import HoverButton from "../../shared/HoverButton";
@@ -34,9 +35,14 @@ function ContactSubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <HoverButton type="submit" disabled={pending} loading={pending}>
-      {pending ? "Sending..." : "Submit"}
-    </HoverButton>
+    <Button
+      type="submit"
+      disabled={pending}
+      size="lg"
+      className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black text-sm uppercase tracking-wider shadow-[4px_4px_0px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none"
+    >
+      {pending ? "SENDING MESSAGE..." : "SEND MESSAGE ★"}
+    </Button>
   );
 }
 
@@ -55,7 +61,6 @@ export function ContactSection() {
     resolver: zodResolver(contactSchema),
     mode: "onChange",
     defaultValues: {
-      // ✅ was: defaultValue (typo)
       name: "",
       email: "",
       message: "",
@@ -83,43 +88,40 @@ export function ContactSection() {
   };
 
   return (
-    <section ref={ref} className="container-custom py-24 sm:py-28 ">
-      <div className="mb-8">
-        <ShimmerText className="mb-3.5">Connect With Me</ShimmerText>
-        <h2 className="text-4xl sm:text-5xl font-clash font-medium tracking-tight text-secondary leading-12 max-w-2xl">
-          Let&apos;s start a project <br /> together
+    <section ref={ref} className="container-custom py-16 sm:py-28 border-b-3 border-black dark:border-zinc-700">
+      <div className="mb-10">
+        <div className="inline-block bg-[#ff597b] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+          ★ GET IN TOUCH
+        </div>
+        <h2 className="text-4xl sm:text-6xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-none max-w-2xl">
+          LET'S START A <span className="inline-block bg-[#00f0ff] text-black px-2.5 py-0.5 border-2 border-black shadow-[3px_3px_0px_0px_#000] -rotate-1">PROJECT TOGETHER</span>
         </h2>
-
-        {/* <SplitTextReveal className="leading-12">
-          Let&apos;s start a project <br /> together
-        </SplitTextReveal> */}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* ─── Left Column (Form) ─── */}
-        <div className="lg:col-span-6 w-full">
+        <div className="lg:col-span-7 w-full bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d]">
           <Form {...form}>
             <form
               action={formAction}
               onSubmit={validateBeforeSubmit}
-              className="space-y-4"
+              className="space-y-5"
             >
               <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
-                  <FormItem className="space-y-0">
-                    <FormLabel className="text-sm leading-4 font-medium text-secondary">
-                      Full Name
+                  <FormItem className="space-y-1">
+                    <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                      YOUR FULL NAME
                     </FormLabel>
                     <FormControl>
                       <Input
-                        // placeholder="John Doe"
+                        placeholder="John Doe"
                         {...field}
-                        className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide px-3 py-2 transition-all focus-visible:ring-2"
                       />
                     </FormControl>
-                    <FormMessage className="text-xs text-red-500 font-medium" />
+                    <FormMessage className="text-xs text-red-500 font-bold" />
                   </FormItem>
                 )}
               />
@@ -128,19 +130,18 @@ export function ContactSection() {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="space-y-2">
-                    <FormLabel className="text-sm leading-4 font-medium text-secondary">
-                      Email
+                  <FormItem className="space-y-1">
+                    <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                      YOUR EMAIL ADDRESS
                     </FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        // placeholder="hello@example.com"
+                        placeholder="hello@example.com"
                         {...field}
-                        className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide px-3 py-2 transition-all focus-visible:ring-2"
                       />
                     </FormControl>
-                    <FormMessage className="text-xs text-red-500 font-medium" />
+                    <FormMessage className="text-xs text-red-500 font-bold" />
                   </FormItem>
                 )}
               />
@@ -149,25 +150,22 @@ export function ContactSection() {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem className="space-y-2">
-                    <FormLabel className="text-sm leading-4 font-medium text-secondary">
-                      Message
+                  <FormItem className="space-y-1">
+                    <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                      YOUR MESSAGE
                     </FormLabel>
                     <FormControl>
                       <Textarea
-                        // placeholder="Tell me about your amazing project details..."
-                        // rows={15}
-                        // cols={30}
+                        placeholder="Tell me about your amazing project..."
                         {...field}
-                        className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-24 rounded-xl text-base tracking-wide px-3 py-2 transition-all focus-visible:ring-2"
                       />
                     </FormControl>
-                    <FormMessage className="text-xs text-red-500 font-medium" />
+                    <FormMessage className="text-xs text-red-500 font-bold" />
                   </FormItem>
                 )}
               />
 
-              <div className="">
+              <div className="pt-2">
                 <ContactSubmitButton />
               </div>
             </form>
@@ -175,38 +173,39 @@ export function ContactSection() {
         </div>
 
         {/* ─── Right Column (Profile Info Card) ─── */}
-        <div className="lg:col-span-6 w-full">
-          <div className="w-full bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/40 rounded-3xl p-6 flex flex-col items-start shadow-xs">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-[7.5px] bg-[#F7FFF0] dark:bg-[#21291F] border border-emerald-100/50 dark:border-emerald-900/20 rounded-full mb-4">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+        <div className="lg:col-span-5 w-full">
+          <div className="w-full bg-[#FFFDF5] dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-6 sm:p-8 flex flex-col items-start shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#00f0ff]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#b5ff6d] text-black border-2 border-black rounded-md shadow-[2px_2px_0px_0px_#000] mb-6 -rotate-2">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black"></span>
               </span>
 
-              {/* Badge Text */}
-              <span className="text-xs leading-4 font-normal text-text-primary tracking-wide">
-                Available for work
+              <span className="text-xs font-black uppercase tracking-wider">
+                AVAILABLE FOR NEW PROJECTS
               </span>
             </div>
 
-            <div className="relative w-[100px] h-[100px] rounded-full overflow-hidden p-2 border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">
+            <div className="relative w-24 h-24 rounded-2xl overflow-hidden border-3 border-black bg-zinc-100 shadow-[3px_3px_0px_0px_#000] mb-4">
               <Image
                 src={PERSONAL_INFO?.profileImage}
                 alt="Ishtiaq Robin"
                 width={100}
                 height={100}
                 priority
-                className="w-full h-full rounded-full object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
 
-            <p className="text-base leading-snug text-text-primary font-normal mt-4 mb-6">
-              My inbox is always open. Whether you have a project or just want
-              to say Hi. I would love to hear from you. Feel free to contact me
-              and I&#39;ll get back to you.
+            <h3 className="text-2xl font-black font-clash uppercase tracking-tight text-black dark:text-white mb-2">
+              ISHTIAQ ROBIN
+            </h3>
+
+            <p className="text-sm leading-relaxed text-zinc-800 dark:text-zinc-200 font-bold mb-6 border-l-3 border-black dark:border-zinc-400 pl-3">
+              My inbox is always open. Whether you have a breakthrough project idea or just want to connect, feel free to drop a message!
             </p>
 
-            <div>
+            <div className="w-full pt-4 border-t-2 border-dashed border-black dark:border-zinc-700">
               <SocialIcons />
             </div>
           </div>

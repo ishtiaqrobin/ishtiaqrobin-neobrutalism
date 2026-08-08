@@ -22,19 +22,19 @@ export default function ProjectGridCard({
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+      transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
       className={`flex flex-col w-full group cursor-pointer ${
-        index % 2 === 1 ? "md:mt-16" : ""
+        index % 2 === 1 ? "md:mt-12" : ""
       }`}
     >
       <Link href={`/projects/${project.slug}`}>
         <div
-          className="w-full p-8 sm:p-12 aspect-6/4 rounded-4xl flex items-center justify-center border border-transparent dark:border-zinc-900 overflow-hidden relative shadow-2xs bg-zinc-100 dark:bg-zinc-900"
+          className="w-full p-6 sm:p-8 aspect-6/4 rounded-2xl flex items-center justify-center border-3 border-black dark:border-zinc-300 overflow-hidden relative shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] bg-white dark:bg-zinc-900 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all"
           style={
             project.bgColor ? { backgroundColor: project.bgColor } : undefined
           }
         >
-          <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border-4 transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+          <div className="relative w-full h-full rounded-xl overflow-hidden border-2 border-black shadow-[2px_2px_0px_0px_#000] transition-transform duration-300 group-hover:scale-[1.02]">
             {project.thumbnail ? (
               <Image
                 src={project.thumbnail}
@@ -44,30 +44,30 @@ export default function ProjectGridCard({
                 className="object-cover"
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30">
-                <span className="text-lg font-medium">No Image</span>
+              <div className="absolute inset-0 flex items-center justify-center text-zinc-400">
+                <span className="text-sm font-bold uppercase">No Image</span>
               </div>
             )}
           </div>
         </div>
 
-        <div className="flex flex-col mt-4 mb-2 px-2">
-          <h3 className="text-xl leading-7 font-medium tracking-tight text-text-primary mb-3">
+        <div className="flex flex-col mt-4 mb-2 px-1">
+          <h3 className="text-xl font-black font-clash uppercase tracking-tight text-black dark:text-white mb-2 group-hover:text-[#30af5b] dark:group-hover:text-[#b5ff6d] transition-colors">
             {project.title}
           </h3>
 
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-1.5 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap">
               {project.tags.slice(0, 2).map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-3 py-1 bg-white dark:bg-[#191920] border border-zinc-200/60 dark:border-zinc-800/60 text-sm font-normal leading-5 text-text-primary rounded-full"
+                  className="px-2.5 py-0.5 bg-[#FFFDF5] dark:bg-zinc-800 border border-black dark:border-zinc-600 text-xs font-black uppercase text-black dark:text-white rounded-md shadow-[1px_1px_0px_0px_#000]"
                 >
                   {tag}
                 </span>
               ))}
               {project.tags.length > 2 && (
-                <span className="text-sm leading-5 font-normal text-text-primary">
+                <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">
                   +{project.tags.length - 2}
                 </span>
               )}
@@ -75,12 +75,12 @@ export default function ProjectGridCard({
 
             {showYear
               ? project.year && (
-                  <span className="text-sm leading-5 font-normal text-text-primary tracking-wider">
+                  <span className="text-xs font-mono font-bold text-black dark:text-white bg-[#00f0ff] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
                     {project.year}
                   </span>
                 )
               : project.category && (
-                  <span className="text-sm leading-5 font-normal text-text-primary tracking-wider">
+                  <span className="text-xs font-black uppercase tracking-wider text-black bg-[#b5ff6d] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
                     {project.category.name}
                   </span>
                 )}

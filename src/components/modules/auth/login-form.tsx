@@ -4,6 +4,7 @@ import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { User } from "@/types";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
@@ -83,43 +84,45 @@ export function LoginForm({ ...props }: React.ComponentProps<"div">) {
 
   return (
     <div
-      className="w-full max-w-lg mx-auto bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/40 rounded-3xl p-8 shadow-xs "
+      className="w-full max-w-lg mx-auto bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-8 sm:p-10 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]"
       {...props}
     >
       {/* Header */}
       <div className="mb-8">
-        <ShimmerText className="mb-3">Welcome back</ShimmerText>
-        <h2 className="text-3xl font-clash font-medium tracking-tight text-secondary leading-tight">
-          Login to your account
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-3">
+          ★ MEMBER PORTAL
+        </div>
+        <h2 className="text-3xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-tight">
+          LOGIN TO YOUR ACCOUNT
         </h2>
-        <p className="text-sm text-text-primary mt-1">
-          Enter your email below to login to your account
+        <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300 mt-1">
+          Enter your credentials below to access your dashboard
         </p>
       </div>
 
       {/* Form */}
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className="text-sm leading-4 font-medium text-secondary mb-1.5 block">
-                  Email
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white block">
+                  EMAIL ADDRESS
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
                     <Input
                       placeholder="your@email.com"
-                      className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-3 py-2 transition-all focus-visible:ring-2"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-11 rounded-lg text-sm font-medium pl-9 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                       disabled={isLoading}
                       {...field}
                     />
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500 font-medium" />
+                <FormMessage className="text-xs text-red-500 font-bold" />
               </FormItem>
             )}
           />
@@ -128,79 +131,71 @@ export function LoginForm({ ...props }: React.ComponentProps<"div">) {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="space-y-0">
-                <div className="flex items-center justify-between mb-1.5">
-                  <FormLabel className="text-sm leading-4 font-medium text-secondary">
-                    Password
+              <FormItem className="space-y-1">
+                <div className="flex items-center justify-between">
+                  <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                    PASSWORD
                   </FormLabel>
                   <Link
                     href="/forgot-password"
-                    className="text-xs text-primary hover:underline font-medium"
+                    className="text-xs text-black dark:text-white hover:underline font-extrabold uppercase decoration-2 decoration-[#ff597b]"
                   >
-                    Forgot Password?
+                    FORGOT PASSWORD?
                   </Link>
                 </div>
                 <FormControl>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+                    <Lock className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="••••••••"
-                      className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-10 py-2 transition-all focus-visible:ring-2"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-11 rounded-lg text-sm font-medium pl-9 pr-10 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                       disabled={isLoading}
                       {...field}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-3 text-text-primary/50 hover:text-text-primary transition-colors"
+                      className="absolute right-3 top-3 text-black dark:text-white hover:opacity-70 transition-opacity"
                       disabled={isLoading}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-4 w-4" />
+                        <EyeOff className="h-4 w-4 stroke-[2.5]" />
                       ) : (
-                        <Eye className="h-4 w-4" />
+                        <Eye className="h-4 w-4 stroke-[2.5]" />
                       )}
                     </button>
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500 font-medium" />
+                <FormMessage className="text-xs text-red-500 font-bold" />
               </FormItem>
             )}
           />
 
-          <div className="pt-1">
-            <HoverButton
+          <div className="pt-2">
+            <Button
               type="submit"
-              loading={isLoading}
-              className="w-full justify-center"
+              disabled={isLoading}
+              size="lg"
+              className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black text-sm uppercase tracking-wider shadow-[4px_4px_0px_0px_#000] active:translate-x-1 active:translate-y-1 active:shadow-none"
             >
-              {isLoading ? "Logging in..." : "Login"}
-            </HoverButton>
+              {isLoading ? "LOGGING IN..." : "LOGIN TO DASHBOARD ★"}
+            </Button>
           </div>
         </form>
       </Form>
-
-      {/* Divider */}
-      {/* <div className="flex items-center gap-3 my-5">
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-        <span className="text-xs text-text-primary/50 font-normal tracking-wide">
-          or continue with
-        </span>
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-      </div> */}
 
       {/* Google Auth */}
       <GoogleAuthButton className="mt-6 w-full" mode="login" />
 
       {/* Footer */}
-      <p className="text-sm text-center text-text-primary mt-6">
-        Don&apos;t have an account?{" "}
+      <p className="text-xs font-extrabold text-center text-zinc-900 dark:text-zinc-100 uppercase mt-6">
+        DON'T HAVE AN ACCOUNT?{" "}
         <Link
           href="/register"
-          className="text-primary hover:underline font-medium"
+          className="text-black dark:text-white underline decoration-2 decoration-[#00f0ff] hover:bg-[#00f0ff] hover:text-black px-1 rounded transition-colors"
         >
-          Register
+          REGISTER HERE
         </Link>
       </p>
     </div>
