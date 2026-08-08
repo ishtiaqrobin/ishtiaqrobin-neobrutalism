@@ -501,8 +501,8 @@ export function ContactManager({
           <div className="rounded-2xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b bg-muted/40">
+                <thead className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black">
+                  <tr className="border-b-2 border-black">
                     {/* Select all */}
                     <th className="w-10 px-4 py-3">
                       <Checkbox
@@ -515,20 +515,20 @@ export function ContactManager({
                     {/* Sortable columns */}
                     {(
                       [
-                        { field: "name" as SortField, label: "Sender" },
-                        { field: "subject" as SortField, label: "Subject" },
-                        { field: "status" as SortField, label: "Status" },
-                        { field: "createdAt" as SortField, label: "Received" },
+                        { field: "name" as SortField, label: "SENDER" },
+                        { field: "subject" as SortField, label: "SUBJECT" },
+                        { field: "status" as SortField, label: "STATUS" },
+                        { field: "createdAt" as SortField, label: "RECEIVED" },
                       ] as { field: SortField; label: string }[]
                     ).map(({ field, label }) => (
                       <th
                         key={label}
-                        className="px-4 py-3 text-left font-medium text-muted-foreground"
+                        className="px-4 py-3 text-left font-clash font-black uppercase text-xs text-black dark:text-white"
                       >
                         <button
                           type="button"
                           onClick={() => toggleSort(field)}
-                          className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
+                          className="inline-flex items-center gap-1.5 hover:text-[#00f0ff] transition-colors cursor-pointer"
                         >
                           {label}
                           <SortIcon
@@ -541,13 +541,13 @@ export function ContactManager({
                     ))}
 
                     {/* Actions */}
-                    <th className="w-16 px-4 py-3 text-right font-medium text-muted-foreground">
-                      Actions
+                    <th className="w-16 px-4 py-3 text-right font-clash font-black uppercase text-xs text-black dark:text-white">
+                      ACTIONS
                     </th>
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-border">
+                <tbody className="divide-y-2 divide-black/10 dark:divide-zinc-800">
                   {filtered.map((contact) => {
                     const cfg = STATUS_CONFIG[contact.status];
                     const isChecked = selectedIds.has(contact.id);
@@ -555,9 +555,9 @@ export function ContactManager({
                       <tr
                         key={contact.id}
                         className={`
-                          group transition-colors hover:bg-muted/40
-                          ${contact.status === "UNREAD" ? "bg-primary/[0.03]" : ""}
-                          ${isChecked ? "bg-primary/5" : ""}
+                          group transition-colors hover:bg-[#00f0ff]/10
+                          ${contact.status === "UNREAD" ? "bg-[#ff597b]/10 font-bold" : ""}
+                          ${isChecked ? "bg-[#b5ff6d]/20" : ""}
                         `}
                       >
                         {/* Checkbox */}
@@ -577,21 +577,21 @@ export function ContactManager({
                           <button
                             type="button"
                             onClick={() => handleOpen(contact)}
-                            className="flex items-center gap-3 text-left w-full"
+                            className="flex items-center gap-3 text-left w-full cursor-pointer"
                           >
-                            <Avatar name={contact.name} />
+                            <div className="w-9 h-9 rounded-full border-2 border-black bg-[#00f0ff] text-black font-black text-xs uppercase flex items-center justify-center shrink-0 shadow-[1px_1px_0px_0px_#000]">
+                              {contact.name[0]}
+                            </div>
                             <div className="min-w-0">
                               <div className="flex items-center gap-1.5">
-                                <p
-                                  className={`font-medium truncate ${contact.status === "UNREAD" ? "text-foreground" : "text-muted-foreground"}`}
-                                >
+                                <p className="font-black text-xs uppercase text-black dark:text-white truncate">
                                   {contact.name}
                                 </p>
                                 {contact.status === "UNREAD" && (
-                                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                                  <span className="w-2 h-2 rounded-full bg-[#ff597b] border border-black flex-shrink-0" />
                                 )}
                               </div>
-                              <p className="text-xs text-muted-foreground truncate max-w-[160px]">
+                              <p className="text-[11px] font-mono font-bold text-zinc-600 dark:text-zinc-400 truncate max-w-[160px]">
                                 {contact.email}
                               </p>
                             </div>
@@ -603,15 +603,13 @@ export function ContactManager({
                           <button
                             type="button"
                             onClick={() => handleOpen(contact)}
-                            className="text-left w-full"
+                            className="text-left w-full cursor-pointer"
                           >
-                            <p
-                              className={`truncate ${contact.status === "UNREAD" ? "font-semibold" : "text-muted-foreground"}`}
-                            >
+                            <p className="font-bold text-xs uppercase text-black dark:text-white truncate">
                               {contact.subject}
                             </p>
                             {contact.message && (
-                              <p className="text-xs text-muted-foreground truncate mt-0.5">
+                              <p className="text-[11px] font-medium text-zinc-500 truncate mt-0.5">
                                 {contact.message}
                               </p>
                             )}
@@ -627,15 +625,12 @@ export function ContactManager({
                             }
                           >
                             <SelectTrigger className="h-7 w-28 border-0 bg-transparent p-0 focus:ring-0 [&>svg]:hidden">
-                              <Badge
-                                variant={cfg.variant}
-                                className="text-[10px] cursor-pointer"
-                              >
-                                <cfg.icon className="h-2.5 w-2.5 mr-1" />
+                              <Badge className={`border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000] cursor-pointer ${contact.status === "UNREAD" ? "bg-[#ff597b] text-black" : contact.status === "READ" ? "bg-[#00f0ff] text-black" : contact.status === "REPLIED" ? "bg-[#b5ff6d] text-black" : "bg-zinc-300 text-black"}`}>
+                                <cfg.icon className="h-2.5 w-2.5 mr-1 stroke-[2.5]" />
                                 {cfg.label}
                               </Badge>
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
                               {(
                                 [
                                   "UNREAD",
@@ -647,12 +642,12 @@ export function ContactManager({
                                 <SelectItem
                                   key={s}
                                   value={s}
-                                  className="text-xs"
+                                  className="font-bold text-xs uppercase cursor-pointer"
                                 >
                                   <div className="flex items-center gap-2">
                                     {(() => {
                                       const I = STATUS_CONFIG[s].icon;
-                                      return <I className="h-3 w-3" />;
+                                      return <I className="h-3 w-3 stroke-[2.5]" />;
                                     })()}
                                     {STATUS_CONFIG[s].label}
                                   </div>
@@ -663,49 +658,50 @@ export function ContactManager({
                         </td>
 
                         {/* Received */}
-                        <td className="px-4 py-3 text-xs text-muted-foreground whitespace-nowrap">
+                        <td className="px-4 py-3 text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <span className="flex items-center gap-1 cursor-default">
-                                <Calendar className="h-3 w-3" />
+                                <Calendar className="h-3 w-3 stroke-[2.5]" />
                                 {formatDistanceToNow(
                                   new Date(contact.createdAt),
                                   { addSuffix: true },
                                 )}
                               </span>
                             </TooltipTrigger>
-                            <TooltipContent>
+                            <TooltipContent className="border-2 border-black font-mono font-bold text-xs bg-black text-white">
                               {new Date(contact.createdAt).toLocaleString()}
                             </TooltipContent>
                           </Tooltip>
                         </td>
 
                         {/* Row actions */}
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3 text-right">
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                               <Button
                                 variant="ghost"
                                 size="icon"
-                                className="h-8 w-8 cursor-pointer"
+                                className="h-8 w-8 border-2 border-black rounded-lg shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                               >
-                                <MoreHorizontal className="h-4 w-4" />
+                                <MoreHorizontal className="h-4 w-4 stroke-[2.5]" />
                               </Button>
                             </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
+                            <DropdownMenuContent align="end" className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
                               <DropdownMenuItem
                                 onClick={() => handleOpen(contact)}
+                                className="font-black uppercase text-xs cursor-pointer"
                               >
-                                <Pencil className="mr-2 h-4 w-4" />
-                                Edit
+                                <Pencil className="mr-2 h-4 w-4 stroke-[2.5]" />
+                                VIEW / EDIT
                               </DropdownMenuItem>
-                              <DropdownMenuSeparator />
+                              <DropdownMenuSeparator className="bg-black/20" />
                               <DropdownMenuItem
                                 onClick={() => setDeleteConfirm(contact)}
-                                className="text-red-600 focus:text-red-600"
+                                className="font-black uppercase text-xs text-red-600 focus:text-red-600 cursor-pointer"
                               >
-                                <Trash2 className="mr-2 h-4 w-4" />
-                                Delete
+                                <Trash2 className="mr-2 h-4 w-4 stroke-[2.5]" />
+                                DELETE
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
@@ -721,7 +717,7 @@ export function ContactManager({
 
         {/* ── Detail Modal ────────────────────────────────── */}
         <Dialog open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-          <DialogContent className="max-w-2xl w-full p-0 gap-0 overflow-hidden max-h-[92vh] flex flex-col">
+          <DialogContent className="max-w-2xl w-full p-0 gap-0 overflow-hidden max-h-[92vh] flex flex-col border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
             {selected &&
               (() => {
                 const cfg = STATUS_CONFIG[selected.status];
@@ -735,15 +731,15 @@ export function ContactManager({
                 return (
                   <>
                     {/* ── Modal Header ── */}
-                    <div className="flex items-center justify-start gap-8 px-5 py-3.5 border-b bg-muted/30 flex-shrink-0">
+                    <div className="flex items-center justify-between px-5 py-3.5 border-b-2 border-black bg-[#FFFDF5] dark:bg-zinc-950 flex-shrink-0">
                       <div className="flex items-center gap-2">
-                        <MessageSquare className="h-5 w-5 text-primary" />
-                        <span className="font-semibold text-lg">
-                          Contact Detail
+                        <MessageSquare className="h-5 w-5 text-black dark:text-white stroke-[2.5]" />
+                        <span className="font-clash font-black uppercase text-lg text-black dark:text-white">
+                          CONTACT DETAIL ★
                         </span>
                         {selectedIndex >= 0 && (
-                          <span className="text-xs text-muted-foreground">
-                            {selectedIndex + 1} / {filtered.length}
+                          <span className="text-xs font-mono font-bold text-zinc-500">
+                            ({selectedIndex + 1} / {filtered.length})
                           </span>
                         )}
                       </div>
@@ -755,32 +751,32 @@ export function ContactManager({
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="h-7 w-7"
+                              className="h-8 w-8 border-2 border-black rounded-lg shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                               disabled={!hasPrev}
                               onClick={() => {
                                 handleOpen(filtered[selectedIndex - 1]);
                               }}
                             >
-                              <ChevronUp className="h-4 w-4" />
+                              <ChevronUp className="h-4 w-4 stroke-[2.5]" />
                             </Button>
                           </TooltipTrigger>
-                          <TooltipContent>Previous</TooltipContent>
+                          <TooltipContent>PREVIOUS</TooltipContent>
                         </Tooltip>
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="h-7 w-7"
+                              className="h-8 w-8 border-2 border-black rounded-lg shadow-[1px_1px_0px_0px_#000] cursor-pointer"
                               disabled={!hasNext}
                               onClick={() => {
                                 handleOpen(filtered[selectedIndex + 1]);
                               }}
                             >
-                              <ChevronDown className="h-4 w-4" />
+                              <ChevronDown className="h-4 w-4 stroke-[2.5]" />
                             </Button>
                           </TooltipTrigger>
-                          <TooltipContent>Next</TooltipContent>
+                          <TooltipContent>NEXT</TooltipContent>
                         </Tooltip>
                       </div>
                     </div>
@@ -788,32 +784,29 @@ export function ContactManager({
                     {/* ── Scrollable body ── */}
                     <div className="overflow-y-auto flex-1">
                       {/* Sender hero */}
-                      <div className="px-6 pt-5 pb-4 border-b">
+                      <div className="px-6 pt-5 pb-4 border-b-2 border-black bg-zinc-50 dark:bg-zinc-950">
                         <div className="flex items-start gap-4">
                           {/* Big avatar */}
-                          <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg uppercase flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full border-2 border-black bg-[#00f0ff] text-black flex items-center justify-center font-black text-lg uppercase flex-shrink-0 shadow-[2px_2px_0px_0px_#000]">
                             {selected.name[0]}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 flex-wrap">
-                              <h3 className="font-bold text-base leading-tight">
+                              <h3 className="font-clash font-black text-lg uppercase text-black dark:text-white leading-tight">
                                 {selected.name}
                               </h3>
-                              <Badge
-                                variant={cfg.variant}
-                                className="text-[10px] h-5 px-2"
-                              >
-                                <cfg.icon className="h-2.5 w-2.5 mr-1" />
+                              <Badge className={`border-2 border-black font-mono font-black text-[10px] uppercase shadow-[1px_1px_0px_0px_#000] ${selected.status === "UNREAD" ? "bg-[#ff597b] text-black" : selected.status === "READ" ? "bg-[#00f0ff] text-black" : selected.status === "REPLIED" ? "bg-[#b5ff6d] text-black" : "bg-zinc-300 text-black"}`}>
+                                <cfg.icon className="h-2.5 w-2.5 mr-1 stroke-[2.5]" />
                                 {cfg.label}
                               </Badge>
                             </div>
                             <div className="flex items-center gap-2 mt-1 flex-wrap">
                               <a
                                 href={`mailto:${selected.email}`}
-                                className="text-xs text-primary hover:underline underline-offset-2 flex items-center gap-1"
+                                className="text-xs font-mono font-bold text-black dark:text-white underline hover:text-[#00f0ff] flex items-center gap-1"
                               >
                                 {selected.email}
-                                <ExternalLink className="h-2.5 w-2.5" />
+                                <ExternalLink className="h-3 w-3 stroke-[2.5]" />
                               </a>
                               <Tooltip>
                                 <TooltipTrigger asChild>
@@ -825,10 +818,10 @@ export function ContactManager({
                                       );
                                       toast.success("Email copied!");
                                     }}
-                                    className="text-[10px] text-muted-foreground hover:text-foreground flex items-center gap-1 transition-colors"
+                                    className="text-[10px] font-bold uppercase text-zinc-500 hover:text-black dark:hover:text-white flex items-center gap-1 cursor-pointer"
                                   >
-                                    <Copy className="h-2.5 w-2.5" />
-                                    Copy
+                                    <Copy className="h-3 w-3 stroke-[2.5]" />
+                                    COPY
                                   </button>
                                 </TooltipTrigger>
                                 <TooltipContent>
@@ -836,8 +829,8 @@ export function ContactManager({
                                 </TooltipContent>
                               </Tooltip>
                             </div>
-                            <p className="text-xs text-muted-foreground mt-1.5 flex items-center gap-1">
-                              <Calendar className="h-3 w-3" />
+                            <p className="text-xs font-mono font-bold text-zinc-500 mt-1.5 flex items-center gap-1">
+                              <Calendar className="h-3 w-3 stroke-[2.5]" />
                               {new Date(selected.createdAt).toLocaleString(
                                 "en-US",
                                 {
@@ -845,14 +838,6 @@ export function ContactManager({
                                   timeStyle: "short",
                                 },
                               )}
-                              <span className="text-muted-foreground/60">
-                                (
-                                {formatDistanceToNow(
-                                  new Date(selected.createdAt),
-                                  { addSuffix: true },
-                                )}
-                                )
-                              </span>
                             </p>
                           </div>
                         </div>
@@ -861,37 +846,31 @@ export function ContactManager({
                       <div className="px-6 py-5 space-y-5">
                         {/* Subject */}
                         <div className="space-y-1">
-                          <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                            Subject
+                          <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                            SUBJECT
                           </p>
-                          <p className="text-sm font-semibold leading-snug">
+                          <p className="text-base font-black uppercase text-black dark:text-white leading-snug">
                             {selected.subject}
                           </p>
                         </div>
 
                         {/* Message */}
                         {selected.message && (
-                          <div className="space-y-1.5">
-                            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                              Message
+                          <div className="space-y-1">
+                            <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                              MESSAGE BODY
                             </p>
-                            <div className="p-4 rounded-xl bg-muted/60 border text-sm leading-relaxed whitespace-pre-wrap">
+                            <div className="p-4 rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 font-bold text-sm leading-relaxed whitespace-pre-wrap shadow-[2px_2px_0px_0px_#000]">
                               {selected.message}
                             </div>
                           </div>
                         )}
 
-                        {/* Divider */}
-                        {/* <div className="h-px bg-border" /> */}
-
                         {/* Status change */}
-                        <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center justify-between gap-4 p-3 rounded-xl border-2 border-black bg-zinc-50 dark:bg-zinc-950 shadow-[2px_2px_0px_0px_#000]">
                           <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                              Status
-                            </p>
-                            <p className="text-xs text-muted-foreground mt-0.5">
-                              Change the conversation status
+                            <p className="text-[10px] font-black uppercase text-black dark:text-white">
+                              UPDATE CONVERSATION STATUS
                             </p>
                           </div>
                           <Select
@@ -903,10 +882,10 @@ export function ContactManager({
                               )
                             }
                           >
-                            <SelectTrigger className="h-8 w-36 text-xs">
+                            <SelectTrigger className="h-8 w-36 border-2 border-black rounded-lg font-bold text-xs bg-white dark:bg-zinc-900 shadow-[1px_1px_0px_0px_#000]">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent position="popper">
+                            <SelectContent position="popper" className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
                               {(
                                 [
                                   "UNREAD",
@@ -918,12 +897,12 @@ export function ContactManager({
                                 <SelectItem
                                   key={s}
                                   value={s}
-                                  className="text-xs"
+                                  className="font-bold text-xs uppercase cursor-pointer"
                                 >
                                   <div className="flex items-center gap-2">
                                     {(() => {
                                       const I = STATUS_CONFIG[s].icon;
-                                      return <I className="h-3 w-3" />;
+                                      return <I className="h-3 w-3 stroke-[2.5]" />;
                                     })()}
                                     {STATUS_CONFIG[s].label}
                                   </div>
@@ -933,79 +912,46 @@ export function ContactManager({
                           </Select>
                         </div>
 
-                        {/* Quick status buttons */}
-                        {/* <div className="flex gap-2 flex-wrap">
-                          {(["READ", "REPLIED", "ARCHIVED"] as ContactStatus[])
-                            .filter((s) => s !== selected.status)
-                            .map((s) => {
-                              const I = STATUS_CONFIG[s].icon;
-                              return (
-                                <Button
-                                  key={s}
-                                  variant="outline"
-                                  size="sm"
-                                  className="h-7 text-xs gap-1.5"
-                                  onClick={() =>
-                                    handleStatusChange(selected.id, s)
-                                  }
-                                >
-                                  <I className="h-3 w-3" />
-                                  Mark as {STATUS_CONFIG[s].label}
-                                </Button>
-                              );
-                            })}
-                        </div> */}
-
-                        {/* Divider */}
-                        <div className="h-px bg-border" />
-
                         {/* Admin note */}
-                        <div className="space-y-3">
+                        <div className="space-y-2">
                           <div className="flex items-center justify-between">
                             <div>
-                              <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-                                Admin Note
-                              </p>
-                              <p className="text-xs text-muted-foreground mt-0.5">
-                                Private — not visible to the sender
+                              <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
+                                PRIVATE ADMIN NOTE
                               </p>
                             </div>
                             {noteChanged && (
-                              <span className="text-[10px] text-amber-500 font-medium flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 inline-block" />
-                                Unsaved
+                              <span className="text-[10px] font-black uppercase text-amber-500">
+                                ★ UNSAVED
                               </span>
                             )}
                           </div>
                           <Textarea
                             value={adminNote}
                             onChange={(e) => setAdminNote(e.target.value)}
-                            placeholder="Add a private note…"
-                            className="min-h-[90px] resize-none rounded-xl text-sm"
+                            placeholder="Add a private admin note…"
+                            className="min-h-[90px] border-2 border-black font-bold text-sm bg-zinc-50 dark:bg-zinc-950 resize-none rounded-xl"
                           />
                           <Button
-                            size="sm"
                             onClick={handleSaveNote}
                             disabled={noteLoading || !noteChanged}
-                            className="w-full"
+                            className="w-full bg-[#00f0ff] text-black hover:bg-[#00d8e6] border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
                           >
                             {noteLoading ? (
-                              <Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                             ) : (
-                              <CheckCheck className="mr-2 h-3.5 w-3.5" />
+                              <CheckCheck className="mr-2 h-4 w-4 stroke-[2.5]" />
                             )}
-                            {noteLoading ? "Saving…" : "Save Note"}
+                            {noteLoading ? "SAVING NOTE…" : "SAVE NOTE ★"}
                           </Button>
                         </div>
                       </div>
                     </div>
 
                     {/* ── Sticky Footer Actions ── */}
-                    <div className="flex items-center gap-2 px-6 py-4 border-t bg-background flex-shrink-0">
+                    <div className="flex items-center gap-2 px-6 py-4 border-t-2 border-black bg-white dark:bg-zinc-900 flex-shrink-0">
                       <Button
-                        variant="outline"
-                        className="flex-1 gap-2"
-                        // asChild
+                        className="flex-1 bg-[#b5ff6d] text-black hover:bg-[#a2f059] border-2 border-black font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000] cursor-pointer"
                         onClick={() =>
                           handleStatusChange(selected.id, "REPLIED")
                         }
@@ -1014,48 +960,12 @@ export function ContactManager({
                           href={`mailto:${selected.email}?subject=Re: ${selected.subject}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-1.5"
+                          className="flex items-center justify-center gap-1.5 w-full"
                         >
-                          <Mail className="h-3.5 w-3.5" />
-                          <span className="text-sm hover:text-primary hover:underline underline-offset-2">
-                            Reply via Email
-                          </span>
+                          <Mail className="h-4 w-4 stroke-[2.5]" />
+                          <span>REPLY VIA EMAIL ★</span>
                         </a>
                       </Button>
-
-                      {/* <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                          <Button
-                            variant="destructive"
-                            size="sm"
-                            className="gap-2 px-4"
-                          >
-                            <Trash2 className="h-3.5 w-3.5" />
-                            Delete
-                          </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                          <AlertDialogHeader>
-                            <AlertDialogTitle>
-                              Delete this contact?
-                            </AlertDialogTitle>
-                            <AlertDialogDescription>
-                              This action cannot be undone. The message from{" "}
-                              <strong>{selected.name}</strong> will be
-                              permanently deleted.
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction
-                              onClick={() => handleDelete(selected.id)}
-                              className="bg-destructive hover:bg-destructive/90"
-                            >
-                              Delete
-                            </AlertDialogAction>
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
-                      </AlertDialog> */}
                     </div>
                   </>
                 );
@@ -1069,31 +979,29 @@ export function ContactManager({
         open={!!deleteConfirm}
         onOpenChange={() => setDeleteConfirm(null)}
       >
-        <DialogContent className="max-w-sm">
-          <DialogHeader>
-            <DialogTitle>Delete Contact</DialogTitle>
-            <DialogDescription>
-              Are you sure you want to delete the message from{" "}
-              <span className="font-semibold text-foreground">
+        <DialogContent className="max-w-sm border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[8px_8px_0px_0px_#000]">
+          <DialogHeader className="border-b-2 border-black pb-3">
+            <DialogTitle className="font-clash font-black uppercase text-lg text-black dark:text-white">DELETE CONTACT ★</DialogTitle>
+            <DialogDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-0.5">
+              Permanently delete message from{" "}
+              <span className="font-black text-black dark:text-white">
                 {deleteConfirm?.name}
               </span>
               ? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-3">
             <Button
-              variant="outline"
               onClick={() => setDeleteConfirm(null)}
-              className="flex-1"
+              className="flex-1 bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              Cancel
+              CANCEL
             </Button>
             <Button
-              // variant="destructive"
               onClick={handleDelete}
-              className="flex-1"
+              className="flex-1 bg-red-500 text-white hover:bg-red-600 border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              Delete
+              CONFIRM DELETE
             </Button>
           </div>
         </DialogContent>
@@ -1104,36 +1012,34 @@ export function ContactManager({
         open={bulkDeleteConfirm}
         onOpenChange={(open) => !bulkDeleting && setBulkDeleteConfirm(open)}
       >
-        <DialogContent className="max-w-sm">
-          <DialogHeader>
-            <DialogTitle>Delete {selectedIds.size} Contact(s)</DialogTitle>
-            <DialogDescription>
-              Are you sure you want to delete{" "}
-              <span className="font-semibold text-foreground">
-                {selectedIds.size} selected contact(s)
+        <DialogContent className="max-w-sm border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[8px_8px_0px_0px_#000]">
+          <DialogHeader className="border-b-2 border-black pb-3">
+            <DialogTitle className="font-clash font-black uppercase text-lg text-black dark:text-white">DELETE {selectedIds.size} CONTACTS ★</DialogTitle>
+            <DialogDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-0.5">
+              Permanently delete{" "}
+              <span className="font-black text-black dark:text-white">
+                {selectedIds.size} selected contacts
               </span>
               ? This action cannot be undone.
             </DialogDescription>
           </DialogHeader>
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-3">
             <Button
-              variant="outline"
               onClick={() => setBulkDeleteConfirm(false)}
               disabled={bulkDeleting}
-              className="flex-1"
+              className="flex-1 bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
-              Cancel
+              CANCEL
             </Button>
             <Button
-              // variant="destructive"
               onClick={handleBulkDelete}
               disabled={bulkDeleting}
-              className="flex-1"
+              className="flex-1 bg-red-500 text-white hover:bg-red-600 border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
             >
               {bulkDeleting && (
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               )}
-              Delete All
+              DELETE ALL ★
             </Button>
           </div>
         </DialogContent>
