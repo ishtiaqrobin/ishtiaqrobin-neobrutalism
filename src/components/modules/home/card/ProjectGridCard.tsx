@@ -23,9 +23,8 @@ export default function ProjectGridCard({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
-      className={`flex flex-col w-full group cursor-pointer ${
-        index % 2 === 1 ? "md:mt-12" : ""
-      }`}
+      className={`flex flex-col w-full group cursor-pointer ${index % 2 === 1 ? "md:mt-12" : ""
+        }`}
     >
       <Link href={`/projects/${project.slug}`}>
         <div
@@ -52,7 +51,7 @@ export default function ProjectGridCard({
         </div>
 
         <div className="flex flex-col mt-4 mb-2 px-1">
-          <h3 className="text-xl font-black font-clash uppercase tracking-tight text-black dark:text-white mb-2 group-hover:text-[#30af5b] dark:group-hover:text-[#b5ff6d] transition-colors">
+          <h3 className="text-xl font-black font-clash uppercase tracking-tight text-black dark:text-white mb-2 group-hover:text-[#00f0ff] dark:group-hover:text-[#b5ff6d] transition-colors">
             {project.title}
           </h3>
 
@@ -75,15 +74,15 @@ export default function ProjectGridCard({
 
             {showYear
               ? project.year && (
-                  <span className="text-xs font-mono font-bold text-black dark:text-white bg-[#00f0ff] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
-                    {project.year}
-                  </span>
-                )
+                <span className="text-xs font-mono font-bold text-black dark:text-white bg-[#00f0ff] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
+                  {project.year}
+                </span>
+              )
               : project.category && (
-                  <span className="text-xs font-black uppercase tracking-wider text-black bg-[#b5ff6d] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
-                    {project.category.name}
-                  </span>
-                )}
+                <span className="text-xs font-black uppercase tracking-wider text-black bg-[#b5ff6d] px-2 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000]">
+                  {project.category.name}
+                </span>
+              )}
           </div>
         </div>
       </Link>
