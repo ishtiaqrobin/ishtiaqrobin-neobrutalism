@@ -16,9 +16,14 @@ export default async function UserReviewPage() {
     return (
         <div className="space-y-6 min-h-screen pb-20">
             <div>
-                <h1 className="text-3xl font-bold tracking-tight">Manage Your Review</h1>
-                <p className="text-muted-foreground mt-2">
-                    Share your experience and help others learn more about my services
+                <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2">
+                    ★ REVIEW & TESTIMONIAL
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+                    MANAGE YOUR REVIEW
+                </h1>
+                <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+                    Share your experience and feedback to be displayed on the portfolio homepage.
                 </p>
             </div>
 

@@ -8,8 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Loader2, Mail } from "lucide-react";
 import Link from "next/link";
-import ShimmerText from "@/components/modules/shared/ShimmerText";
-import HoverButton from "@/components/modules/shared/HoverButton";
+import { Button } from "@/components/ui/button";
 
 function VerifyEmailContent() {
   const router = useRouter();
@@ -72,32 +71,27 @@ function VerifyEmailContent() {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/40 rounded-3xl p-8 shadow-xs ">
+    <div className="w-full max-w-lg mx-auto bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-8 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
       {/* Header */}
-      <div className="mb-8">
-        <ShimmerText className="mb-3">Almost there</ShimmerText>
-        {/* <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 bg-primary/10 rounded-xl">
-            <Mail className="h-5 w-5 text-primary" />
-          </div>
-        </div> */}
-        <h2 className="text-3xl font-clash font-medium tracking-tight text-secondary leading-tight">
-          Verify your email
+      <div className="mb-6">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-3">
+          ★ ALMOST THERE
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-none">
+          VERIFY YOUR EMAIL
         </h2>
-        <p className="text-sm text-text-primary mt-1">
-          We&apos;ve sent a 6-digit code to{" "}
-          <span className="font-semibold text-secondary">{email}</span>. Please
-          enter it below to verify your account.
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-2 border-l-4 border-black pl-2">
+          We&apos;ve sent a 6-digit verification code to <span className="font-mono text-black dark:text-white font-black">{email}</span>.
         </p>
       </div>
 
       {/* Form */}
       <form onSubmit={handleVerify} className="space-y-4">
-        <div className="space-y-0">
+        <div className="space-y-1">
           <Input
             type="text"
             placeholder="000000"
-            className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-2xl tracking-[1em] font-bold text-center transition-all focus-visible:ring-2"
+            className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-12 rounded-lg text-2xl tracking-[1em] font-mono font-black text-center transition-all focus:shadow-[3px_3px_0px_0px_#000]"
             maxLength={6}
             value={otp}
             onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
@@ -106,41 +100,42 @@ function VerifyEmailContent() {
           />
         </div>
 
-        <div className="pt-1">
-          <HoverButton
+        <div className="pt-2">
+          <Button
             type="submit"
-            loading={isLoading}
-            className="w-full justify-center"
+            disabled={isLoading}
+            size="lg"
+            className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs tracking-wider shadow-[3px_3px_0px_0px_#000] cursor-pointer"
           >
-            {isLoading ? "Verifying..." : "Verify Email"}
-          </HoverButton>
+            {isLoading ? "VERIFYING..." : "VERIFY EMAIL ★"}
+          </Button>
         </div>
       </form>
 
       {/* Footer */}
-      <div className="mt-6 flex flex-col items-center gap-3">
-        <p className="text-sm text-text-primary">
+      <div className="mt-6 pt-4 border-t-2 border-black flex flex-col items-center gap-3">
+        <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
           Didn&apos;t receive the code?{" "}
           <button
             onClick={handleResendOtp}
             disabled={isResending || isLoading}
-            className="text-primary cursor-pointer hover:underline font-medium disabled:opacity-50 inline-flex items-center gap-1"
+            className="text-black dark:text-white underline decoration-2 decoration-[#00f0ff] font-black uppercase cursor-pointer disabled:opacity-50 inline-flex items-center gap-1"
           >
             {isResending ? (
               <>
                 <Loader2 className="h-3 w-3 animate-spin" />
-                Resending...
+                RESENDING...
               </>
             ) : (
-              "Resend Code"
+              "RESEND CODE ★"
             )}
           </button>
         </p>
         <Link
           href="/login"
-          className="text-sm text-primary hover:underline font-medium"
+          className="text-xs font-black uppercase tracking-wider text-black dark:text-white hover:underline"
         >
-          Back to Login
+          BACK TO LOGIN
         </Link>
       </div>
     </div>
@@ -152,9 +147,9 @@ export default function VerifyEmailPage() {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <Suspense
         fallback={
-          <Card className="w-full max-w-lg mx-auto border-zinc-100 dark:border-zinc-800/40 rounded-3xl">
+          <Card className="w-full max-w-lg mx-auto border-3 border-black rounded-2xl shadow-[6px_6px_0px_0px_#000]">
             <CardContent className="flex items-center justify-center py-10">
-              <Loader2 className="h-10 w-10 animate-spin text-primary" />
+              <Loader2 className="h-10 w-10 animate-spin text-black" />
             </CardContent>
           </Card>
         }

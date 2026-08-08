@@ -9,8 +9,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Mail, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import ShimmerText from "@/components/modules/shared/ShimmerText";
-import HoverButton from "@/components/modules/shared/HoverButton";
+import { Button } from "@/components/ui/button";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
@@ -48,32 +47,33 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-lg mx-auto bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/40 rounded-3xl p-8 shadow-xs ">
+      <div className="w-full max-w-lg mx-auto bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-8 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]">
         {/* Header */}
-        <div className="mb-8">
-          <ShimmerText className="mb-3">Password Recovery</ShimmerText>
-          <h2 className="text-3xl font-clash font-medium tracking-tight text-secondary leading-tight">
-            Forgot Password?
+        <div className="mb-6">
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-3">
+            ★ PASSWORD RECOVERY
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-none">
+            FORGOT PASSWORD?
           </h2>
-          <p className="text-sm text-text-primary mt-1">
-            Enter your email address and we&apos;ll send you a 6-digit code to
-            reset your password.
+          <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-2 border-l-4 border-black pl-2">
+            Enter your registered email address to receive a 6-digit verification code.
           </p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-0">
-            <Label className="text-sm leading-4 font-medium text-secondary mb-1.5 block">
-              Email Address
+          <div className="space-y-1">
+            <Label className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+              EMAIL ADDRESS
             </Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+              <Mail className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
               <Input
                 id="email"
                 type="email"
                 placeholder="name@example.com"
-                className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-3 py-2 transition-all focus-visible:ring-2"
+                className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-9 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isLoading}
@@ -82,25 +82,26 @@ export default function ForgotPasswordPage() {
             </div>
           </div>
 
-          <div className="pt-1">
-            <HoverButton
+          <div className="pt-2">
+            <Button
               type="submit"
-              loading={isLoading}
-              className="w-full justify-center"
+              disabled={isLoading}
+              size="lg"
+              className="w-full bg-[#00f0ff] text-black hover:bg-[#00d0df] font-black uppercase text-xs tracking-wider shadow-[3px_3px_0px_0px_#000] cursor-pointer"
             >
-              {isLoading ? "Sending Code..." : "Send Reset Code"}
-            </HoverButton>
+              {isLoading ? "SENDING CODE..." : "SEND RESET CODE ★"}
+            </Button>
           </div>
         </form>
 
         {/* Footer */}
-        <div className="mt-6">
+        <div className="mt-6 pt-4 border-t-2 border-black">
           <Link
             href="/login"
-            className="flex items-center justify-center text-sm text-primary hover:underline font-medium"
+            className="flex items-center justify-center text-xs font-black uppercase tracking-wider text-black dark:text-white hover:underline"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Login
+            <ArrowLeft className="mr-1.5 h-4 w-4 stroke-[3]" />
+            BACK TO LOGIN
           </Link>
         </div>
       </div>

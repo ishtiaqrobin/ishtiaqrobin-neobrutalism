@@ -28,8 +28,8 @@ export default function MobileBottomBar() {
      2. 'rounded-t-[32px]' is given for smooth top-curve and pill body shape like in the screenshot.
      3. Because of 'fixed bottom-0' it will be perfectly locked at the bottom of the screen.
     */
-    <div className="fixed sm:hidden bottom-0 left-0 right-0 z-50 bg-white/65 dark:bg-[#0a0a0a]/75 backdrop-blur-xl border-t border-zinc-200 dark:border-zinc-800 rounded-3xl rounded-b-none px-4 py-2.5 transition-colors duration-300">
-      <div className="flex items-center justify-between max-w-md mx-auto">
+    <div className="fixed sm:hidden bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-zinc-950/95 backdrop-blur border-t-3 border-black dark:border-zinc-300 rounded-t-2xl px-3 py-2 shadow-[0px_-4px_0px_0px_#000] dark:shadow-[0px_-4px_0px_0px_#b5ff6d]">
+      <div className="flex items-center justify-between max-w-md mx-auto gap-1">
         {BOTTOM_NAV_LINKS.map((link) => {
           const isActive = pathname === link.href;
           const Icon = link.icon;
@@ -38,39 +38,16 @@ export default function MobileBottomBar() {
             <Link
               key={link.href}
               href={link.href}
-              className="group flex flex-col items-center gap-1.5 flex-1 relative py-1"
+              className={`flex flex-col items-center justify-center gap-1 flex-1 py-1.5 rounded-xl transition-all ${
+                isActive
+                  ? "bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000] font-black"
+                  : "text-black dark:text-white font-black hover:bg-[#00f0ff] hover:text-black"
+              }`}
             >
-              {/* ─── আইকন লেয়ার ─── */}
-              <div
-                className={`transition-all duration-300 transform group-hover:scale-105 ${
-                  isActive
-                    ? "text-primary" // অ্যাক্টিভ থাকলে স্ক্রিনশটের মতো গ্রিন থিম কালার
-                    : "text-text-primary"
-                }`}
-              >
-                <Icon className="w-5 h-5 stroke-[1.8]" />
-              </div>
-
-              {/* ─── Text Reveal Rolling Effect Container ─── */}
-              <div className="relative block h-4 overflow-hidden pointer-events-none">
-                {/* ১ম টেক্সট: হভার করলে ওপরে উঠে যাবে */}
-                <span
-                  className={`block text-xs font-medium tracking-wide transition-transform duration-300 ease-in-out group-hover:-translate-y-full ${
-                    isActive ? "text-primary" : "text-text-primary"
-                  }`}
-                >
-                  {link.name}
-                </span>
-
-                {/* ২য় টেক্সট: নিচ থেকে ওপরে উঠে আসবে */}
-                <span
-                  className={`absolute top-0 left-0 block text-xs font-medium tracking-wide text-center w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0 ${
-                    isActive ? "text-primary" : "text-zinc-900 dark:text-white"
-                  }`}
-                >
-                  {link.name}
-                </span>
-              </div>
+              <Icon className="w-5 h-5 stroke-[2.5]" />
+              <span className="text-[10px] font-black uppercase tracking-wider">
+                {link.name}
+              </span>
             </Link>
           );
         })}

@@ -20,8 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import HoverButton from "../shared/HoverButton";
-import ShimmerText from "../shared/ShimmerText";
+import { Button } from "@/components/ui/button";
 
 export function RegisterForm({ ...props }: React.ComponentProps<"div">) {
   const router = useRouter();
@@ -66,17 +65,19 @@ export function RegisterForm({ ...props }: React.ComponentProps<"div">) {
 
   return (
     <div
-      className="w-full max-w-lg mx-auto bg-white dark:bg-[#111116] border border-zinc-100 dark:border-zinc-800/40 rounded-3xl p-8 shadow-xs "
+      className="w-full max-w-lg mx-auto bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-8 shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]"
       {...props}
     >
       {/* Header */}
-      <div className="mb-8">
-        <ShimmerText className="mb-3">Get started</ShimmerText>
-        <h2 className="text-3xl font-clash font-medium tracking-tight text-secondary leading-tight">
-          Create an account
+      <div className="mb-6">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-3">
+          ★ GET STARTED
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white leading-none">
+          CREATE AN ACCOUNT
         </h2>
-        <p className="text-sm text-text-primary mt-1">
-          Enter your information below to create your account
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-2 border-l-4 border-black pl-2">
+          Enter your details below to create your portfolio member account
         </p>
       </div>
 
@@ -87,22 +88,22 @@ export function RegisterForm({ ...props }: React.ComponentProps<"div">) {
             control={form.control}
             name="name"
             render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className="text-sm leading-4 font-medium text-secondary mb-1.5 block">
-                  Full Name
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                  FULL NAME
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+                    <User className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
                     <Input
-                      placeholder="Enter your full name"
-                      className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-3 py-2 transition-all focus-visible:ring-2"
+                      placeholder="e.g. John Doe"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-9 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                       disabled={isLoading}
                       {...field}
                     />
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500 font-medium" />
+                <FormMessage className="text-xs text-red-500 font-bold" />
               </FormItem>
             )}
           />
@@ -111,22 +112,22 @@ export function RegisterForm({ ...props }: React.ComponentProps<"div">) {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className="text-sm leading-4 font-medium text-secondary mb-1.5 block">
-                  Email
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                  EMAIL ADDRESS
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+                    <Mail className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
                     <Input
-                      placeholder="Enter your email"
-                      className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-3 py-2 transition-all focus-visible:ring-2"
+                      placeholder="name@example.com"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-9 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                       disabled={isLoading}
                       {...field}
                     />
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500 font-medium" />
+                <FormMessage className="text-xs text-red-500 font-bold" />
               </FormItem>
             )}
           />
@@ -135,71 +136,63 @@ export function RegisterForm({ ...props }: React.ComponentProps<"div">) {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="space-y-0">
-                <FormLabel className="text-sm leading-4 font-medium text-secondary mb-1.5 block">
-                  Password
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+                  PASSWORD
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-3 h-4 w-4 text-text-primary/50" />
+                    <Lock className="absolute left-3 top-3 h-4 w-4 text-black dark:text-white stroke-[2.5]" />
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="••••••••"
-                      className="w-full bg-white dark:bg-[#111116] border-zinc-200/80 dark:border-zinc-800/80 h-10 rounded-xl text-base tracking-wide pl-9 pr-10 py-2 transition-all focus-visible:ring-2"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-9 pr-10 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
                       disabled={isLoading}
                       {...field}
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-3 text-text-primary/50 hover:text-text-primary transition-colors"
+                      className="absolute right-3 top-3 text-black dark:text-white cursor-pointer"
                       disabled={isLoading}
                     >
                       {showPassword ? (
-                        <EyeOff className="h-4 w-4" />
+                        <EyeOff className="h-4 w-4 stroke-[2.5]" />
                       ) : (
-                        <Eye className="h-4 w-4" />
+                        <Eye className="h-4 w-4 stroke-[2.5]" />
                       )}
                     </button>
                   </div>
                 </FormControl>
-                <FormMessage className="text-xs text-red-500 font-medium" />
+                <FormMessage className="text-xs text-red-500 font-bold" />
               </FormItem>
             )}
           />
 
-          <div className="pt-1">
-            <HoverButton
+          <div className="pt-2">
+            <Button
               type="submit"
-              loading={isLoading}
-              className="w-full justify-center"
+              disabled={isLoading}
+              size="lg"
+              className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs tracking-wider shadow-[3px_3px_0px_0px_#000] cursor-pointer"
             >
-              {isLoading ? "Registering..." : "Register Now"}
-            </HoverButton>
+              {isLoading ? "REGISTERING..." : "REGISTER NOW ★"}
+            </Button>
           </div>
         </form>
       </Form>
 
-      {/* Divider */}
-      {/* <div className="flex items-center gap-3 my-5">
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-        <span className="text-xs text-text-primary/50 font-normal tracking-wide">
-          or continue with
-        </span>
-        <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-      </div> */}
-
       {/* Google Auth */}
-      <GoogleAuthButton className="mt-6 w-full" mode="signup" />
+      <GoogleAuthButton className="mt-4 w-full" mode="signup" />
 
       {/* Footer */}
-      <p className="text-sm text-center text-text-primary mt-6">
+      <p className="text-xs font-bold text-center text-black dark:text-white mt-6">
         Already have an account?{" "}
         <Link
           href="/login"
-          className="text-primary hover:underline font-medium"
+          className="text-black dark:text-white underline decoration-2 decoration-[#00f0ff] font-black uppercase"
         >
-          Login
+          LOGIN HERE
         </Link>
       </p>
     </div>
