@@ -11,7 +11,7 @@ export default function Footer() {
     <footer className="w-full pt-10 pb-28 sm:pb-12 bg-white dark:bg-zinc-950 border-t-3 border-black dark:border-zinc-700">
       {/* Infinite Brutalist Ticker Banner */}
       <div className="w-full overflow-hidden bg-[#b5ff6d] text-black border-b-2 border-black py-3 mb-10 select-none">
-        <div className="flex whitespace-nowrap animate-text-marquee">
+        <div className="flex whitespace-nowrap animate-text-marquee2 will-change-transform">
           <div className="flex items-center gap-6 font-black font-clash text-lg md:text-xl uppercase tracking-wider px-4">
             <span>LET'S BUILD SOMETHING AWESOME ★</span>
             <span>AVAILABLE FOR WORK ★</span>

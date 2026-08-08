@@ -556,6 +556,11 @@
   animation: text-marquee 120s linear infinite;
 }
 
+.animate-text-marquee2 {
+  /* Loop the animation for 120 seconds */
+  animation: text-marquee 25s linear infinite;
+}
+
 
 /* Infinite Rotating Text Badge */
 @keyframes spin-slow {
@@ -699,24 +704,24 @@
   gap: 0.5rem;
 }
 
-.ProseMirror ul[data-type="taskList"] li > label {
+.ProseMirror ul[data-type="taskList"] li>label {
   flex: 0 0 auto;
   margin-top: 0.2rem;
   user-select: none;
 }
 
-.ProseMirror ul[data-type="taskList"] li > label input[type="checkbox"] {
+.ProseMirror ul[data-type="taskList"] li>label input[type="checkbox"] {
   cursor: pointer;
   width: 1rem;
   height: 1rem;
   accent-color: var(--color-primary);
 }
 
-.ProseMirror ul[data-type="taskList"] li > div {
+.ProseMirror ul[data-type="taskList"] li>div {
   flex: 1 1 auto;
 }
 
-.ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div > p {
+.ProseMirror ul[data-type="taskList"] li[data-checked="true"]>div>p {
   text-decoration: line-through;
   opacity: 0.6;
 }
