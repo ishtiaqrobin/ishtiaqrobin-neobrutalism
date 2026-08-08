@@ -320,8 +320,9 @@ export function Chatbot() {
       </TooltipProvider>
 
       {/* Unread dot — show when closed and messages > 1 */}
+      // #b5ff6d, #00f0ff, #ff597b
       {!isOpen && optimisticMessages.length > 1 && (
-        <span className="fixed bottom-30 sm:bottom-17 right-4 sm:right-7 z-50 w-3 h-3 rounded-full bg-primary border-2 border-background pointer-events-none" />
+        <span className="fixed bottom-30 sm:bottom-17 right-4 sm:right-7 z-50 w-3 h-3 rounded-full bg-[#ff597b] border-2 border-background pointer-events-none" />
       )}
     </>
   );
