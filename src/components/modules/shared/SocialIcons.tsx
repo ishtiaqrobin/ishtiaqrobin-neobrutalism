@@ -63,7 +63,7 @@ export default function SocialIcons() {
   ];
 
   return (
-    <div className="flex items-center gap-6 group/icons">
+    <div className="flex items-center gap-3">
       {SOCIAL_LINKS.map((social) => (
         <a
           key={social.id}
@@ -71,13 +71,7 @@ export default function SocialIcons() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={social.label}
-          className={[
-            "text-zinc-800 dark:text-zinc-300",
-            "transition-[opacity,color] duration-300 ease-out",
-            "group-hover/icons:opacity-35",
-            "hover:!opacity-100",
-            "hover:!text-zinc-900 dark:hover:!text-white",
-          ].join(" ")}
+          className="p-2.5 rounded-xl border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 text-black dark:text-white shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#b5ff6d] hover:bg-[#b5ff6d] hover:text-black hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all"
         >
           {social.icon}
         </a>

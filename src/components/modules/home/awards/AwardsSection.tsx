@@ -83,46 +83,44 @@ export default function AwardsSection() {
       <motion.div
         key={award.id}
         layout="position"
-        transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
-        className="border-b border-zinc-200 dark:border-zinc-800 group"
+        transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+        className="bg-white dark:bg-zinc-900 border-2 border-black dark:border-zinc-300 rounded-xl p-5 mb-4 shadow-[3px_3px_0px_0px_#000] dark:shadow-[3px_3px_0px_0px_#b5ff6d] cursor-pointer group hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
         onClick={() => toggleRow(award.id)}
-        style={{ cursor: "pointer" }}
       >
-        <div className="flex items-center justify-between py-4 gap-6">
-          <div className="flex flex-col">
-            <h4 className="text-base font-medium text-secondary">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <h4 className="text-lg font-black font-clash uppercase text-black dark:text-white">
               {award.title}
             </h4>
-            <span className="text-xs leading-5 font-normal text-text-primary">
+            <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
               {award.subTitle}
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 shrink-0">
-            <span className="text-sm leading-5 font-normal tracking-widest text-text-primary whitespace-nowrap uppercase">
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="text-xs font-mono font-black text-black bg-[#00f0ff] px-2.5 py-0.5 border border-black rounded shadow-[1px_1px_0px_0px_#000] uppercase">
               {award.date}
             </span>
 
             <span
-              className="text-text-primary"
+              className="p-1 bg-[#b5ff6d] text-black border border-black rounded shadow-[1px_1px_0px_0px_#000]"
               style={{
                 display: "inline-block",
-                transition: "transform 350ms cubic-bezier(0.25, 1, 0.5, 1)",
+                transition: "transform 300ms cubic-bezier(0.25, 1, 0.5, 1)",
                 transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
               }}
               aria-hidden="true"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="3"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="hidden sm:block"
               >
                 <path d="m6 9 6 6 6-6" />
               </svg>
@@ -135,14 +133,15 @@ export default function AwardsSection() {
           animate={
             isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
           }
-          transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
+          transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
           style={{ overflow: "hidden" }}
         >
-          <div className="pb-6 pl-2 pr-4">
-            <ul className="list-disc list-outside space-y-2 text-sm text-text-primary marker:text-text-primary">
+          <div className="pt-4 border-t-2 border-black/10 dark:border-white/10 mt-3">
+            <ul className="space-y-1.5 text-sm font-bold text-zinc-900 dark:text-zinc-100">
               {award.details.map((detail, idx) => (
-                <li key={idx} className="leading-relaxed inline-block w-full">
-                  <span className="text-text-primary mr-2">•</span> {detail}
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="text-[#ff597b] font-black">★</span>
+                  <span>{detail}</span>
                 </li>
               ))}
             </ul>
@@ -153,34 +152,33 @@ export default function AwardsSection() {
   };
 
   return (
-    <section className="container-custom py-16 sm:py-22">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 items-start">
+    <section className="container-custom py-16 sm:py-24 border-b-3 border-black dark:border-zinc-700">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         <div
           className={[
             "lg:col-span-5",
-            "transition-all duration-700 ease-out delay-300",
             showAll ? "lg:sticky lg:top-24" : "relative",
           ].join(" ")}
         >
-          <ShimmerText className="mb-3.5">Awards</ShimmerText>
+          <div className="inline-block bg-[#ff597b] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+            ★ HONORS & MILESTONES
+          </div>
 
-          <h2 className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-tight mb-6">
-            Awards & <br /> Recognition
+          <h2 className="text-4xl lg:text-6xl text-black dark:text-white font-clash font-black uppercase tracking-tight mb-4">
+            AWARDS & <br /> RECOGNITION
           </h2>
-          <p className="text-text-primary font-normal leading-normal text-base max-w-sm">
-            A collection of milestones and recognition earned across
-            competitions, communities, and companies — each one a marker of
-            growth.
+          <p className="text-zinc-800 dark:text-zinc-200 font-bold leading-relaxed text-base border-l-4 border-black dark:border-zinc-400 pl-3">
+            A collection of milestones, hackathon wins, and community leadership awards earned across tech conferences and developer challenges.
           </p>
         </div>
 
         <div className="lg:col-span-7 flex flex-col w-full">
           {loading ? (
-            <div className="space-y-6">
+            <div className="space-y-4">
               {[...Array(3)].map((_, i) => (
                 <div
                   key={i}
-                  className="h-16 rounded-lg bg-zinc-100 dark:bg-zinc-800 animate-pulse"
+                  className="h-20 rounded-xl bg-zinc-200 dark:bg-zinc-800 animate-pulse border-2 border-black"
                 />
               ))}
             </div>
@@ -195,7 +193,7 @@ export default function AwardsSection() {
               </div>
 
               {extraRows.length > 0 && (
-                <div className="w-full flex justify-center mt-4">
+                <div className="w-full flex justify-center mt-6">
                   <button
                     onClick={() => {
                       if (showAll) {
@@ -203,44 +201,9 @@ export default function AwardsSection() {
                       }
                       setShowAll((prev) => !prev);
                     }}
-                    className={[
-                      "group inline-flex items-center gap-2 cursor-pointer",
-                      "px-5 py-2.5 rounded-full text-sm font-medium",
-                      "border border-zinc-300 dark:border-zinc-700",
-                      "bg-white dark:bg-zinc-900",
-                      "text-zinc-700 dark:text-zinc-300",
-                      "hover:bg-zinc-100 dark:hover:bg-zinc-800",
-                      "hover:border-zinc-400 dark:hover:border-zinc-600",
-                      "transition-transform duration-300 ease-out",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400",
-                    ].join(" ")}
-                    aria-expanded={showAll}
+                    className="px-6 py-2.5 bg-[#b5ff6d] text-black font-black text-xs uppercase tracking-wider rounded-xl border-2 border-black shadow-[3px_3px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer flex items-center gap-2"
                   >
-                    <span>{showAll ? "Show Less" : "Show More"}</span>
-
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        display: "inline-block",
-                        transition:
-                          "transform 400ms cubic-bezier(0.25, 1, 0.5, 1)",
-                        transform: showAll ? "rotate(180deg)" : "rotate(0deg)",
-                      }}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </span>
+                    <span>{showAll ? "SHOW LESS" : "SHOW ALL AWARDS ★"}</span>
                   </button>
                 </div>
               )}

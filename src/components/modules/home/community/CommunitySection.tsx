@@ -11,29 +11,25 @@ import ShimmerText from "../../shared/ShimmerText";
 import HoverButton from "../../shared/HoverButton";
 import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
+
 interface FeatureCardProps {
   icon: React.ReactNode;
   title: string;
   description: string;
 }
 
-// Left side 4 cards
 const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
-  <div className="p-6 bg-accent border border-zinc-200/80 dark:border-zinc-800/80 rounded-3xl flex flex-col items-start gap-4 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700 group">
-    {/* Icon container */}
-    {/* <div className="p-4 flex items-center justify-center rounded-full bg-zinc-300/40 dark:bg-zinc-900 text-primary border border-zinc-200/50 dark:border-emerald-900/40 transition-transform duration-300 ">
-      {icon}
-    </div> */}
-
-    <div className="p-3.5 flex items-center justify-center rounded-full text-primary text-xl bg-[#E5E7EB] dark:bg-[#191920] border border-zinc-300 dark:border-zinc-800 shrink-0">
+  <div className="p-6 bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl flex flex-col items-start gap-4 shadow-[5px_5px_0px_0px_#000] dark:shadow-[5px_5px_0px_0px_#b5ff6d] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
+    <div className="p-3 bg-[#ff597b] text-black border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] text-xl font-bold shrink-0">
       {icon}
     </div>
 
-    <div className="flex flex-col gap-2">
-      <h3 className="text-xl leading-7 font-medium text-text-primary tracking-tight">
+    <div className="flex flex-col gap-1.5">
+      <h3 className="text-lg font-black font-clash uppercase text-black dark:text-white">
         {title}
       </h3>
-      <p className="text-base leading-snug text-text-primary font-normal">
+      <p className="text-xs font-bold leading-relaxed text-zinc-800 dark:text-zinc-200">
         {description}
       </p>
     </div>
@@ -42,57 +38,46 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => (
 
 export default function CommunitySection() {
   return (
-    <section className="container-custom pt-16 sm:pt-22 pb-12 sm:pb-12">
-      {/* বড় স্ক্রিনে ২ কলাম গ্রিড লেআউট */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-        {/* 
-          ─── ডানপাশের সেকশন (কন্টেন্ট, স্ট্যাটস এবং বাটন) ─── 
-          মোবাইলে এটি প্রথমে থাকবে (order-first), এবং বড় স্ক্রিনে নিজের আসল অর্ডারে ফিরবে (lg:order-none)
-        */}
+    <section className="container-custom py-16 sm:py-24 border-b-3 border-black dark:border-zinc-700">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        {/* Right Content */}
         <div className="lg:col-span-6 flex flex-col items-start text-left order-first lg:order-none">
-          {/* গ্লেয়ার টেক্সট ব্যাজ */}
-          <div>
-            <ShimmerText className="mb-3.5">Community Work</ShimmerText>
-            <h2 className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-tight mb-6">
-              Building a Tech <br /> Community
-            </h2>
-            <p className="text-text-primary font-normal leading-snug text-base">
-              I founded Design & Code which is a global community with a mission
-              to connect designers and developers to create a happy community
-              eager to learn, innovate and grow together. We welcome all
-              designers and developers: beginners, intermediates, and experts
-              willing to learn together. We encourage sharing resources and
-              learning experiences, organizing events, and providing feedback
-              for our members to grow as they learn.
-            </p>
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+            ★ COMMUNITY LEADERSHIP
           </div>
+          <h2 className="text-4xl lg:text-6xl text-black dark:text-white font-clash font-black uppercase tracking-tight mb-4">
+            BUILDING A TECH <br /> COMMUNITY
+          </h2>
+          <p className="text-zinc-800 dark:text-zinc-200 font-bold leading-relaxed text-base border-l-4 border-black dark:border-zinc-400 pl-3">
+            I founded a tech initiative connecting designers and engineers globally to learn, innovate, and grow together. We organize hackathons, portfolio reviews, and mentorship sessions.
+          </p>
 
-          {/* ─── স্ট্যাটস কাউন্টার এরিয়া ─── */}
-          <div className="flex flex-wrap items-center gap-2 lg:gap-4 text-nowrap my-8">
-            <div className="flex flex-col">
-              <span className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-wider">
-                5k+
+          {/* Stats Area */}
+          <div className="flex flex-wrap items-center gap-4 my-8">
+            <div className="flex flex-col bg-[#FFFDF5] dark:bg-zinc-800 border-2 border-black p-3.5 rounded-xl shadow-[3px_3px_0px_0px_#000]">
+              <span className="text-3xl font-black font-clash text-black dark:text-white">
+                5K+
               </span>
-              <span className="text-base leading-[22px] text-text-primary font-normal tracking-wider">
-                Community Members
+              <span className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300">
+                MEMBERS
               </span>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-wider">
+            <div className="flex flex-col bg-[#FFFDF5] dark:bg-zinc-800 border-2 border-black p-3.5 rounded-xl shadow-[3px_3px_0px_0px_#000]">
+              <span className="text-3xl font-black font-clash text-black dark:text-white">
                 25+
               </span>
-              <span className="text-base leading-[22px] text-text-primary font-normal tracking-wider">
-                Events conducted
+              <span className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300">
+                EVENTS
               </span>
             </div>
 
-            <div className="flex flex-col">
-              <span className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-wider">
-                5
+            <div className="flex flex-col bg-[#FFFDF5] dark:bg-zinc-800 border-2 border-black p-3.5 rounded-xl shadow-[3px_3px_0px_0px_#000]">
+              <span className="text-3xl font-black font-clash text-black dark:text-white">
+                5+
               </span>
-              <span className="text-base leading-[22px] text-text-primary font-normal tracking-wider">
-                Years
+              <span className="text-xs font-black uppercase text-zinc-700 dark:text-zinc-300">
+                YEARS
               </span>
             </div>
           </div>
@@ -102,32 +87,33 @@ export default function CommunitySection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <HoverButton>Join Community</HoverButton>
+            <Button size="lg" className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] shadow-[4px_4px_0px_0px_#000]">
+              JOIN COMMUNITY NOW ★
+            </Button>
           </Link>
         </div>
 
-        {/* ─── বামপাশের সেকশন (৪টি ফিচারカード গ্রিড) ─── */}
-        {/* মোবাইলে এটি নিচে চলে যাবে (order-last) এবং ডেস্কটপে প্রথমে আসবে (lg:order-first) */}
-        <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 order-last lg:order-first">
+        {/* Left Grid */}
+        <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-5 order-last lg:order-first">
           <FeatureCard
             icon={<FiMessageSquare className="w-5 h-5" />}
             title="Mentoring"
-            description="Get connected with a mentor that will help you pave your career path."
+            description="Get connected with mentors that will help you pave your career path."
           />
           <FeatureCard
             icon={<FiBriefcase className="w-5 h-5" />}
             title="Opportunities"
-            description="Get Internships and Job opportunities and gain experience while you learn."
+            description="Get Internship and Job opportunities to gain real-world experience."
           />
           <FeatureCard
             icon={<FiBookOpen className="w-5 h-5" />}
             title="Free Resources"
-            description="Get Free resources related to Designing and Development from the community."
+            description="Access open-source templates, design kits, and learning material."
           />
           <FeatureCard
             icon={<FiHeart className="w-5 h-5" />}
-            title="Help & Reviews"
-            description="Get your portfolio and projects reviewed by Industry experts and mentors."
+            title="Code Reviews"
+            description="Get your portfolio and codebase reviewed by senior engineers."
           />
         </div>
       </div>

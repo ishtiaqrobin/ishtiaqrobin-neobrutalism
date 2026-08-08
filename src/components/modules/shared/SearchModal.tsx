@@ -43,56 +43,47 @@ export default function SearchModal({
   if (!isOpen) return null;
 
   return (
-    /* ─── Background Backdrop ─── */
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 bg-zinc-950/20 dark:bg-black/40 backdrop-blur-xs transition-all duration-300">
-      {/* When click outside then close */}
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 bg-black/60 backdrop-blur-xs transition-all">
       <div className="absolute inset-0" onClick={onClose} />
 
-      {/* ─── Main Search Modal and Content ─── */}
       <motion.div
-        // initial={{ opacity: 0, y: -20, scale: 0.98 }}
-        // exit={{ opacity: 0, y: -20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
-        className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl shadow-[0_24px_48px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_48px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col will-change-transform z-10"
+        transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+        className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d] overflow-hidden flex flex-col z-10"
       >
         {/* Top part: Input field */}
-        <div className="flex items-center gap-3 p-3 text-lg leading-7 font-normal border-b border-zinc-200 dark:border-zinc-800/60">
-          <FiSearch className="text-text-primary w-5 h-5 shrink-0" />
+        <div className="flex items-center gap-3 p-4 border-b-2 border-black dark:border-zinc-700">
+          <FiSearch className="text-black dark:text-white w-5 h-5 shrink-0 stroke-[3]" />
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search"
+            placeholder="SEARCH PROJECTS BY TITLE OR TECH..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full placeholder:text-text-primary placeholder:text-lg bg-transparent font-normal tracking-wide text-zinc-900 dark:text-zinc-100 dark:placeholder-zinc-500 focus:outline-none"
+            className="w-full placeholder:text-zinc-500 bg-transparent font-black font-clash text-base uppercase text-black dark:text-white focus:outline-none"
           />
           {/* ESC Badge */}
           <span
             onClick={onClose}
-            className="text-xs font-medium leading-4 font-mono text-text-primary border border-zinc-200 dark:border-zinc-700 px-2 py-1 rounded-sm bg-white hover:bg-[#E5E7EB] dark:bg-zinc-800 cursor-pointer shrink-0"
+            className="text-xs font-mono font-black text-black bg-[#ff597b] border-2 border-black px-2.5 py-1 rounded shadow-[2px_2px_0px_0px_#000] cursor-pointer shrink-0 uppercase"
           >
             ESC
           </span>
         </div>
 
-        {/* Bottom part: Category filters and navigation guidelines */}
-        <div className="flex items-center justify-between p-3 bg-zinc-50/50 dark:bg-zinc-900/30 text-xs text-zinc-400 dark:text-zinc-500 font-medium">
-          <div className="flex items-center gap-2 text-sm leading-5 font-medium text-text-primary">
-            <span className="px-3 py-1 bg-[#E5E7EB] dark:bg-zinc-800 border border-zinc-200/60 dark:border-zinc-700 rounded-md shadow-3xs cursor-pointer">
-              All
+        {/* Bottom part */}
+        <div className="flex items-center justify-between p-3.5 bg-[#FFFDF5] dark:bg-zinc-950 border-t-2 border-black dark:border-zinc-700 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 bg-[#00f0ff] text-black font-black uppercase text-xs border-2 border-black rounded shadow-[2px_2px_0px_0px_#000] cursor-pointer">
+              ALL
             </span>
-            <span className="px-3 py-1 bg-transparent dark:hover:bg-zinc-800 border-zinc-300 dark:border-zinc-700 border rounded-md transition-colors cursor-pointer">
-              Projects
+            <span className="px-3 py-1 bg-white dark:bg-zinc-900 text-black dark:text-white font-black uppercase text-xs border-2 border-black rounded transition-colors cursor-pointer">
+              PROJECTS
             </span>
           </div>
 
-          {/* Right part: Navigation guidelines */}
-          <div className="flex items-center gap-1.5 font-normal text-sm leading-5 text-text-primary tracking-wide">
-            <span className="text-base">
-              <HiArrowsUpDown />
-            </span>{" "}
-            navigate
+          <div className="flex items-center gap-2 font-black uppercase text-xs text-black dark:text-white">
+            <HiArrowsUpDown className="w-4 h-4 stroke-[2]" /> NAVIGATE
           </div>
         </div>
       </motion.div>

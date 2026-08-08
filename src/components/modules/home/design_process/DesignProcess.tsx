@@ -126,45 +126,43 @@ export default function DesignProcess() {
   return (
     <section
       ref={containerRef}
-      className="w-full py-20 overflow-hidden "
+      className="w-full py-20 overflow-hidden border-b-3 border-black dark:border-zinc-700"
     >
       {/* ─── HEADING ─── */}
-      <div className="container-custom mb-8 flex flex-col items-start">
-        <ShimmerText className="mb-3.5">Steps I Follow</ShimmerText>
+      <div className="container-custom mb-10 flex flex-col items-start">
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
+          ★ WORKFLOW & METHODOLOGY
+        </div>
 
-        <h2 className="text-4xl lg:text-5xl text-secondary font-clash font-medium tracking-tight mb-6">
-          My Design Process
+        <h2 className="text-4xl lg:text-6xl text-black dark:text-white font-clash font-black uppercase tracking-tight mb-4">
+          MY DESIGN & DEV PROCESS
         </h2>
-        <p className="text-text-primary font-normal leading-normal text-base">
-          I have worked with some of the most innovative industry leaders to
-          help build their top-notch products.
+        <p className="text-zinc-800 dark:text-zinc-200 font-bold leading-relaxed text-base border-l-4 border-black dark:border-zinc-400 pl-3 max-w-2xl">
+          A structured, battle-tested engineering pipeline that guarantees fast execution, scalable code, and stunning user experiences.
         </p>
       </div>
 
       {/* ─── VELOCITY SCROLL CONTAINER ─── */}
-      {/* mask-[linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] */}
-      <div className="container-custom relative w-full flex overflow-hidden mask-[linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-        {/* Use framer motion for animation of horizontal scroll track */}
+      <div className="container-custom relative w-full flex overflow-hidden py-4">
         <motion.div
           style={{ x }}
-          className="flex flex-row items-stretch gap-5 whitespace-nowrap will-change-transform pr-5"
+          className="flex flex-row items-stretch gap-6 whitespace-nowrap will-change-transform pr-6"
         >
           {doubledCards.map((card, index) => (
-            /* ─── Single card ─── */
             <div
               key={index}
-              className="w-[280px] sm:w-[300px] h-full bg-accent border border-zinc-200 dark:border-zinc-800/60 rounded-3xl p-6 flex flex-col items-start gap-4 shadow-3xs shrink-0"
+              className="w-[280px] sm:w-[320px] h-full bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl p-6 flex flex-col items-start gap-4 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] shrink-0 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
-              <div className="p-3.5 flex items-center justify-center rounded-full text-primary text-xl bg-[#E5E7EB] dark:bg-[#191920] border border-zinc-300 dark:border-zinc-800 shrink-0">
+              <div className="p-3 bg-[#b5ff6d] text-black border-2 border-black rounded-xl shadow-[2px_2px_0px_0px_#000] text-xl shrink-0 font-bold">
                 {card.icon}
               </div>
 
               {/* Card info */}
-              <div className="flex flex-col gap-1.5 whitespace-normal flex-1">
-                <span className="text-xl leading-7 font-medium tracking-normal text-text-primary">
+              <div className="flex flex-col gap-2 whitespace-normal flex-1">
+                <span className="text-xl font-black font-clash uppercase tracking-tight text-black dark:text-white">
                   {card.number}
                 </span>
-                <p className="text-base leading-snug text-text-primary font-normal">
+                <p className="text-sm font-bold leading-relaxed text-zinc-800 dark:text-zinc-200">
                   {card.description}
                 </p>
               </div>

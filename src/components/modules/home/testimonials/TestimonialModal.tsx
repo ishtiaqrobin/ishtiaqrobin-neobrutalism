@@ -42,6 +42,8 @@ function validate(form: IReviewForm): Partial<IReviewForm> {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
+import { Button } from "@/components/ui/button";
+
 export default function TestimonialModal({
   isOpen,
   onClose,
@@ -62,7 +64,6 @@ export default function TestimonialModal({
 
   const firstInputRef = useRef<HTMLInputElement>(null);
 
-  // ── Pre-fill on edit ──────────────────────────────────────────────────────
   useEffect(() => {
     if (isOpen) {
       if (existingReview) {
@@ -77,7 +78,6 @@ export default function TestimonialModal({
       setErrors({});
       setServerError(null);
 
-      // Focus first field and lock body scroll — same pattern as SearchModal
       setTimeout(() => firstInputRef.current?.focus(), 50);
       document.body.style.overflow = "hidden";
     } else {
@@ -96,19 +96,16 @@ export default function TestimonialModal({
 
   if (!isOpen) return null;
 
-  // ── Field change handler ──────────────────────────────────────────────────
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear field-level error on edit
     if (errors[name as keyof IReviewForm]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
-  // ── Submit ────────────────────────────────────────────────────────────────
   const handleSubmit = async () => {
     const fieldErrors = validate(form);
     if (Object.keys(fieldErrors).length > 0) {
@@ -142,49 +139,44 @@ export default function TestimonialModal({
     }
   };
 
-  // ─── Render ───────────────────────────────────────────────────────────────
-
   return (
-    /* ─── Background Backdrop ─── */
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[12vh] px-4 bg-zinc-950/20 dark:bg-black/40 backdrop-blur-xs transition-all duration-300">
-      {/* Click outside → close */}
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4 bg-black/60 backdrop-blur-xs transition-all">
       <div className="absolute inset-0" onClick={onClose} />
 
-      {/* ─── Main Modal ─── */}
       <motion.div
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
-        className="relative w-full max-w-2xl bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-xl shadow-[0_24px_48px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_48px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col will-change-transform z-10"
+        transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+        className="relative w-full max-w-xl bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d] overflow-hidden flex flex-col z-10"
       >
-        {/* ── Header ── */}
-        <div className="flex items-center gap-3 p-3 text-lg leading-7 font-normal border-b border-zinc-200 dark:border-zinc-800/60">
-          <MessageSquareQuote className="text-text-primary w-5 h-5 shrink-0" />
-          <span className="w-full font-normal tracking-wide text-zinc-900 dark:text-zinc-100">
-            {isUpdate ? "Update Feedback" : "Write a Review"}
-          </span>
-          {/* Close Badge — mirrors ESC badge in SearchModal */}
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b-2 border-black dark:border-zinc-700 bg-[#FFFDF5] dark:bg-zinc-950">
+          <div className="flex items-center gap-2">
+            <MessageSquareQuote className="w-5 h-5 text-black dark:text-white stroke-[2.5]" />
+            <span className="font-clash font-black uppercase tracking-tight text-lg text-black dark:text-white">
+              {isUpdate ? "UPDATE FEEDBACK" : "WRITE A REVIEW ★"}
+            </span>
+          </div>
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="text-xs font-medium leading-4 font-mono text-text-primary border border-zinc-200 dark:border-zinc-700 p-1.5 rounded-sm bg-white hover:bg-[#E5E7EB] dark:bg-zinc-800 cursor-pointer shrink-0"
+            className="p-1.5 bg-[#ff597b] text-black border-2 border-black rounded shadow-[2px_2px_0px_0px_#000] cursor-pointer"
           >
-            <X className="w-3.5 h-3.5" />
+            <X className="w-4 h-4 stroke-[3]" />
           </button>
         </div>
 
-        {/* ── Form Body ── */}
-        <div className="flex flex-col gap-4 p-5">
-          {/* Server error */}
+        {/* Form Body */}
+        <div className="flex flex-col gap-4 p-6">
           {serverError && (
-            <p className="text-sm text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800/50 rounded-lg px-3 py-2">
+            <p className="text-xs font-bold text-red-600 bg-red-100 border-2 border-black rounded-lg p-3">
               {serverError}
             </p>
           )}
 
           {/* Position */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium leading-5 text-zinc-700 dark:text-zinc-300">
-              Position
+            <label className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+              YOUR ROLE / POSITION
             </label>
             <Input
               ref={firstInputRef}
@@ -192,15 +184,11 @@ export default function TestimonialModal({
               type="text"
               value={form.position}
               onChange={handleChange}
-              placeholder="e.g. Frontend Developer"
-              className={`w-full bg-zinc-50 dark:bg-zinc-800/60 border rounded-lg px-3 py-2 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus-visible:ring-2 transition-colors duration-200 ${
-                errors.position
-                  ? "border-red-400 dark:border-red-600"
-                  : "border-zinc-200 dark:border-zinc-700"
-              }`}
+              placeholder="e.g. Senior Software Engineer"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-3 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
             />
             {errors.position && (
-              <p className="text-xs text-red-500 dark:text-red-400">
+              <p className="text-xs text-red-500 font-bold">
                 {errors.position}
               </p>
             )}
@@ -208,26 +196,19 @@ export default function TestimonialModal({
 
           {/* Company Name */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium leading-5 text-zinc-700 dark:text-zinc-300">
-              Company Name{" "}
-              <span className="text-zinc-400 dark:text-zinc-500 font-normal">
-                (use &quot;Personal&quot; if none)
-              </span>
+            <label className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+              COMPANY NAME (OR "PERSONAL")
             </label>
             <Input
               name="companyName"
               type="text"
               value={form.companyName}
               onChange={handleChange}
-              placeholder="e.g. TechCorp or Personal"
-              className={`w-full bg-zinc-50 dark:bg-zinc-800/60 border rounded-lg px-3 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus-visible:ring-2 transition-colors duration-200 ${
-                errors.companyName
-                  ? "border-red-400 dark:border-red-600"
-                  : "border-zinc-200 dark:border-zinc-700"
-              }`}
+              placeholder="e.g. Google or Personal"
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black h-10 rounded-lg text-sm font-bold pl-3 pr-3 transition-all focus:shadow-[3px_3px_0px_0px_#000]"
             />
             {errors.companyName && (
-              <p className="text-xs text-red-500 dark:text-red-400">
+              <p className="text-xs text-red-500 font-bold">
                 {errors.companyName}
               </p>
             )}
@@ -235,58 +216,55 @@ export default function TestimonialModal({
 
           {/* Comment */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-sm font-medium leading-5 text-zinc-700 dark:text-zinc-300">
-              Comment
+            <label className="text-xs font-black uppercase tracking-wider text-black dark:text-white">
+              YOUR FEEDBACK / REVIEW
             </label>
             <Textarea
               name="comment"
               value={form.comment}
               onChange={handleChange}
-              placeholder="Share your experience working with me..."
+              placeholder="Share your experience working with Ishtiaq..."
               rows={4}
               maxLength={500}
-              className={`w-full bg-zinc-50 dark:bg-zinc-800/60 border rounded-lg px-3 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus-visible:ring-2 resize-none transition-colors duration-200 ${
-                errors.comment
-                  ? "border-red-400 dark:border-red-600"
-                  : "border-zinc-200 dark:border-zinc-700"
-              }`}
+              className="w-full bg-zinc-50 dark:bg-zinc-950 border-2 border-black rounded-lg text-sm font-bold p-3 transition-all focus:shadow-[3px_3px_0px_0px_#000] resize-none"
             />
             <div className="flex items-center justify-between">
               {errors.comment ? (
-                <p className="text-xs text-red-500 dark:text-red-400">
+                <p className="text-xs text-red-500 font-bold">
                   {errors.comment}
                 </p>
               ) : (
                 <span />
               )}
-              <span className="text-xs text-zinc-400 dark:text-zinc-500 ml-auto">
+              <span className="text-xs font-mono font-bold text-zinc-500 ml-auto">
                 {form.comment.length} / 500
               </span>
             </div>
           </div>
         </div>
 
-        {/* ── Footer ── */}
-        <div className="flex items-center justify-end gap-2 px-5 pb-5">
+        {/* Footer */}
+        <div className="flex items-center justify-end gap-3 p-4 bg-[#FFFDF5] dark:bg-zinc-950 border-t-2 border-black dark:border-zinc-700">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium leading-5 text-text-primary border border-zinc-200 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-800 hover:bg-[#E5E7EB] dark:hover:bg-zinc-700 transition-colors duration-200 cursor-pointer"
+            className="px-4 py-2 text-xs font-black uppercase tracking-wider text-black dark:text-white border-2 border-black rounded-lg bg-white dark:bg-zinc-800 shadow-[2px_2px_0px_0px_#000] cursor-pointer"
           >
-            Cancel
+            CANCEL
           </button>
-          <button
+          <Button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="px-4 py-2 text-sm font-medium leading-5 text-white dark:text-accent bg-primary hover:bg-primary/90 rounded-lg transition-colors duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+            size="lg"
+            className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black text-xs uppercase tracking-wider shadow-[3px_3px_0px_0px_#000]"
           >
             {isSubmitting
               ? isUpdate
-                ? "Updating..."
-                : "Submitting..."
+                ? "UPDATING..."
+                : "SUBMITTING..."
               : isUpdate
-                ? "Update Feedback"
-                : "Submit Review"}
-          </button>
+                ? "UPDATE FEEDBACK ★"
+                : "SUBMIT REVIEW ★"}
+          </Button>
         </div>
       </motion.div>
     </div>
