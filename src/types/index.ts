@@ -1,0 +1,12 @@
+export type * from "./routes.type";
+export type * from "./user.type";
+export type * from "./about.type";
+export type * from "./experience.type";
+export type * from "./project.type";
+export type * from "./contact.type";
+export type * from "./review.type";
+export type * from "./setting.type";
+export type * from "./analytics.type";
+export type * from "./awards.type";
+export type * from "./faq.type";
+// export type * from "./blog.type";
