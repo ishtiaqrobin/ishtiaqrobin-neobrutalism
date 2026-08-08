@@ -62,11 +62,11 @@ export function AppSidebar({
   return (
     <Sidebar className="h-screen flex flex-col border-r-3 border-black dark:border-zinc-700 bg-white dark:bg-zinc-950" {...props}>
       {/* Header */}
-      <SidebarHeader className="border-b-2 border-black shrink-0 px-4 py-2.5">
+      <SidebarHeader className="border-b-3 border-black shrink-0 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="inline-block">
           <motion.div
-            className="text-2xl font-black font-clash uppercase text-black bg-[#00f0ff] border-2 border-black px-3 py-1 rounded-lg shadow-[2px_2px_0px_0px_#000] w-fit cursor-pointer"
+            className="text-2xl font-black font-clash uppercase text-black bg-[#00f0ff] border-b-3 border-black px-3 py-1 rounded-lg shadow-[2px_2px_0px_0px_#000] w-fit cursor-pointer"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

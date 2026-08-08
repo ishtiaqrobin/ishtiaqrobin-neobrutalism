@@ -43,8 +43,8 @@ export default function DashboardLayout({
         <DashboardSidebar />
         {/* flex-col + overflow-hidden — শুধু content area scroll করবে */}
         <SidebarInset className="flex flex-col flex-1 overflow-hidden">
-          <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-            <SidebarTrigger className="-ml-1 flex md:hidden" />
+          <header className="flex h-16 shrink-0 items-center gap-3 border-b-3 border-black dark:border-zinc-700 bg-white/95 dark:bg-zinc-950/95 backdrop-blur px-4">
+            <SidebarTrigger className="-ml-1 flex md:hidden border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000] bg-white dark:bg-zinc-900 cursor-pointer" />
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
