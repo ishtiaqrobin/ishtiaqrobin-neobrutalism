@@ -15,11 +15,14 @@ export default async function AdminContactsPage() {
   return (
     <div className="min-h-screen space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">
-          Contacts Management
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2">
+          ★ MESSAGES & INQUIRIES
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+          CONTACT MANAGEMENT
         </h1>
-        <p className="mt-2 text-muted-foreground">
-          Manage messages from your portfolio visitors
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+          Manage and respond to messages submitted by portfolio visitors
         </p>
       </div>
 

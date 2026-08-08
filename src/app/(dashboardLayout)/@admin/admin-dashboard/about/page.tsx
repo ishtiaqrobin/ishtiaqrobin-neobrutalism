@@ -38,10 +38,14 @@ export default function AdminAboutPage() {
   return (
     <div className="space-y-6 min-h-screen">
       <div>
-        <h1 className="text-3xl font-bold">About Section</h1>
-        <p className="text-muted-foreground mt-2">
-          Manage the homepage about section, hero/profile images, and resume
-          content.
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2">
+          ★ BIOGRAPHY & RESUME
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+          ABOUT SECTION
+        </h1>
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+          Manage homepage about story, profile images, and downloadable resume link
         </p>
       </div>
 
