@@ -33,7 +33,7 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="container-custom py-16 sm:py-24 border-b-3 border-black dark:border-zinc-700">
+    <section className="container-custom py-16 sm:py-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start">
         <div className="lg:col-span-4">
           <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">

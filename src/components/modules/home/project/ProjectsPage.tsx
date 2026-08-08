@@ -86,7 +86,7 @@ export default function ProjectsPage({
   });
 
   return (
-    <section className="container-custom pt-28 sm:pt-40 pb-16 min-h-screen">
+    <section className="container-custom pt-28 sm:pt-40 pb-16 min-h-screen border-b-3 border-black dark:border-zinc-700">
       <div className="mb-10 max-w-2xl">
         <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
           ★ MY PROJECT PORTFOLIO

@@ -74,31 +74,29 @@ export default function OnThisPageMenu({
 
   return (
     <div className={`flex flex-col ${className}`}>
-      <div className="flex items-center gap-2 text-text-primary text-sm font-medium leading-5 tracking-wider">
-        <RiMenu2Line className="w-4 h-4" />
-        On this page
+      <div className="inline-flex items-center gap-2 bg-[#00f0ff] text-black font-black text-xs uppercase tracking-wider px-3 py-1.5 border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000] mb-3 w-fit">
+        <RiMenu2Line className="w-4 h-4 stroke-[1]" />
+        ON THIS PAGE
       </div>
 
       {/* Sidebar Navigation Links */}
-      <div className="flex flex-col relative py-3">
+      <div className="flex flex-col relative py-2 space-y-1">
         {sections.map((section) => {
           const isActive = activeSection === labelToHash(section.label);
           return (
             <a
               key={section.id}
               href={`#${labelToHash(section.label)}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const sectionHash = labelToHash(section.label);
-                  window.location.hash = sectionHash;
-                  setActiveSection(sectionHash);
-                }}
-              className={`relative py-1.5 text-sm font-normal transition-all duration-300 border-l-2 ${
-                section.label.length === 2 ? "pl-[30px]" : "pl-[14px]"
-              } ${
+              onClick={(e) => {
+                e.preventDefault();
+                const sectionHash = labelToHash(section.label);
+                window.location.hash = sectionHash;
+                setActiveSection(sectionHash);
+              }}
+              className={`relative py-1.5 px-3 text-xs font-black uppercase tracking-wider transition-all rounded-r-lg border-l-4 ${
                 isActive
-                  ? "text-primary border-primary font-normal"
-                  : "text-text-primary border-zinc-300/60 dark:border-zinc-800 hover:text-secondary"
+                  ? "bg-[#b5ff6d] text-black border-black shadow-[2px_2px_0px_0px_#000] -translate-x-0.5"
+                  : "text-zinc-700 dark:text-zinc-300 border-zinc-400 dark:border-zinc-700 hover:text-black dark:hover:text-white hover:border-black"
               }`}
             >
               {section.label}
