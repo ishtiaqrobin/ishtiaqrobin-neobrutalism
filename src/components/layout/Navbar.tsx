@@ -67,11 +67,10 @@ export function Navbar() {
         transition={{ duration: 0.7 }}
       >
         <nav
-          className={`${
-            scrolled
-              ? "max-w-3xl mx-auto bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl px-4 py-2 border-2 border-black dark:border-zinc-300 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]"
-              : "container-custom bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-2 border-black dark:border-zinc-700 py-2.5 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]"
-          } duration-300 transition-all flex items-center justify-between`}
+          className={`${scrolled
+            ? "max-w-3xl mx-auto bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl px-3 py-2 border-2 border-black dark:border-zinc-300 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]"
+            : "container-custom bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-2 border-black dark:border-zinc-700 px-3 py-2 rounded-2xl shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]"
+            } duration-300 transition-all flex items-center justify-between`}
         >
           {/* Logo */}
           <Link href="/">
@@ -93,11 +92,10 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-sm font-extrabold uppercase tracking-wide rounded-lg transition-all border-2 ${
-                    isActive
-                      ? "bg-[#00f0ff] text-black border-black shadow-[2px_2px_0px_0px_#000]"
-                      : "border-transparent text-zinc-900 dark:text-zinc-100 hover:border-black dark:hover:border-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                  }`}
+                  className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-sm font-extrabold uppercase tracking-wide rounded-lg transition-all border-2 ${isActive
+                    ? "bg-[#00f0ff] text-black border-black shadow-[2px_2px_0px_0px_#000]"
+                    : "border-transparent text-zinc-900 dark:text-zinc-100 hover:border-black dark:hover:border-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                    }`}
                 >
                   {isActive && (
                     <div className="w-2 h-2 rounded-sm bg-black shrink-0" />
@@ -112,11 +110,10 @@ export function Navbar() {
             {user?.role === "ADMIN" || user?.role === "USER" ? (
               <Link
                 href="/admin-dashboard"
-                className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-sm font-extrabold uppercase tracking-wide rounded-lg transition-all border-2 ${
-                  pathname === "/admin-dashboard"
-                    ? "bg-[#ff597b] text-black border-black shadow-[2px_2px_0px_0px_#000]"
-                    : "border-black bg-[#ff597b]/90 text-black shadow-[2px_2px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5"
-                }`}
+                className={`group relative flex items-center gap-1.5 px-3 py-1.5 text-sm font-extrabold uppercase tracking-wide rounded-lg transition-all border-2 ${pathname === "/admin-dashboard"
+                  ? "bg-[#ff597b] text-black border-black shadow-[2px_2px_0px_0px_#000]"
+                  : "border-black bg-[#ff597b]/90 text-black shadow-[2px_2px_0px_0px_#000] hover:-translate-x-0.5 hover:-translate-y-0.5"
+                  }`}
               >
                 Dashboard
               </Link>
