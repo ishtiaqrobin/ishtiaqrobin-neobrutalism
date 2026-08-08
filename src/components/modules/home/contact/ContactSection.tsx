@@ -88,7 +88,7 @@ export function ContactSection() {
   };
 
   return (
-    <section ref={ref} className="container-custom py-16 sm:py-28 border-b-3 border-black dark:border-zinc-700">
+    <section ref={ref} className="container-custom pt-28 pb-24 sm:pt-36 sm:pb-28 border-b-3 border-black dark:border-zinc-700">
       <div className="mb-10">
         <div className="inline-block bg-[#ff597b] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-4">
           ★ GET IN TOUCH
