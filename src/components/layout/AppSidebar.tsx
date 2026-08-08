@@ -62,7 +62,7 @@ export function AppSidebar({
   return (
     <Sidebar className="h-screen flex flex-col border-r-3 border-black dark:border-zinc-700 bg-white dark:bg-zinc-950" {...props}>
       {/* Header */}
-      <SidebarHeader className="border-b-3 border-black shrink-0 px-4 py-2.5">
+      <SidebarHeader className="border-b-3 border-r-3 border-black shrink-0 px-4 py-2.5">
         {/* Logo */}
         <Link href="/" className="inline-block">
           <motion.div
@@ -76,7 +76,7 @@ export function AppSidebar({
       </SidebarHeader>
 
       {/* Content */}
-      <SidebarContent className="flex-1 overflow-y-auto min-h-0 py-2">
+      <SidebarContent className="flex-1 overflow-y-auto min-h-0 py-2 border-r-3 border-black dark:border-zinc-700">
         {routes.map((group) => (
           <SidebarGroup key={group.title}>
             <SidebarGroupLabel className="text-[11px] font-black uppercase tracking-widest text-zinc-600 dark:text-zinc-400 px-3">
@@ -93,10 +93,10 @@ export function AppSidebar({
                         isActive={isActive}
                         tooltip={item.title}
                         className={cn(
-                          "flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-black uppercase tracking-wider transition-all border-l-4 my-0.5",
+                          "flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-black uppercase tracking-wider transition-all my-0.5",
                           isActive
                             ? "bg-[#b5ff6d] text-black border-black shadow-[2px_2px_0px_0px_#000] font-black"
-                            : "text-zinc-700 dark:text-zinc-300 border-transparent hover:text-black dark:hover:text-white hover:border-black",
+                            : "text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:border-black hover:shadow-[2px_2px_0px_0px_#000]",
                         )}
                       >
                         <Link href={item.url} onClick={handleLinkClick}>
@@ -149,7 +149,7 @@ export function AppSidebar({
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter className="border-t-2 border-black shrink-0 p-3 bg-[#FFFDF5] dark:bg-zinc-900">
+      <SidebarFooter className="border-t-3 border-r-3 border-black shrink-0 p-3 bg-[#FFFDF5] dark:bg-zinc-900">
         {!user ? (
           <div className="flex items-center gap-3 p-2">
             <Skeleton className="h-8 w-8 rounded-full border-2 border-black" />
