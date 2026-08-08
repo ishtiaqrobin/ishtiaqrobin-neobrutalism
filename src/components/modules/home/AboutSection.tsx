@@ -35,7 +35,7 @@ export function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="pt-28 pb-24 sm:pt-36 sm:pb-28 relative bg-white dark:bg-zinc-900 border-b-3 border-black dark:border-zinc-700 overflow-hidden"
+      className="pt-28 pb-24 sm:pt-36 sm:pb-28 relative bg-white dark:bg-zinc-900 border-b-2 border-black dark:border-zinc-700 overflow-hidden"
     >
       <div className="container-custom relative z-10">
         <div className="flex flex-col lg:flex-row justify-center gap-10 lg:gap-16 items-center">

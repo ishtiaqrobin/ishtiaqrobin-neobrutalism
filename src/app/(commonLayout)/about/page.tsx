@@ -70,7 +70,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       <AboutSection />
-      <div className="border-y bg-[#F7F8FA] dark:bg-[#0b0b0d]">
+      <div className="border-b-2 border-black bg-[#F7F8FA] dark:bg-[#0b0b0d]">
         <TechMarquee />
       </div>
 
