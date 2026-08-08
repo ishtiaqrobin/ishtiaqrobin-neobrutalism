@@ -58,39 +58,41 @@ export function AvatarUpload({ currentImage, onUpdate, name }: AvatarUploadProps
     return (
         <div className="flex flex-col items-center gap-4">
             <div className="relative group">
-                <Avatar className="h-32 w-32 border-4 border-background shadow-xl">
+                <Avatar className="h-32 w-32 border-3 border-black dark:border-zinc-300 shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]">
                     <AvatarImage src={previewUrl || currentImage || undefined} />
-                    <AvatarFallback className="text-3xl font-bold bg-primary/10 text-primary">
+                    <AvatarFallback className="text-3xl font-black font-clash bg-[#00f0ff] text-black">
                         {name.charAt(0)}
                     </AvatarFallback>
                 </Avatar>
                 <Dialog open={isOpen} onOpenChange={handleOpenChange}>
                     <DialogTrigger asChild>
-                        <button className="absolute bottom-0 right-0 p-2 bg-primary text-white rounded-full shadow-lg hover:scale-110 transition-transform">
-                            <Camera className="h-5 w-5" />
+                        <button className="absolute bottom-0 right-0 p-2 bg-[#00f0ff] text-black border-2 border-black rounded-full shadow-[2px_2px_0px_0px_#000] hover:scale-110 transition-transform cursor-pointer">
+                            <Camera className="h-5 w-5 stroke-[2.5]" />
                         </button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-md rounded-3xl">
-                        <DialogHeader>
-                            <DialogTitle>Update Profile Picture</DialogTitle>
+                    <DialogContent className="sm:max-w-md bg-white dark:bg-zinc-900 border-3 border-black dark:border-zinc-300 rounded-2xl shadow-[8px_8px_0px_0px_#000]">
+                        <DialogHeader className="border-b-2 border-black pb-2">
+                            <DialogTitle className="font-clash font-black uppercase text-xl text-black dark:text-white">
+                                UPDATE AVATAR ★
+                            </DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4 py-4">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Select Image File</label>
+                                <label className="text-xs font-black uppercase text-black dark:text-white">SELECT IMAGE FILE</label>
                                 <Input
                                     type="file"
                                     accept="image/*"
                                     onChange={handleFileChange}
                                     disabled={isCompressing}
-                                    className="rounded-xl border-primary/20 pt-2"
+                                    className="border-2 border-black rounded-xl pt-2 font-bold cursor-pointer"
                                 />
                                 {isCompressing ? (
-                                    <p className="text-[11px] text-primary flex items-center gap-1">
-                                        <Loader2 className="h-3 w-3 animate-spin" />
+                                    <p className="text-xs font-bold text-[#00f0ff] flex items-center gap-1">
+                                        <Loader2 className="h-3.5 w-3.5 animate-spin" />
                                         Compressing image…
                                     </p>
                                 ) : (
-                                    <p className="text-[11px] text-muted-foreground">
+                                    <p className="text-[11px] font-bold text-zinc-500">
                                         Max 5MB · Auto-compressed to WebP
                                     </p>
                                 )}
@@ -101,42 +103,33 @@ export function AvatarUpload({ currentImage, onUpdate, name }: AvatarUploadProps
                                             height={128}
                                             src={previewUrl}
                                             alt="Preview"
-                                            className="h-32 w-32 rounded-full object-cover border-2 border-primary/20"
+                                            className="h-32 w-32 rounded-full object-cover border-3 border-black shadow-[4px_4px_0px_0px_#000]"
                                         />
                                     </div>
                                 )}
                             </div>
                         </div>
-                        <div className="flex justify-end gap-3">
+                        <div className="flex justify-end gap-3 pt-2 border-t-2 border-black">
                             <Button
-                                // size={"md"}
-                                variant="outline"
                                 onClick={() => handleOpenChange(false)}
-                                className="cursor-pointer"
+                                className="bg-white dark:bg-zinc-800 text-black dark:text-white border-2 border-black font-black uppercase text-xs shadow-[2px_2px_0px_0px_#000] cursor-pointer"
                             >
-                                Cancel
+                                CANCEL
                             </Button>
                             <Button
-                                // size={"md"}
                                 onClick={handleUpdate}
                                 disabled={isUpdating || isCompressing || !file}
-                                className="cursor-pointer"
+                                className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000] cursor-pointer"
                             >
-                                {isUpdating ? (
-                                    <>
-                                        Uploading...
-                                    </>
-                                ) : (
-                                    "Upload"
-                                )}
+                                {isUpdating ? "UPLOADING..." : "UPLOAD ★"}
                             </Button>
                         </div>
                     </DialogContent>
                 </Dialog>
             </div>
             <div className="text-center">
-                <h3 className="font-bold text-xl">{name}</h3>
-                <p className="text-sm text-muted-foreground uppercase tracking-widest">Profile Account</p>
+                <h3 className="font-black font-clash text-xl uppercase text-black dark:text-white">{name}</h3>
+                <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-widest">MEMBER ACCOUNT</p>
             </div>
         </div>
     );

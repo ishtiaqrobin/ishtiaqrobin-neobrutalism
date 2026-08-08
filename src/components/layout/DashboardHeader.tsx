@@ -48,7 +48,7 @@ export function DashboardHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b-3 border-black dark:border-zinc-700 bg-white/95 dark:bg-zinc-950/95 backdrop-blur">
       <div className="container flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-4">
           {/* Mobile Hamburger Menu */}
@@ -57,35 +57,35 @@ export function DashboardHeader() {
               <Button
                 variant="outline"
                 size="icon"
-                className="lg:hidden rounded-full w-9 h-9"
+                className="lg:hidden rounded-lg w-9 h-9 border-2 border-black shadow-[2px_2px_0px_0px_#000]"
               >
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 stroke-[2.5]" />
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-64">
-              <SheetHeader className="px-4 pt-4 pb-1">
+            <SheetContent side="left" className="w-64 border-r-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900">
+              <SheetHeader className="px-4 pt-4 pb-2 border-b-2 border-black">
                 <SheetTitle>
                   <Link href="/">
                     <motion.div
-                      className="text-2xl font-bold font-mono text-gray-900 dark:text-white hover:text-primary transition-colors cursor-pointer"
+                      className="text-2xl font-black font-clash uppercase text-black dark:text-white cursor-pointer"
                       whileHover={{ scale: 1.01 }}
                       whileTap={{ scale: 0.99 }}
                     >
-                      <span className="text-primary">&lt;</span>
+                      <span className="text-[#00f0ff]">&lt;</span>
                       {PERSONAL_INFO.name.split(" ")[0]}
-                      <span className="text-primary"> /&gt;</span>
+                      <span className="text-[#00f0ff]"> /&gt;</span>
                     </motion.div>
                   </Link>
                 </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 pt-4">
                 <div className="space-y-1">
-                  <h3 className="text-sm font-semibold text-muted-foreground px-2">
-                    {user?.role === "ADMIN" && "Admin Menu"}
-                    {user?.role === "USER" && "User Dashboard"}
+                  <h3 className="text-xs font-black uppercase text-black dark:text-white px-2">
+                    {user?.role === "ADMIN" && "ADMIN MENU"}
+                    {user?.role === "USER" && "USER DASHBOARD"}
                   </h3>
-                  <nav className="space-y-1">
+                  <nav className="space-y-1 pt-2">
                     {getUserRoutes().map((route) => {
                       const Icon = route.icon;
                       const isActive = pathname === route.url;
@@ -95,13 +95,13 @@ export function DashboardHeader() {
                           href={route.url}
                           onClick={() => setIsSheetOpen(false)}
                           className={cn(
-                            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                            "flex items-center gap-3 rounded-lg px-3 py-2 text-xs font-black uppercase tracking-wider transition-all border-l-4",
                             isActive
-                              ? "bg-muted text-primary"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                              ? "bg-[#b5ff6d] text-black border-black shadow-[2px_2px_0px_0px_#000]"
+                              : "text-zinc-700 dark:text-zinc-300 border-transparent hover:text-black dark:hover:text-white hover:border-black",
                           )}
                         >
-                          {Icon && <Icon className="h-4 w-4" />}
+                          {Icon && <Icon className="h-4 w-4 stroke-[2.5]" />}
                           <span>{route.title}</span>
                         </Link>
                       );
@@ -112,61 +112,54 @@ export function DashboardHeader() {
             </SheetContent>
           </Sheet>
 
-          <h2 className="text-lg font-semibold">
-            {user?.role === "ADMIN" && "Admin Dashboard"}
-            {user?.role === "USER" && "User Dashboard"}
+          <h2 className="text-lg font-clash font-black uppercase tracking-tight text-black dark:text-white">
+            {user?.role === "ADMIN" && "ADMIN DASHBOARD ★"}
+            {user?.role === "USER" && "USER DASHBOARD ★"}
           </h2>
         </div>
 
         {/* Profile Menu */}
         <div className="flex items-center gap-4">
-          {/* User Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
-                <Avatar className="h-9 w-9">
+              <button className="flex items-center gap-2 rounded-full focus:outline-none cursor-pointer">
+                <Avatar className="h-9 w-9 border-2 border-black shadow-[2px_2px_0px_0px_#000]">
                   <AvatarImage
                     src={user?.image || undefined}
                     alt={user?.name}
                   />
-                  <AvatarFallback>
+                  <AvatarFallback className="bg-[#00f0ff] text-black font-black text-xs">
                     {user?.name?.charAt(0).toUpperCase() || "U"}
                   </AvatarFallback>
                 </Avatar>
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-56 border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-xl shadow-[4px_4px_0px_0px_#000]">
               <DropdownMenuLabel>
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
+                  <p className="text-sm font-black font-clash uppercase text-black dark:text-white">
                     {user?.name}
                   </p>
-                  <p className="text-xs leading-none text-muted-foreground">
+                  <p className="text-xs font-mono font-bold text-zinc-500 truncate">
                     {user?.email}
                   </p>
-                  <p className="text-xs leading-none text-muted-foreground mt-1">
-                    Role: {user?.role}
-                  </p>
+                  <span className="text-[10px] font-mono font-black uppercase bg-[#b5ff6d] text-black px-1.5 py-0.5 rounded border border-black w-fit mt-1 shadow-[1px_1px_0px_0px_#000]">
+                    ROLE: {user?.role}
+                  </span>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="bg-black/20" />
               <DropdownMenuItem asChild>
-                <Link href={getDashboardUrl()} className="cursor-pointer">
-                  <User className="mr-2 h-4 w-4" />
-                  Dashboard
+                <Link href={getDashboardUrl()} className="cursor-pointer font-bold text-xs uppercase">
+                  <User className="mr-2 h-4 w-4 stroke-[2.5]" />
+                  DASHBOARD
                 </Link>
               </DropdownMenuItem>
-              {/* <DropdownMenuItem asChild>
-                                <Link href="/profile" className="cursor-pointer">
-                                    <Settings className="mr-2 h-4 w-4" />
-                                    Settings
-                                </Link>
-                            </DropdownMenuItem> */}
-              <DropdownMenuSeparator />
+              <DropdownMenuSeparator className="bg-black/20" />
               <DropdownMenuItem asChild>
                 <LogoutButton
                   variant="ghost"
-                  className="w-full justify-start px-2"
+                  className="w-full justify-start px-2 font-black uppercase text-xs text-red-600 hover:bg-red-100 cursor-pointer"
                 />
               </DropdownMenuItem>
             </DropdownMenuContent>
