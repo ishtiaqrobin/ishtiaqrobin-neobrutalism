@@ -130,56 +130,59 @@ export function ProfileClient({ userToken, role }: ProfileClientProps) {
   }
 
   return (
-    <div className="space-y-6 w-full">
+    <div className="space-y-6 w-full pb-10">
       <div>
-        <h1 className="text-3xl font-bold">Profile Management</h1>
-        <p className="text-muted-foreground mt-2">
-          Manage your personal information and profile
+        <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-2">
+          ★ PROFILE MANAGEMENT
+        </div>
+        <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+          PROFILE SETTINGS
+        </h1>
+        <p className="text-xs font-bold text-zinc-600 dark:text-zinc-400 mt-1">
+          Manage your personal information, avatar, and security credentials.
         </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-12">
-        <Card
-          className={`lg:col-span-4 border-primary/10 shadow-lg rounded-3xl overflow-hidden h-fit ${!isAdmin ? "shadow-primary-400/30" : ""}`}
-        >
-          <div className="h-24 bg-linear-to-r from-primary/20 to-primary/5" />
-          <CardContent className="-mt-16 relative">
+        <Card className="lg:col-span-4 border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden h-fit">
+          <div className="h-20 bg-[#00f0ff] border-b-2 border-black" />
+          <CardContent className="-mt-14 relative p-6 pt-0">
             <AvatarUpload
               currentImage={user.image}
               onUpdate={handleAvatarUpdate}
               name={user.name}
             />
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-8 space-y-3">
               {isAdmin && (
-                <div className="p-4 rounded-2xl bg-linear-to-br from-primary/10 to-primary/5 border border-primary/20 flex items-center justify-between">
+                <div className="p-3.5 rounded-xl bg-[#b5ff6d] border-2 border-black flex items-center justify-between shadow-[2px_2px_0px_0px_#000]">
                   <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">
-                      Role
+                    <Shield className="h-4 w-4 text-black stroke-[2.5]" />
+                    <span className="text-xs font-black uppercase text-black">
+                      ROLE
                     </span>
                   </div>
-                  <Badge className="bg-primary text-primary-foreground font-black uppercase tracking-wider">
-                    <UserCog className="h-3 w-3 mr-1" />
-                    Admin
+                  <Badge className="bg-black text-white font-black uppercase text-xs tracking-wider">
+                    <UserCog className="h-3 w-3 mr-1 stroke-[3]" />
+                    ADMIN
                   </Badge>
                 </div>
               )}
 
-              <div className="p-4 rounded-2xl bg-muted/50 border border-muted flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">
-                  Account Status
+              <div className="p-3.5 rounded-xl bg-[#FFFDF5] dark:bg-zinc-800 border-2 border-black flex items-center justify-between shadow-[2px_2px_0px_0px_#000]">
+                <span className="text-xs font-black uppercase text-black dark:text-white">
+                  ACCOUNT STATUS
                 </span>
-                <span className="text-xs font-bold px-2 py-1 rounded-full bg-green-500/10 text-green-600">
+                <span className="text-xs font-mono font-black px-2.5 py-0.5 rounded bg-[#00f0ff] text-black border border-black shadow-[1px_1px_0px_0px_#000]">
                   {user.isActive ? "ACTIVE" : "INACTIVE"}
                 </span>
               </div>
 
-              <div className="p-4 rounded-2xl bg-muted/50 border border-muted flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">
-                  Joined Since
+              <div className="p-3.5 rounded-xl bg-[#FFFDF5] dark:bg-zinc-800 border-2 border-black flex items-center justify-between shadow-[2px_2px_0px_0px_#000]">
+                <span className="text-xs font-black uppercase text-black dark:text-white">
+                  JOINED SINCE
                 </span>
-                <span className="text-sm font-medium">
+                <span className="text-xs font-mono font-bold text-black dark:text-white">
                   {user.createdAt
                     ? new Date(user.createdAt).toLocaleDateString()
                     : "N/A"}
@@ -187,11 +190,10 @@ export function ProfileClient({ userToken, role }: ProfileClientProps) {
               </div>
 
               {isAdmin && (
-                <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20">
-                  <p className="text-xs text-amber-600 dark:text-amber-400 leading-relaxed">
-                    <Shield className="h-3 w-3 inline mr-1" />
-                    You have full administrative privileges to manage users,
-                    categories, and bookings.
+                <div className="p-3.5 rounded-xl bg-[#ff597b] border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <p className="text-xs font-bold text-black leading-relaxed">
+                    <Shield className="h-3.5 w-3.5 inline mr-1 stroke-[2.5]" />
+                    You have full administrative privileges across all modules.
                   </p>
                 </div>
               )}
@@ -200,25 +202,25 @@ export function ProfileClient({ userToken, role }: ProfileClientProps) {
         </Card>
 
         <div className="lg:col-span-8 space-y-8">
-          <Card
-            className={`border-primary/10 shadow-lg rounded-3xl ${!isAdmin ? "shadow-primary-400/30" : ""}`}
-          >
-            <CardHeader>
+          <Card className="border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 rounded-2xl shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden">
+            <CardHeader className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black p-5">
               {isAdmin ? (
-                <CardTitle>Update Information</CardTitle>
+                <CardTitle className="text-lg font-clash font-black uppercase text-black dark:text-white">
+                  UPDATE INFORMATION
+                </CardTitle>
               ) : (
                 <>
-                  <CardTitle className="text-xl font-bold flex items-center gap-2">
-                    <UserIcon className="h-5 w-5 text-primary" />
-                    Profile Information
+                  <CardTitle className="text-lg font-clash font-black uppercase flex items-center gap-2 text-black dark:text-white">
+                    <UserIcon className="h-5 w-5 text-black dark:text-white stroke-[2.5]" />
+                    PROFILE INFORMATION
                   </CardTitle>
-                  <CardDescription>
-                    Update your profile information and preferences.
+                  <CardDescription className="text-xs font-bold text-zinc-600 dark:text-zinc-400">
+                    Update your display name, contact details, and bio.
                   </CardDescription>
                 </>
               )}
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-6">
               <ProfileForm
                 user={user}
                 token={userToken}

@@ -49,48 +49,44 @@ export default function UserDashboardPage() {
     <div className="space-y-8 min-h-screen pb-10">
       {/* Header Section */}
       <motion.div
-        // initial={{ opacity: 0, y: -20 }}
-        // animate={{ opacity: 1, y: 0 }}
-        className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-primary/5 p-8 rounded-3xl border border-primary/10 relative overflow-hidden shadow-md hover:shadow-lg shadow-primary-400/30 hover:shadow-primary-400/50 transition-shadow duration-300"
+        className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-2xl border-3 border-black dark:border-zinc-300 relative overflow-hidden shadow-[8px_8px_0px_0px_#000] dark:shadow-[8px_8px_0px_0px_#b5ff6d]"
       >
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold tracking-tight">
-            {greeting()}, <span className="text-primary">{user?.name}</span>!
+          <div className="inline-block bg-[#00f0ff] text-black font-black text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-black shadow-[2px_2px_0px_0px_#000] mb-3">
+            ★ USER DASHBOARD
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white">
+            {greeting()}, <span className="bg-[#b5ff6d] text-black px-2 py-0.5 border-2 border-black rounded shadow-[2px_2px_0px_0px_#000]">{user?.name}</span>!
           </h1>
-          <p className="text-muted-foreground mt-2 max-w-md">
-            Welcome back to your dashboard. Here&apos;s an overview of your account and recent activities.
+          <p className="text-sm font-bold text-zinc-700 dark:text-zinc-300 mt-3 max-w-md border-l-4 border-black pl-3">
+            Welcome back to your member dashboard. Here's an overview of your account and activities.
           </p>
-          <div className="flex items-center gap-4 mt-6">
+          <div className="flex items-center gap-3 mt-6">
             <Link href="/user-dashboard/profile">
               <Button
-                variant={"default"}
-                // size={"sm"}
-                className="cursor-pointer">
-                Edit Profile
-                {/* <ArrowRight className="ml-2 h-4 w-4" /> */}
+                size="lg"
+                className="bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000]">
+                EDIT PROFILE ★
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              // size={"sm"}
-              className="cursor-pointer">
-              <Link href="/">View Portfolio</Link>
-            </Button>
+            <Link href="/">
+              <Button
+                size="lg"
+                className="bg-white dark:bg-zinc-800 text-black dark:text-white hover:bg-zinc-100 font-black uppercase text-xs border-2 border-black shadow-[3px_3px_0px_0px_#000]">
+                VIEW PORTFOLIO
+              </Button>
+            </Link>
           </div>
         </div>
 
         <div className="hidden md:flex items-center justify-center relative z-10">
-          <Avatar className="h-32 w-32 border-4 border-primary/20 shadow-xl">
+          <Avatar className="h-28 w-28 border-3 border-black shadow-[4px_4px_0px_0px_#000]">
             <AvatarImage src={user?.image || ""} alt={user?.name} />
-            <AvatarFallback className="text-4xl bg-primary/10 text-primary font-bold">
+            <AvatarFallback className="text-3xl bg-[#00f0ff] text-black font-black">
               {user?.name?.charAt(0)}
             </AvatarFallback>
           </Avatar>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-0" />
-        <div className="absolute -left-10 -top-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl -z-0" />
       </motion.div>
 
       {/* Stats Grid */}
@@ -100,100 +96,89 @@ export default function UserDashboardPage() {
           value={user?.isActive ? "Active" : "Pending"}
           description="Your current account state"
           icon={ShieldCheck}
-          color="text-emerald-600"
-          bg="bg-emerald-100"
         />
         <StatsCard
           title="Reviews Given"
           value={user?.isReviewed ? "1" : "0"}
           description={user?.isReviewed ? "Thank you for your feedback!" : "You haven't reviewed yet"}
           icon={Star}
-          color="text-amber-600"
-          bg="bg-amber-100"
         />
         <StatsCard
           title="Member Since"
           value={user?.createdAt ? new Date(user.createdAt).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }) : "N/A"}
           description="When you joined our platform"
           icon={Calendar}
-          color="text-blue-600"
-          bg="bg-blue-100"
         />
         <StatsCard
           title="Role"
           value={user?.role || "User"}
           description="Your current access level"
           icon={UserIcon}
-          color="text-purple-600"
-          bg="bg-purple-100"
         />
       </div>
 
       {/* Quick Links & Info */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="rounded-3xl border shadow-md hover:shadow-lg shadow-primary-400/30 hover:shadow-primary-400/50 overflow-hidden group transition-all duration-300">
-          <CardHeader className="bg-primary/5 pt-2 pb-0.5">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <MessageSquare className="h-5 w-5 text-primary" />
-              Review Management
+        <Card className="rounded-2xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[5px_5px_0px_0px_#000] dark:shadow-[5px_5px_0px_0px_#b5ff6d] overflow-hidden">
+          <CardHeader className="bg-[#00f0ff] border-b-2 border-black p-4">
+            <CardTitle className="flex items-center gap-2 text-base font-black font-clash uppercase text-black">
+              <MessageSquare className="h-5 w-5 stroke-[2.5]" />
+              REVIEW MANAGEMENT
             </CardTitle>
           </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground mb-6">
+          <CardContent className="p-5">
+            <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300 mb-6">
               {user?.isReviewed
-                ? "You have already shared your thoughts. You can update or delete your review at any time."
-                : "Share your experience working with me. Your feedback is highly appreciated!"}
+                ? "You have shared your feedback. You can update or delete your review anytime."
+                : "Share your experience working with Ishtiaq. Your feedback is greatly appreciated!"}
             </p>
             <Link href="/user-dashboard/review">
               <Button
-                variant={"default"}
-                size={"sm"}
-                className="w-full cursor-pointer">
-                {user?.isReviewed ? "Manage My Review" : "Write a Review"}
+                size="lg"
+                className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000]">
+                {user?.isReviewed ? "MANAGE MY REVIEW ★" : "WRITE A REVIEW ★"}
               </Button>
             </Link>
           </CardContent>
         </Card>
 
-        <Card className="rounded-3xl border shadow-md hover:shadow-lg shadow-primary-400/30 hover:shadow-primary-400/50 overflow-hidden group transition-all duration-300">
-          <CardHeader className="bg-primary/5 pt-2 pb-0.5">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <UserIcon className="h-5 w-5 text-primary" />
-              Personal Profile
+        <Card className="rounded-2xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[5px_5px_0px_0px_#000] dark:shadow-[5px_5px_0px_0px_#b5ff6d] overflow-hidden">
+          <CardHeader className="bg-[#ff597b] border-b-2 border-black p-4">
+            <CardTitle className="flex items-center gap-2 text-base font-black font-clash uppercase text-black">
+              <UserIcon className="h-5 w-5 stroke-[2.5]" />
+              PERSONAL PROFILE
             </CardTitle>
           </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground mb-6">
-              Keep your profile information up to date to ensure the best experience on the platform.
+          <CardContent className="p-5">
+            <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300 mb-6">
+              Keep your profile information up to date to ensure the best experience.
             </p>
             <Link href="/user-dashboard/profile">
               <Button
-                variant="default"
-                size={"sm"}
-                className="w-full cursor-pointer">
-                Update Information
+                size="lg"
+                className="w-full bg-[#b5ff6d] text-black hover:bg-[#a2f059] font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000]">
+                UPDATE INFORMATION ★
               </Button>
             </Link>
           </CardContent>
         </Card>
 
-        <Card className="rounded-3xl border shadow-md hover:shadow-lg shadow-primary-400/30 hover:shadow-primary-400/50 overflow-hidden group transition-all duration-300">
-          <CardHeader className="bg-primary/5 pt-2 pb-0.5">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Settings className="h-5 w-5 text-primary" />
-              Account Settings
+        <Card className="rounded-2xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[5px_5px_0px_0px_#000] dark:shadow-[5px_5px_0px_0px_#b5ff6d] overflow-hidden">
+          <CardHeader className="bg-[#b5ff6d] border-b-2 border-black p-4">
+            <CardTitle className="flex items-center gap-2 text-base font-black font-clash uppercase text-black">
+              <Settings className="h-5 w-5 stroke-[2.5]" />
+              ACCOUNT SETTINGS
             </CardTitle>
           </CardHeader>
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground mb-6">
-              Manage your password and other account-related preferences here.
+          <CardContent className="p-5">
+            <p className="text-xs font-bold text-zinc-700 dark:text-zinc-300 mb-6">
+              Manage your security, password, and account preferences here.
             </p>
             <Link href="/user-dashboard/profile">
               <Button
-                variant="default"
-                size={"sm"}
-                className="w-full cursor-pointer">
-                Security Settings
+                size="lg"
+                className="w-full bg-[#00f0ff] text-black hover:bg-[#00d0df] font-black uppercase text-xs shadow-[3px_3px_0px_0px_#000]">
+                SECURITY SETTINGS ★
               </Button>
             </Link>
           </CardContent>
