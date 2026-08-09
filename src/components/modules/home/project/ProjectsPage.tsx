@@ -125,11 +125,10 @@ export default function ProjectsPage({
               <button
                 key={category}
                 onClick={() => handleCategoryChange(category)}
-                className={`px-4 py-2 text-xs font-black uppercase tracking-wider rounded-xl transition-all border-2 border-black cursor-pointer ${
-                  isSelected
-                    ? "bg-[#b5ff6d] text-black shadow-[3px_3px_0px_0px_#000] -translate-x-0.5 -translate-y-0.5"
-                    : "bg-white dark:bg-zinc-900 text-black dark:text-white shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]"
-                }`}
+                className={`min-w-fit px-4 py-2 text-xs font-black uppercase tracking-wider rounded-xl transition-all border-2 border-black cursor-pointer ${isSelected
+                  ? "bg-[#b5ff6d] text-black shadow-[3px_3px_0px_0px_#000] -translate-x-0.5 -translate-y-0.5"
+                  : "bg-white dark:bg-zinc-900 text-black dark:text-white shadow-[2px_2px_0px_0px_#000] dark:shadow-[2px_2px_0px_0px_#fff]"
+                  }`}
               >
                 {category}
               </button>
