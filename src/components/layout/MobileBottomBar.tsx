@@ -38,11 +38,10 @@ export default function MobileBottomBar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex flex-col items-center justify-center gap-1 flex-1 py-1.5 rounded-xl transition-all ${
-                isActive
-                  ? "bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000] font-black"
-                  : "text-black dark:text-white font-black hover:bg-[#00f0ff] hover:text-black"
-              }`}
+              className={`flex flex-col items-center justify-center gap-1 flex-1 py-1.5 rounded-xl transition-all ${isActive
+                ? "bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000] font-black"
+                : "text-black dark:text-white border-2 border-transparent font-black hover:bg-[#00f0ff] hover:text-black"
+                }`}
             >
               <Icon className="w-5 h-5 stroke-[2.5]" />
               <span className="text-[10px] font-black uppercase tracking-wider">
