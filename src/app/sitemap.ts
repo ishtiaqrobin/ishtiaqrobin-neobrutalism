@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://ishtiaqrobin.vercel.app";
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://ishtiaqrobin.netlify.app";
 
 interface Project {
   slug: string;
