@@ -53,6 +53,12 @@ const formatDate = (date: string) => {
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 };
 
+const formatYear = (date: string) => {
+  if (!date) return "";
+  const d = new Date(date);
+  return isNaN(d.getTime()) ? "" : d.getFullYear().toString();
+};
+
 export default function Experience() {
   const [experiences, setExperiences] = useState<IExperience[]>([]);
   const [loading, setLoading] = useState(true);
@@ -139,9 +145,9 @@ export default function Experience() {
             </span>
 
             {/* Render only for small devices */}
-            {/* <div className="block sm:hidden text-xs font-bold text-zinc-700 dark:text-zinc-300 inline-block">
-              <span className="text-[#00f0ff]">▶</span> {formatDate(exp.startDate)} – {exp.endDate ? formatDate(exp.endDate) : "PRESENT"}
-            </div> */}
+            <span className="block sm:hidden bg-[#00f0ff] text-black font-extrabold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-md border border-black shadow-[1px_1px_0px_0px_#000] whitespace-nowrap">
+              {formatYear(exp.startDate)} – {exp.endDate ? formatYear(exp.endDate) : "PRESENT"}
+            </span>
 
             <span
               className="w-7 h-7 rounded-md bg-[#ff597b] text-black border border-black flex items-center justify-center shadow-[1px_1px_0px_0px_#000]"
