@@ -156,7 +156,7 @@ export function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-24 sm:bottom-24 right-4 sm:right-7 z-50 w-[calc(100vw-2rem)] sm:w-96 max-h-[600px] flex flex-col rounded-xl border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden"
+            className="fixed bottom-40 sm:bottom-24 right-4 sm:right-7 z-50 w-[calc(100vw-2rem)] sm:w-96 max-h-[600px] flex flex-col rounded-xl border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[6px_6px_0px_0px_#000] dark:shadow-[6px_6px_0px_0px_#b5ff6d] overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b-2 border-black dark:border-zinc-700 bg-[#b5ff6d] text-black font-black">
@@ -296,7 +296,7 @@ export function Chatbot() {
             <motion.button
               onClick={() => setIsOpen((prev) => !prev)}
               className={cn(
-                "fixed bottom-20 sm:bottom-6 right-4 sm:right-7 z-50 transition-colors duration-200",
+                "fixed bottom-24 sm:bottom-6 right-4 sm:right-7 z-50 transition-colors duration-200",
               )}
               aria-label={isOpen ? "Close chat" : "Open chat"}
             >
