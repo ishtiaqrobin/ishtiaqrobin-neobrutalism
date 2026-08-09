@@ -133,9 +133,15 @@ export default function Experience() {
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            <span className="bg-[#00f0ff] text-black font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-md border border-black shadow-[1px_1px_0px_0px_#000] whitespace-nowrap">
+            {/* Render only for large devices */}
+            <span className="hidden sm:block bg-[#00f0ff] text-black font-extrabold text-[11px] uppercase tracking-wider px-2.5 py-1 rounded-md border border-black shadow-[1px_1px_0px_0px_#000] whitespace-nowrap">
               {formatDate(exp.startDate)} – {exp.endDate ? formatDate(exp.endDate) : "PRESENT"}
             </span>
+
+            {/* Render only for small devices */}
+            {/* <div className="block sm:hidden text-xs font-bold text-zinc-700 dark:text-zinc-300 inline-block">
+              <span className="text-[#00f0ff]">▶</span> {formatDate(exp.startDate)} – {exp.endDate ? formatDate(exp.endDate) : "PRESENT"}
+            </div> */}
 
             <span
               className="w-7 h-7 rounded-md bg-[#ff597b] text-black border border-black flex items-center justify-center shadow-[1px_1px_0px_0px_#000]"
