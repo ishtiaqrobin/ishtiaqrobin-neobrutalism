@@ -58,43 +58,42 @@ const TermsOfServicePage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary/5 py-16 lg:py-24">
-        <div className="absolute right-1/2 top-0 -z-10 h-[400px] w-[800px] -translate-x-1/2 bg-primary/20 blur-[120px]" />
+      <section className="relative overflow-hidden bg-[#FFFDF5] dark:bg-zinc-950 border-b-3 border-black dark:border-zinc-700 py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
-          <div className="mb-6 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
-            <FileText className="h-8 w-8" />
+          <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-[#b5ff6d] text-black border-2 border-black p-3 shadow-[3px_3px_0px_0px_#000]">
+            <FileText className="h-8 w-8 stroke-[2.5]" />
           </div>
-          <h1 className="mb-6 text-4xl font-clash tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Terms of Service
+          <h1 className="mb-4 text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white sm:text-5xl lg:text-6xl">
+            TERMS OF SERVICE ★
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
+          <p className="mx-auto max-w-2xl text-base sm:text-lg font-bold text-zinc-700 dark:text-zinc-300">
             Please read these terms carefully before engaging with our software
             engineering services. They outline your rights and obligations as a
             client of Ishtiaq Robin.
           </p>
-          <p className="mt-8 text-sm font-medium text-primary">
-            Effective Date: {lastUpdated}
-          </p>
+          <div className="mt-6 inline-block rounded-full bg-[#00f0ff] text-black border-2 border-black px-4 py-1.5 font-mono font-black text-xs uppercase shadow-[2px_2px_0px_0px_#000]">
+            EFFECTIVE DATE: {lastUpdated}
+          </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20">
         <div className="container mx-auto max-w-4xl px-4">
-          <div className="grid gap-12 lg:gap-16">
+          <div className="grid gap-12">
             {/* 1. Acceptance of Terms */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Handshake className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00f0ff] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Handshake className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    1. Acceptance of Terms
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    1. ACCEPTANCE OF TERMS
                   </h2>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     By accessing this portfolio or engaging Ishtiaq Robin for
                     software engineering services, you agree to be bound by
                     these Terms of Service. If you are representing a company,
@@ -106,90 +105,76 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 2. User Accounts */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <UserPlus className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#ff597b] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <UserPlus className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    2. Account Registration & Security
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    2. ACCOUNT REGISTRATION & SECURITY
                   </h2>
-                  <p className="mb-4 leading-relaxed text-muted-foreground">
+                  <p className="mb-4 leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     To access certain features, you must create an account. You
                     agree to provide accurate, current, and complete information
                     and to keep your login credentials confidential. You are
                     responsible for all activity under your account.
                   </p>
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    <li className="flex gap-3">
-                      <Zap className="h-4 w-4 shrink-0 text-primary" />
-                      <span>
-                        Clients must provide accurate project requirements and
-                        feedback.
-                      </span>
-                    </li>
-                    <li className="flex gap-3">
-                      <Zap className="h-4 w-4 shrink-0 text-primary" />
-                      <span>
-                        Source code ownership is transferred only upon full
-                        payment.
-                      </span>
-                    </li>
-                    <li className="flex gap-3">
-                      <Zap className="h-4 w-4 shrink-0 text-primary" />
-                      <span>
-                        We reserve the right to showcase completed work in our
-                        portfolio unless a non-disclosure agreement is in place.
-                      </span>
-                    </li>
-                    <li className="flex gap-3">
-                      <Zap className="h-4 w-4 shrink-0 text-primary" />
-                      <span>
-                        You may delete your account at any time; associated data
-                        will be handled per our Privacy Policy.
-                      </span>
-                    </li>
+                  <ul className="space-y-2.5 text-xs font-bold text-black dark:text-white">
+                    {[
+                      "Clients must provide accurate project requirements and feedback.",
+                      "Source code ownership is transferred only upon full payment.",
+                      "We reserve the right to showcase completed work in our portfolio unless an NDA is signed.",
+                      "You may delete your account at any time; data will be handled per our Privacy Policy.",
+                    ].map((item, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center gap-2.5 rounded-lg border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 p-3 shadow-[2px_2px_0px_0px_#000]"
+                      >
+                        <Zap className="h-4 w-4 shrink-0 text-[#ff597b] stroke-[2.5]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 3. Platform Conduct */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <AlertCircle className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#facc15] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <AlertCircle className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    3. Conduct & Safety
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    3. CONDUCT & SAFETY
                   </h2>
-                  <p className="mb-4 text-muted-foreground">
+                  <p className="mb-4 font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Ishtiaq Robin maintains a professional environment. Users
                     are prohibited from:
                   </p>
-                  <div className="grid gap-3 sm:grid-cols-2">
+                  <div className="grid gap-2.5 sm:grid-cols-2">
                     {[
                       "Harassing or abusing other users",
-                      "Sharing inappropriate or illegal content",
-                      "Attempting to bypass platform payments",
+                      "Sharing inappropriate content",
+                      "Bypassing platform payments",
                       "Spamming or automated scraping",
                       "Impersonating another person",
-                      "Violating intellectual property rights",
-                      "Submitting false or defamatory reviews",
-                      "Attempting to compromise site security",
+                      "Violating IP rights",
+                      "Submitting false reviews",
+                      "Compromising site security",
                     ].map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-2 rounded-lg border border-border bg-muted/30 px-3 py-2 text-xs font-medium"
+                        className="flex items-center gap-2 rounded-lg border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 px-3 py-2 text-xs font-bold text-black dark:text-white shadow-[2px_2px_0px_0px_#000]"
                       >
-                        <div className="h-1 w-1 rounded-full bg-destructive" />
+                        <div className="h-2 w-2 rounded-sm bg-red-500 border border-black shrink-0" />
                         {item}
                       </div>
                     ))}
@@ -198,30 +183,30 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 4. Intellectual Property */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Scale className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Scale className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    4. Intellectual Property
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    4. INTELLECTUAL PROPERTY
                   </h2>
-                  <p className="mb-4 text-muted-foreground">
+                  <p className="mb-4 font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     All source code, designs, and deliverables created by
                     Ishtiaq Robin remain the property of Ishtiaq Robin until
                     full payment is received. Upon full payment, the client
                     receives full ownership of the final deliverables.
                   </p>
-                  <div className="rounded-2xl bg-primary/5 p-6 border border-primary/10">
-                    <h3 className="mb-2 flex items-center gap-2 font-semibold text-primary">
-                      <RefreshCcw className="h-4 w-4" />
-                      License & Ownership
+                  <div className="rounded-xl border-2.5 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 p-5 shadow-[4px_4px_0px_0px_#000]">
+                    <h3 className="mb-2 flex items-center gap-2 font-black uppercase text-xs text-black dark:text-white">
+                      <RefreshCcw className="h-4 w-4 text-[#00f0ff] stroke-[2.5]" />
+                      LICENSE & OWNERSHIP ★
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs font-medium text-zinc-600 dark:text-zinc-300 leading-relaxed">
                       Ishtiaq Robin retains the right to reuse generalized
                       code, libraries, and frameworks developed prior to or
                       outside of the engagement. Confidential business logic and
@@ -234,24 +219,24 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 5. Payments & Refunds */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <CreditCard className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00f0ff] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <CreditCard className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    5. Financial Terms
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    5. FINANCIAL TERMS
                   </h2>
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     <div>
-                      <h3 className="mb-2 font-semibold text-foreground">
-                        Payments
+                      <h3 className="mb-2 font-black uppercase text-xs text-black dark:text-white">
+                        PAYMENTS
                       </h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-xs font-medium text-zinc-600 dark:text-zinc-400 leading-relaxed">
                         All payments for software engineering services are
                         processed securely. Clients agree to pay the agreed
                         project rate plus any applicable taxes at the time of
@@ -259,12 +244,12 @@ const TermsOfServicePage = () => {
                         specified in the individual project agreement.
                       </p>
                     </div>
-                    <div className="rounded-2xl bg-primary/5 p-6 border border-primary/10">
-                      <h3 className="mb-2 flex items-center gap-2 font-semibold text-primary">
-                        <RefreshCcw className="h-4 w-4" />
-                        Refund & Cancellation Policy
+                    <div className="rounded-xl border-2.5 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 p-5 shadow-[4px_4px_0px_0px_#000]">
+                      <h3 className="mb-2 flex items-center gap-2 font-black uppercase text-xs text-black dark:text-white">
+                        <RefreshCcw className="h-4 w-4 text-[#ff597b] stroke-[2.5]" />
+                        REFUND & CANCELLATION POLICY ★
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-xs font-medium text-zinc-600 dark:text-zinc-300 leading-relaxed">
                         Cancellations made before work commences are eligible
                         for a full refund of any deposit. Once development work
                         has started, deposits are non-refundable to compensate
@@ -278,49 +263,50 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 6. Limitation of Liability */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Scale className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#ff597b] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Scale className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    6. Disclaimers & Liability
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    6. DISCLAIMERS & LIABILITY
                   </h2>
-                  <p className="mb-4 leading-relaxed text-muted-foreground">
+                  <p className="mb-4 leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Ishtiaq Robin provides software engineering and development
                     services. While we strive for excellence, we do not
                     guarantee specific business results, revenue, or ROI from
                     our work. All services are provided on an &quot;as is&quot;
                     and &quot;as available&quot; basis.
                   </p>
-                  <p className="text-sm font-medium text-muted-foreground italic">
-                    &quot;In no event shall Ishtiaq Robin be liable for any
-                    indirect, incidental, special, consequential, or punitive
-                    damages, including but not limited to loss of profits, data,
-                    or business opportunity, arising out of or related to the
-                    use of our services.&quot;
-                  </p>
+                  <div className="rounded-xl border-2 border-black dark:border-zinc-300 bg-[#FFFDF5] dark:bg-zinc-900 p-4 shadow-[3px_3px_0px_0px_#000]">
+                    <p className="text-xs font-mono font-bold text-zinc-700 dark:text-zinc-300 italic">
+                      &quot;In no event shall Ishtiaq Robin be liable for any
+                      indirect, incidental, special, consequential, or punitive
+                      damages, including loss of profits, data, or business
+                      opportunity.&quot;
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 7. Confidentiality */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Shield className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Shield className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    7. Confidentiality
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    7. CONFIDENTIALITY
                   </h2>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Ishtiaq Robin agrees to keep confidential all proprietary
                     information shared by the client for the purpose of project
                     delivery. This includes business logic, trade secrets,
@@ -333,19 +319,19 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 8. AI & Chatbot Services */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Zap className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00f0ff] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Zap className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    8. AI Chatbot & Automated Services
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    8. AI CHATBOT & AUTOMATED SERVICES
                   </h2>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Our platform includes an AI-powered chatbot for informational
                     and support purposes. Conversations with the chatbot are not
                     logged or stored. The chatbot may provide inaccurate or
@@ -357,29 +343,27 @@ const TermsOfServicePage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 9. Governing Law */}
-            <div className="bg-muted/50 rounded-3xl p-8 text-center border border-border">
-              <h2 className="mb-2 text-2xl font-clash text-foreground">
-                Questions About These Terms?
+            <div className="rounded-2xl bg-[#00f0ff] text-black border-3 border-black p-8 text-center shadow-[6px_6px_0px_0px_#000]">
+              <h2 className="mb-2 text-2xl font-clash font-black uppercase">
+                QUESTIONS ABOUT THESE TERMS? ★
               </h2>
-              <p className="mb-6 text-muted-foreground">
+              <p className="mb-6 font-bold text-xs uppercase max-w-md mx-auto text-black/80">
                 These terms are governed by the laws of Bangladesh. Any disputes
-                shall be resolved through negotiation in good faith, and if
-                unresolved, through the courts of Dhaka, Bangladesh.
+                shall be resolved through negotiation in good faith.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-wrap justify-center items-center gap-3">
                 <a
                   href="mailto:ishtiaqrobin.me@gmail.com"
-                  className="font-bold text-primary hover:underline"
+                  className="font-mono font-black text-xs uppercase underline bg-black text-white px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000]"
                 >
                   ishtiaqrobin.me@gmail.com
                 </a>
-                <span className="text-muted-foreground hidden sm:inline">
-                  •
+                <span className="font-black text-xs uppercase bg-white text-black px-4 py-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  DHAKA, BANGLADESH
                 </span>
-                <span className="text-muted-foreground">Dhaka, Bangladesh</span>
               </div>
             </div>
           </div>

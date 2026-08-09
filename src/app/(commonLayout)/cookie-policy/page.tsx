@@ -64,49 +64,48 @@ const CookiePolicyPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary/5 py-16 lg:py-24">
-        <div className="absolute right-1/2 top-0 -z-10 h-[400px] w-[800px] -translate-x-1/2 bg-primary/20 blur-[120px]" />
+      <section className="relative overflow-hidden bg-[#FFFDF5] dark:bg-zinc-950 border-b-3 border-black dark:border-zinc-700 py-16 lg:py-24">
         <div className="container mx-auto px-4 text-center">
-          <div className="mb-6 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
-            <Cookie className="h-8 w-8" />
+          <div className="mb-4 inline-flex items-center justify-center rounded-xl bg-[#ff597b] text-black border-2 border-black p-3 shadow-[3px_3px_0px_0px_#000]">
+            <Cookie className="h-8 w-8 stroke-[2.5]" />
           </div>
-          <h1 className="mb-6 text-4xl font-clash tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Cookie Policy
+          <h1 className="mb-4 text-4xl font-clash font-black uppercase tracking-tight text-black dark:text-white sm:text-5xl lg:text-6xl">
+            COOKIE POLICY ★
           </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
+          <p className="mx-auto max-w-2xl text-base sm:text-lg font-bold text-zinc-700 dark:text-zinc-300">
             We use cookies to enhance your browsing experience, provide
-            personalized content, and analyze our traffic.
+            personalized features, and analyze our traffic.
           </p>
-          <p className="mt-8 text-sm font-medium text-primary">
-            Last Updated: {lastUpdated}
-          </p>
+          <div className="mt-6 inline-block rounded-full bg-[#b5ff6d] text-black border-2 border-black px-4 py-1.5 font-mono font-black text-xs uppercase shadow-[2px_2px_0px_0px_#000]">
+            LAST UPDATED: {lastUpdated}
+          </div>
         </div>
       </section>
 
       {/* Content Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-20">
         <div className="container mx-auto max-w-4xl px-4">
-          <div className="grid gap-12 lg:gap-16">
+          <div className="grid gap-12">
             {/* 1. What are Cookies */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Info className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#00f0ff] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Info className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    1. What Are Cookies?
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    1. WHAT ARE COOKIES?
                   </h2>
-                  <p className="leading-relaxed text-muted-foreground">
+                  <p className="leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Cookies are small data files that are placed on your
                     computer or mobile device when you visit a website. Cookies
                     are widely used by website owners in order to make their
                     websites work, or to work more efficiently, as well as to
                     provide reporting information.
                   </p>
-                  <p className="mt-4 leading-relaxed text-muted-foreground">
+                  <p className="mt-3 leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Cookies set by the website owner (in this case, Ishtiaq
                     Robin) are called &quot;first-party cookies.&quot; Cookies
                     set by parties other than the website owner are called
@@ -116,19 +115,19 @@ const CookiePolicyPage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 2. Why we use them */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <ShieldCheck className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#ff597b] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <ShieldCheck className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    2. Why Do We Use Cookies?
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    2. WHY DO WE USE COOKIES?
                   </h2>
-                  <p className="mb-6 text-muted-foreground">
+                  <p className="mb-6 font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     We use only essential and analytical cookies. Some cookies
                     are required for technical reasons for our Website to
                     operate, and we refer to these as &quot;essential&quot; or
@@ -137,22 +136,24 @@ const CookiePolicyPage = () => {
                   </p>
 
                   <div className="grid gap-6 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-border p-5 hover:border-primary/20 transition-colors">
-                      <h3 className="mb-2 font-bold text-foreground">
-                        Essential Cookies
+                    <div className="rounded-xl border-2.5 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 p-5 shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]">
+                      <h3 className="mb-2 font-black uppercase text-sm text-black dark:text-white flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-sm bg-[#00f0ff]" />
+                        ESSENTIAL COOKIES
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs font-medium text-zinc-600 dark:text-zinc-300 leading-relaxed">
                         Required for core features like secure login, session
                         management, and account security. The platform cannot
                         function correctly without them. No consent is needed
                         for these cookies.
                       </p>
                     </div>
-                    <div className="rounded-2xl border border-border p-5 hover:border-primary/20 transition-colors">
-                      <h3 className="mb-2 font-bold text-foreground">
-                        Analytical Cookies
+                    <div className="rounded-xl border-2.5 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 p-5 shadow-[4px_4px_0px_0px_#000] dark:shadow-[4px_4px_0px_0px_#b5ff6d]">
+                      <h3 className="mb-2 font-black uppercase text-sm text-black dark:text-white flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-sm bg-[#ff597b]" />
+                        ANALYTICAL COOKIES
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs font-medium text-zinc-600 dark:text-zinc-300 leading-relaxed">
                         Help us understand how users interact with our platform
                         by collecting anonymous usage data. This allows us to
                         improve site performance and user experience.
@@ -163,53 +164,53 @@ const CookiePolicyPage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 3. Detailed Cookie List */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <MousePointer2 className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#b5ff6d] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <MousePointer2 className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div className="w-full min-w-0">
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    3. Specific Cookies We Use
+                  <h2 className="mb-4 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    3. SPECIFIC COOKIES WE USE
                   </h2>
-                  <div className="rounded-xl border bg-card">
+                  <div className="rounded-xl border-3 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 shadow-[4px_4px_0px_0px_#000] overflow-hidden">
                     <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Cookie Name</TableHead>
-                          <TableHead>Provider</TableHead>
-                          <TableHead>Purpose</TableHead>
-                          <TableHead>Duration</TableHead>
+                      <TableHeader className="bg-[#FFFDF5] dark:bg-zinc-950 border-b-2 border-black">
+                        <TableRow className="border-b-2 border-black">
+                          <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">COOKIE NAME</TableHead>
+                          <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">PROVIDER</TableHead>
+                          <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">PURPOSE</TableHead>
+                          <TableHead className="font-clash font-black uppercase text-xs text-black dark:text-white">DURATION</TableHead>
                         </TableRow>
                       </TableHeader>
-                      <TableBody>
-                        <TableRow>
-                          <TableCell className="font-medium">
+                      <TableBody className="divide-y-2 divide-black/10 dark:divide-zinc-800 font-medium text-xs">
+                        <TableRow className="hover:bg-[#00f0ff]/10">
+                          <TableCell className="font-mono font-black text-black dark:text-white">
                             better-auth.session_token
                           </TableCell>
-                          <TableCell>Ishtiaq Robin</TableCell>
-                          <TableCell>
+                          <TableCell className="font-bold">Ishtiaq Robin</TableCell>
+                          <TableCell className="text-zinc-600 dark:text-zinc-300">
                             Authentication session management
                           </TableCell>
-                          <TableCell>Session</TableCell>
+                          <TableCell className="font-mono font-bold">Session</TableCell>
                         </TableRow>
-                        <TableRow>
-                          <TableCell className="font-medium">
+                        <TableRow className="hover:bg-[#00f0ff]/10">
+                          <TableCell className="font-mono font-black text-black dark:text-white">
                             _vercel_analytics_*
                           </TableCell>
-                          <TableCell>Vercel Analytics</TableCell>
-                          <TableCell>
+                          <TableCell className="font-bold">Vercel Analytics</TableCell>
+                          <TableCell className="text-zinc-600 dark:text-zinc-300">
                             Anonymous page view and usage analytics
                           </TableCell>
-                          <TableCell>Session</TableCell>
+                          <TableCell className="font-mono font-bold">Session</TableCell>
                         </TableRow>
                       </TableBody>
                     </Table>
                   </div>
-                  <p className="mt-4 text-sm text-muted-foreground">
+                  <p className="mt-4 text-xs font-bold text-zinc-500">
                     We do not use marketing, advertising, or third-party
                     tracking cookies. No personal data is sold or shared with
                     advertisers.
@@ -218,19 +219,19 @@ const CookiePolicyPage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 4. How to control cookies */}
             <div className="group relative">
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors">
-                  <Settings className="h-5 w-5" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#facc15] text-black border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+                  <Settings className="h-5 w-5 stroke-[2.5]" />
                 </div>
                 <div>
-                  <h2 className="mb-4 text-2xl font-clash text-foreground">
-                    4. How to Manage Cookies?
+                  <h2 className="mb-3 text-2xl font-clash font-black uppercase text-black dark:text-white">
+                    4. HOW TO MANAGE COOKIES?
                   </h2>
-                  <p className="mb-6 leading-relaxed text-muted-foreground">
+                  <p className="mb-6 leading-relaxed font-medium text-sm text-zinc-700 dark:text-zinc-300">
                     Most web browsers allow you to control cookies through their
                     settings. However, if you limit the ability of websites to
                     set essential cookies, some features of our platform may not
@@ -260,12 +261,12 @@ const CookiePolicyPage = () => {
                         href={browser.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between rounded-xl border border-border bg-muted/20 px-4 py-3 hover:bg-muted/40 transition-colors group"
+                        className="flex items-center justify-between rounded-xl border-2 border-black dark:border-zinc-300 bg-white dark:bg-zinc-900 px-4 py-3 shadow-[2px_2px_0px_0px_#000] hover:bg-[#00f0ff] hover:text-black transition-colors group cursor-pointer"
                       >
-                        <span className="text-sm font-medium text-foreground">
+                        <span className="text-xs font-black uppercase text-black dark:text-white group-hover:text-black">
                           {browser.name}
                         </span>
-                        <ExternalLink className="h-3 w-3 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <ExternalLink className="h-3.5 w-3.5 text-black dark:text-white stroke-[2.5]" />
                       </a>
                     ))}
                   </div>
@@ -273,23 +274,23 @@ const CookiePolicyPage = () => {
               </div>
             </div>
 
-            <Separator className="opacity-50" />
+            <Separator className="bg-black/20 dark:bg-zinc-800" />
 
             {/* 5. Contact */}
-            <div className="rounded-3xl bg-linear-to-br from-primary/10 to-primary/5 p-8 text-center border border-primary/10">
-              <HelpCircle className="mx-auto mb-4 h-10 w-10 text-primary" />
-              <h2 className="mb-2 text-2xl font-clash text-foreground">
-                Need More Clarity?
+            <div className="rounded-2xl bg-[#b5ff6d] text-black border-3 border-black p-8 text-center shadow-[6px_6px_0px_0px_#000]">
+              <HelpCircle className="mx-auto mb-3 h-10 w-10 stroke-[2.5]" />
+              <h2 className="mb-2 text-2xl font-clash font-black uppercase">
+                NEED MORE CLARITY? ★
               </h2>
-              <p className="mb-6 text-muted-foreground">
+              <p className="mb-6 font-bold text-xs uppercase max-w-md mx-auto text-black/80">
                 If you have any questions about our use of cookies or other
-                technologies, please email us.
+                technologies, please email us directly.
               </p>
               <a
                 href="mailto:ishtiaqrobin.me@gmail.com"
-                className="inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-bold text-primary-foreground hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center rounded-xl bg-black text-white hover:bg-zinc-800 border-2 border-black px-8 py-3 text-xs font-black uppercase shadow-[3px_3px_0px_0px_#000] transition-all cursor-pointer"
               >
-                Contact Support
+                CONTACT SUPPORT ★
               </a>
             </div>
           </div>
