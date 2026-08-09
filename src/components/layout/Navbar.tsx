@@ -63,7 +63,7 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed hidden sm:block top-3.5 left-0 right-0 z-50 transition-all duration-300 bg-transparent`}
+        className={`fixed hidden sm:block top-3.5 left-0 right-0 z-50 transition-all duration-300 bg-transparent container-custom`}
         transition={{ duration: 0.7 }}
       >
         <nav
